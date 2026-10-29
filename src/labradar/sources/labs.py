@@ -50,6 +50,13 @@ LAB_NAME = re.compile(
     r"{0,6}\s+(?:Lab|Labs|Laboratory|Group|Center|Centre|Institute)$"
 )
 
+# The institution whose groups this project covers. A lab hosted at any other
+# university is someone else's: faculty link to a former employer's lab, or a
+# colleague's, and their directory homepage can itself still sit at the old
+# institution.
+HOME_INSTITUTION = "columbia.edu"
+ACADEMIC_HOST = re.compile(r"(?:\.edu|\.(?:ac|edu)\.[a-z]{2})$")
+
 MAX_NAME_WORDS = 6
 MIN_NAME_WORDS = 2
 
@@ -147,6 +154,21 @@ def _same_site(a: str, b: str) -> bool:
     return bool(left and right and left == right)
 
 
+def at_other_institution(url: str) -> bool:
+    """True for a university host that is not the home institution.
+
+    Only academic hosts count. Labs also live on GitHub Pages or a personal
+    domain, and those say nothing about which institution the group belongs to.
+    """
+    try:
+        host = urlparse(url).netloc.lower().split(":")[0]
+    except ValueError:
+        return False
+    if host == HOME_INSTITUTION or host.endswith("." + HOME_INSTITUTION):
+        return False
+    return bool(ACADEMIC_HOST.search(host))
+
+
 def extract_labs(html: str, source_url: str) -> list[LabMention]:
     """Find labs named on one faculty page, best evidence first.
 
@@ -168,6 +190,10 @@ def extract_labs(html: str, source_url: str) -> list[LabMention]:
         # organisation. Accept one only when it is hosted on the faculty
         # member's own site, which is decent evidence that it is theirs.
         if strength == "weak" and not (url and _same_site(url, source_url)):
+            return
+        # Where the group lives: its own address, or failing that the page
+        # that names it.
+        if at_other_institution(url or source_url):
             return
         key = name.lower()
         confidence = CONFIDENCE.get(f"{method}_{strength}")

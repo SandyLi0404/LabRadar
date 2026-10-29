@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import logging
 import time
+from dataclasses import replace
 from datetime import datetime, timezone
 
 import httpx
@@ -51,6 +52,45 @@ def _canonical_url(url: str | None) -> str | None:
     return url.strip().rstrip("/").lower().replace("://www.", "://")
 
 
+# Statuses from a site that is up but turning away scripts. A browser gets
+# through, so the link is good for the people it is shown to.
+BLOCKS_SCRIPTS = frozenset({401, 403, 429})
+
+
+def _url_variants(url: str) -> list[str]:
+    """The link as written, then the forms faculty pages most often get wrong.
+
+    Old pages carry ``http://`` for sites that are now HTTPS-only, and ``www.``
+    on hosts that never had it (``www.psl.cs.columbia.edu`` does not resolve;
+    ``psl.cs.columbia.edu`` does).
+    """
+    variants = [url]
+    if url.startswith("http://"):
+        variants.append("https://" + url[len("http://"):])
+    for v in list(variants):
+        if "://www." in v:
+            variants.append(v.replace("://www.", "://", 1))
+    return variants
+
+
+def resolve_lab_url(client: httpx.Client, url: str) -> str | None:
+    """The address a lab link actually opens at, or None if it is dead.
+
+    A link that 404s or never answers is worse than no link: the interface
+    would send a student to a dead end with our name on it. Redirects are
+    followed and the final address kept, so a lab that moved is shown where it
+    now lives.
+    """
+    for candidate in _url_variants(url):
+        try:
+            response = client.get(candidate)
+        except httpx.HTTPError:
+            continue
+        if response.status_code < 400 or response.status_code in BLOCKS_SCRIPTS:
+            return str(response.url)
+    return None
+
+
 def upsert_lab(session: Session, mention: LabMention, run: FetchRun) -> Lab:
     """Find or create the lab, keyed on its URL first and then its name.
 
@@ -84,8 +124,10 @@ def upsert_lab(session: Session, mention: LabMention, run: FetchRun) -> Lab:
 
     lab.last_seen_run = run.id
     lab.is_current = True
-    # Only fill in a URL; never overwrite a known one with nothing.
-    if mention.url and not lab.url:
+    # A mention's URL has just been checked, so it replaces whatever was stored
+    # -- that is how a moved or mistyped address gets corrected. Never
+    # overwrite a known URL with nothing.
+    if mention.url:
         lab.url = mention.url
     return lab
 
@@ -144,7 +186,21 @@ def run(session: Session, client: httpx.Client | None = None) -> FetchRun:
         "labs_found": 0,
         "memberships_added": 0,
         "faculty_with_lab": 0,
+        "lab_links_dead": 0,
     }
+    # Several faculty link the same group; check each address once per run.
+    resolved: dict[str, str | None] = {}
+
+    def checked(mention: LabMention) -> LabMention | None:
+        if mention.url is None:
+            return mention
+        if mention.url not in resolved:
+            resolved[mention.url] = resolve_lab_url(client, mention.url)
+            if resolved[mention.url] is None:
+                log.info("lab link dead for %s: %s", mention.name, mention.url)
+                stats["lab_links_dead"] += 1
+        url = resolved[mention.url]
+        return None if url is None else replace(mention, url=url)
 
     try:
         rows = session.execute(
@@ -173,9 +229,9 @@ def run(session: Session, client: httpx.Client | None = None) -> FetchRun:
 
             stats["pages_ok"] += 1
             mentions = [
-                m
+                live
                 for m in extract_labs(response.text, str(response.url))
-                if m.confidence >= MIN_CONFIDENCE
+                if m.confidence >= MIN_CONFIDENCE and (live := checked(m)) is not None
             ][:MAX_LABS_PER_FACULTY]
 
             if mentions:
@@ -203,6 +259,17 @@ def run(session: Session, client: httpx.Client | None = None) -> FetchRun:
                 row.valid_to = at
                 closed += 1
         stats["memberships_closed"] = closed
+
+        # A group nobody is attached to any more drops out of the listing. The
+        # row is kept, like every other observation, so it can come back.
+        session.flush()
+        seen_labs = {lab_id for _, lab_id in seen_pairs}
+        retired = 0
+        for lab in session.scalars(select(Lab).where(Lab.is_current)):
+            if lab.id not in seen_labs:
+                lab.is_current = False
+                retired += 1
+        stats["labs_retired"] = retired
 
         fetch_run.status = "partial" if stats["fetch_failed"] else "success"
         fetch_run.stats = stats
