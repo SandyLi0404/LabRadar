@@ -1,0 +1,100 @@
+# Publish LabRadar to GitHub Pages.
+#
+# Pages serves files only, so this runs the whole pipeline against a throwaway
+# Postgres, exports every record as JSON (`labradar export-static`) and
+# publishes that with the frontend.
+#
+# History is the storage model, and change detection diffs this run against the
+# last one, so the database outlives the throwaway container: it is dumped to
+# the `data` branch after each run and restored at the start of the next. That
+# branch is force-pushed as a single commit, so it never grows a history of its
+# own.
+
+name: Publish site
+
+on:
+  schedule:
+    - cron: "0 3 * * 0" # Sundays 03:00 UTC, the same slot as the docker scheduler
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["frontend/**", "src/**", "curation/**", "migrations/**", ".github/workflows/pages.yml"]
+
+# Two runs restoring and saving the same dump would lose one of them.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # push the database dump to the data branch
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: labradar
+          POSTGRES_PASSWORD: labradar
+          POSTGRES_DB: labradar
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U labradar -d labradar"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql+psycopg://labradar:labradar@localhost:5432/labradar
+      OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - run: pip install .
+
+      # pg_dump and psql run inside the service container, so their version
+      # always matches the server's.
+      - name: Restore the database from the last run
+        run: |
+          if git fetch --depth=1 origin data; then
+            git show FETCH_HEAD:labradar.sql.gz | gunzip \
+              | docker exec -i ${{ job.services.postgres.id }} \
+                  psql -q -v ON_ERROR_STOP=1 -U labradar -d labradar > /dev/null
+          else
+            echo "No data branch yet: starting from an empty database."
+          fi
+
+      - run: alembic upgrade head
+      - run: labradar run-all
+      - run: labradar export-static _site
+
+      - name: Save the database for the next run
+        run: |
+          docker exec ${{ job.services.postgres.id }} \
+            pg_dump --no-owner -U labradar -d labradar | gzip -9 > "$RUNNER_TEMP/labradar.sql.gz"
+          cd "$(mktemp -d)"
+          git init -q -b data
+          cp "$RUNNER_TEMP/labradar.sql.gz" .
+          git add labradar.sql.gz
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -q -m "Database after run ${{ github.run_number }}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" data
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v5

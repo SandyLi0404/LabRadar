@@ -38,6 +38,86 @@ function esc(value) {
   }[c]));
 }
 
+/* The same page runs two ways. Served by the API, it asks the server for each
+ * filtered page. Exported as a static site (GitHub Pages has no server), it
+ * loads one snapshot of every record and applies the API's filter rules here.
+ * The export marks the page with data-source="static". */
+const STATIC = document.documentElement.dataset.source === "static";
+
+const snapshots = {};
+function snapshot(name) {
+  snapshots[name] ??= getJSON(`data/${name}.json`).catch((error) => {
+    delete snapshots[name];
+    throw error;
+  });
+  return snapshots[name];
+}
+
+async function getJSON(url) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`${url} returned ${response.status}`);
+  return response.json();
+}
+
+// As in the API: no linked record means unknown, so never filtered as inactive.
+const isUnmapped = (activity) => !activity || !activity.linked_author_count;
+
+function fold(text) {
+  return String(text ?? "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+}
+
+/* The server uses Postgres full-text search over the same four fields. Here
+ * every word of the query must appear somewhere in them; a trailing "s" is
+ * dropped so "networks" still finds "network". */
+function matches(person, q) {
+  const haystack = fold(
+    [person.full_name, person.title, person.interests_raw, ...person.areas].join(" ")
+  );
+  return fold(q)
+    .split(/\s+/)
+    .filter(Boolean)
+    .every((word) => haystack.includes(word.length > 3 ? word.replace(/s$/, "") : word));
+}
+
+// Descending with missing values last, as the API's NULLS LAST ordering.
+const descending = (pick) => (a, b) => (pick(b) ?? -Infinity) - (pick(a) ?? -Infinity);
+
+async function staticFaculty() {
+  const [people, areas] = await Promise.all([snapshot("faculty"), snapshot("areas")]);
+  const areaName = areas.find((a) => a.slug === state.area)?.name;
+  const rows = people.filter(
+    (p) =>
+      (state.includeDeparted || p.is_current) &&
+      (state.includeNoWebsite || p.homepage_url) &&
+      (!state.area || p.areas.includes(areaName)) &&
+      (!state.q || matches(p, state.q)) &&
+      (state.includeInactive || p.activity?.works_since > 0 || isUnmapped(p.activity))
+  );
+  const byName = (a, b) => a.full_name.localeCompare(b.full_name);
+  const byKey = descending((p) => p.activity?.[state.sort]);
+  rows.sort(state.sort === "name" ? byName : (a, b) => byKey(a, b) || byName(a, b));
+  const start = (state.page - 1) * state.pageSize;
+  return {
+    total: rows.length,
+    page: state.page,
+    page_size: state.pageSize,
+    results: rows.slice(start, start + state.pageSize),
+  };
+}
+
+async function staticLabs() {
+  const labs = await snapshot("labs");
+  const byWorks = descending((l) => l.activity?.works_since);
+  return labs
+    .filter(
+      (l) =>
+        state.includeInactive ||
+        l.activity?.works_since > 0 ||
+        !l.activity?.mapped_member_count
+    )
+    .sort((a, b) => byWorks(a, b) || a.name.localeCompare(b.name));
+}
+
 function buildQuery() {
   const params = new URLSearchParams();
   if (state.q) params.set("q", state.q);
@@ -152,9 +232,7 @@ function describeFilters(total) {
 async function load() {
   results.setAttribute("aria-busy", "true");
   try {
-    const response = await fetch(`/api/faculty?${buildQuery()}`);
-    if (!response.ok) throw new Error(`API returned ${response.status}`);
-    const page = await response.json();
+    const page = STATIC ? await staticFaculty() : await getJSON(`/api/faculty?${buildQuery()}`);
 
     el("count").textContent = describeFilters(page.total);
 
@@ -218,9 +296,7 @@ async function loadLabs() {
   try {
     const params = new URLSearchParams({ sort: "works_since", limit: "200" });
     params.set("include_inactive", state.includeInactive);
-    const response = await fetch(`/api/labs?${params}`);
-    if (!response.ok) throw new Error(`API returned ${response.status}`);
-    const labs = await response.json();
+    const labs = STATIC ? await staticLabs() : await getJSON(`/api/labs?${params}`);
 
     el("count").textContent =
       `${labs.length} ${labs.length === 1 ? "group" : "groups"} named on faculty pages` +
@@ -237,9 +313,7 @@ async function loadLabs() {
 
 async function loadAreas() {
   try {
-    const response = await fetch("/api/areas");
-    if (!response.ok) return;
-    const areas = await response.json();
+    const areas = STATIC ? await snapshot("areas") : await getJSON("/api/areas");
     el("areas").innerHTML = areas
       .map(
         (a) => `<button type="button" class="chip" data-slug="${esc(a.slug)}"

@@ -10,7 +10,9 @@ almost no signal about its own cause.
 from __future__ import annotations
 
 import logging
+import re
 from pathlib import Path
+from urllib.parse import urljoin
 
 import pytest
 from fastapi.testclient import TestClient
@@ -78,5 +80,8 @@ class TestServing:
     def test_the_page_references_the_assets_it_serves(self, client):
         """A 200 on each file is not enough if the HTML points elsewhere."""
         html = client.get("/").text
-        for path in ("/static/style.css", "/static/app.js"):
-            assert path in html
+        refs = re.findall(r'(?:href|src)="([^"]+\.(?:css|js))"', html)
+        # Relative, so the same page also works from a Pages project subpath.
+        assert {urljoin("/", r) for r in refs} == {"/static/style.css", "/static/app.js"}
+        for ref in refs:
+            assert client.get(urljoin("/", ref)).status_code == 200

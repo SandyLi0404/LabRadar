@@ -49,6 +49,7 @@ uvicorn labradar.api:app --reload
 | `labradar link` | Propose OpenAlex candidates for unmapped faculty |
 | `labradar review` | Show pending proposals and the evidence behind them |
 | `labradar validate-curation` | Check the mapping file parses and is consistent |
+| `labradar export-static DIR` | Write the site as static files (used for GitHub Pages) |
 
 The scheduler calls exactly these commands, so there is no code path that only
 the scheduler exercises.
@@ -287,7 +288,7 @@ curated.
 ## Tests
 
 ```bash
-pytest          # 236 tests, no network access
+pytest          # 264 tests, no network access
 ```
 
 The suite runs against captured copies of the real pages and real OpenAlex
@@ -319,6 +320,33 @@ weekly scheduler, and research-group discovery from faculty homepages
 Not yet built: soft signals from lab pages such as "recruiting students". When
 added, those render as low-confidence with a source URL and date.
 
-Also open: no cloud target is chosen yet. Any container host with managed
-Postgres works; the scheduler is a plain service, so it suits Fly.io, Render or
-Railway equally.
+The public site is published to GitHub Pages; see below. Docker Compose
+remains the way to run the full app with its live API.
+
+---
+
+## Publishing to GitHub Pages
+
+Pages serves files only, so the public site is a weekly snapshot rather than a
+live API. [`.github/workflows/pages.yml`](.github/workflows/pages.yml) runs the
+full pipeline against a throwaway Postgres, then `labradar export-static`
+writes every record to `data/*.json` beside the frontend. The page sees it is
+marked `data-source="static"` and applies the API's filter rules in the
+browser -- same filters, same ordering, checked against the API side by side.
+
+It runs on Sundays at 03:00 UTC, on every push to `main` that touches the app,
+and by hand from the Actions tab. Each run costs about a cent of OpenAlex
+allowance.
+
+Because change detection diffs a run against the previous one, the database
+survives between runs: it is dumped to the `data` branch (one force-pushed
+commit, about 1 MB) and restored at the start of the next run.
+
+One-time setup:
+
+1. Add the OpenAlex key as an Actions secret named `OPENALEX_API_KEY`.
+2. Settings → Pages → Source: **GitHub Actions**.
+3. Run the workflow once from the Actions tab.
+
+GitHub disables scheduled workflows in a repository with no commits for 60
+days; a commit or a manual run re-enables them.

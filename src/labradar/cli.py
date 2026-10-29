@@ -231,6 +231,19 @@ def cmd_validate_curation(args) -> int:
     return 0
 
 
+def cmd_export_static(args) -> int:
+    from labradar.api import FRONTEND_DIR
+    from labradar.export import write_site
+
+    if FRONTEND_DIR is None:
+        print("No frontend directory found; set FRONTEND_DIR.", file=sys.stderr)
+        return 1
+    with session_scope() as session:
+        counts = write_site(session, args.out, FRONTEND_DIR)
+    print(f"Wrote {args.out}: " + ", ".join(f"{n} {k}" for k, n in counts.items()))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="labradar", description=__doc__)
     parser.add_argument("-v", "--verbose", action="store_true")
@@ -253,6 +266,9 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("run-all", help="the full scheduled chain")
     sub.add_parser("validate-curation", help="check the mapping file parses")
     sub.add_parser("review", help="show pending link proposals and their evidence")
+
+    export = sub.add_parser("export-static", help="write the site as static files")
+    export.add_argument("out", type=Path, help="directory to write (replaced)")
 
     link = sub.add_parser("link", help="suggest OpenAlex candidates for curation")
     link.add_argument("--person-id", help="only suggest for this person")
@@ -277,6 +293,7 @@ HANDLERS = {
     "link": cmd_link,
     "validate-curation": cmd_validate_curation,
     "review": cmd_review,
+    "export-static": cmd_export_static,
 }
 
 
