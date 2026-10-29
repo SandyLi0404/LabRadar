@@ -172,13 +172,14 @@ year**. Measured over Josh Alman's real corpus: 65 records, 46 distinct papers,
 16 titles appearing more than once — one appearing three times, spread across
 2020, 2021 and 2024.
 
-| Window | Raw records | Deduplicated |
+| | Raw records | Deduplicated |
 |---|---|---|
-| Last 3 years | 20 | **17** |
-| Last 5 years | 35 | **28** |
+| Whole corpus | 65 | **47** |
+| Since 2025 (the app's cutoff) | 14 | **13** |
 
-(These spans are the measured evidence for the dedup rule, kept in
-`tests/test_dedup.py`. The app itself reports only the last-year figure.)
+Both rows are pinned in `tests/test_dedup.py`. The keying-scheme guards use the
+whole corpus: inside one short window most versions share a year, so a broken
+scheme can land on the right count by luck.
 
 Two obvious keying schemes both fail on this data: **DOI-first merges nothing**
 (16/16 duplicate groups have differing DOIs) and **`title||year` fails on 12 of
@@ -277,15 +278,16 @@ labradar validate-curation
 count, most recent year and topics, plus a ready-to-paste YAML block. It writes
 nothing: a human pastes the decision into the file so it goes through review.
 
-Three faculty are seeded as worked examples, including McKeown's rejected
-fragments. The other 69 are unmapped and show as *unknown* until curated.
+43 of the 72 directory entries have a confirmed link, including McKeown with
+her rejected fragments. The rest are unmapped and show as *unknown* until
+curated.
 
 ---
 
 ## Tests
 
 ```bash
-pytest          # 239 tests, no network access
+pytest          # 236 tests, no network access
 ```
 
 The suite runs against captured copies of the real pages and real OpenAlex
@@ -309,13 +311,13 @@ it produces a plausible number attached to the wrong person.
 
 ## Status
 
-Phases 1 and 2 of the plan are implemented: directory and area ingest, curated
-OpenAlex linking, paper-level dedup, activity signals, search and recency
-filtering, change detection, and the weekly scheduler.
+Implemented: directory and area ingest, curated OpenAlex linking, paper-level
+dedup, activity signals, search and recency filtering, change detection, the
+weekly scheduler, and research-group discovery from faculty homepages
+(`fetch-labs`, stored separately with a confidence and source URL).
 
-Not yet built (Phase 3): per-faculty lab-page scraping for soft signals like
-"recruiting students". When added, those go in a separate table and render as
-low-confidence with a source URL and date.
+Not yet built: soft signals from lab pages such as "recruiting students". When
+added, those render as low-confidence with a source URL and date.
 
 Also open: no cloud target is chosen yet. Any container host with managed
 Postgres works; the scheduler is a plain service, so it suits Fly.io, Render or

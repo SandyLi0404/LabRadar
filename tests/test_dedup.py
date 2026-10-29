@@ -1,9 +1,9 @@
 """Dedup tests pinned to real OpenAlex data.
 
-The 3- and 5-year spans here are not what the app displays -- it reports a
-single last-year figure. They are kept because they are the measured evidence
-for the dedup rule itself, and a wider span exercises more duplicate groups
-than one year ever could.
+Counts are taken at the cutoff the app itself reports from (``since_year``).
+The guards against the rejected keying schemes run over the whole corpus
+instead: inside one short window most versions share a year, so a broken scheme
+can land on the right number by luck.
 
 The fixtures are the live work lists for Josh Alman's two Columbia-affiliated
 OpenAlex profiles -- a 63-work primary profile (A) and a 7-work duplicate (B).
@@ -14,10 +14,12 @@ written, so the measurement, the rule and these assertions agree by construction
 from __future__ import annotations
 
 import json
+from datetime import date
 from pathlib import Path
 
 import pytest
 
+from labradar.activity import since_year
 from labradar.dedup import (
     WorkRecord,
     plausible_year,
@@ -31,9 +33,10 @@ from labradar.dedup import (
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
-# The corpus was captured in 2026; windows are computed against that baseline so
-# the expected counts stay stable as real time moves on.
+# The corpus was captured in 2026; the cutoff is computed against that baseline
+# so the expected counts stay stable as real time moves on.
 AS_OF_YEAR = 2026
+CUTOFF = since_year(date(AS_OF_YEAR, 1, 1))
 
 PROFILE_A = "A5006981411"  # the real profile: 63 works
 PROFILE_B = "A5005816789"  # duplicate fragment: 7 works
@@ -79,17 +82,14 @@ class TestNormalization:
 
 
 class TestProfileACounts:
-    """A single profile is already inflated ~15-20% by its own version duplicates."""
+    """A single profile is already inflated by its own version duplicates."""
 
     def test_raw_record_counts(self, profile_a):
         assert len(profile_a) == 65
-        assert count_raw_since(profile_a, AS_OF_YEAR - 2) == 20
-        assert count_raw_since(profile_a, AS_OF_YEAR - 4) == 35
+        assert count_raw_since(profile_a, CUTOFF) == 14
 
     def test_deduped_counts(self, profile_a):
-        clusters = cluster_works(profile_a)
-        assert count_since(clusters, AS_OF_YEAR - 2) == 17
-        assert count_since(clusters, AS_OF_YEAR - 4) == 28
+        assert count_since(cluster_works(profile_a), CUTOFF) == 13
 
     def test_collapses_to_expected_paper_count(self, profile_a):
         # 46 titled papers plus one untitled record that can never be matched.
@@ -106,28 +106,24 @@ class TestProfileACounts:
         ]
         assert len(untitled) == 1
         assert untitled[0].record_count == 1
-        assert untitled[0].canonical_year == 2021  # outside both windows
+        assert untitled[0].canonical_year == 2021  # before the cutoff
 
 
 class TestMergedProfiles:
     """Cross-profile duplicates merge on the same pass as within-profile ones."""
 
     def test_raw_counts_inflate_further(self, profile_a, profile_b):
-        merged = profile_a + profile_b
-        assert count_raw_since(merged, AS_OF_YEAR - 2) == 24
-        assert count_raw_since(merged, AS_OF_YEAR - 4) == 39
+        assert count_raw_since(profile_a + profile_b, CUTOFF) == 16
 
     def test_deduped_counts(self, profile_a, profile_b):
-        clusters = cluster_works(profile_a + profile_b)
-        assert count_since(clusters, AS_OF_YEAR - 2) == 19
-        assert count_since(clusters, AS_OF_YEAR - 4) == 30
+        assert count_since(cluster_works(profile_a + profile_b), CUTOFF) == 14
 
-    def test_the_only_shared_title_predates_both_windows(self, profile_a, profile_b):
+    def test_the_only_shared_title_predates_the_cutoff(self, profile_a, profile_b):
         """Documents why cross-profile merging is a no-op for *this* pair.
 
         These two profiles overlap on exactly one paper, from 2017, so it falls
-        outside both reported windows. All of the 3y/5y inflation here is
-        within-profile versioning -- which is the case for deduping everyone
+        before the cutoff. All of the inflation here is within-profile
+        versioning -- which is the case for deduping everyone
         rather than only people with multiple linked profiles.
         """
         shared = {title_norm(r.title) for r in profile_a} & {
@@ -142,10 +138,11 @@ class TestMergedProfiles:
         }
         assert years == {2017}
 
-        for window in (3, 5):
-            separately = count_since(cluster_works(profile_a), AS_OF_YEAR - (window - 1)) + count_since(cluster_works(profile_b), AS_OF_YEAR - (window - 1))
-            together = count_since(cluster_works(profile_a + profile_b), AS_OF_YEAR - (window - 1))
-            assert separately == together
+        separately = count_since(cluster_works(profile_a), CUTOFF) + count_since(
+            cluster_works(profile_b), CUTOFF
+        )
+        together = count_since(cluster_works(profile_a + profile_b), CUTOFF)
+        assert separately == together
 
     def test_union_dedup_catches_an_in_window_cross_profile_duplicate(self):
         """The general case the union pass exists for, which the fixtures lack.
@@ -157,10 +154,10 @@ class TestMergedProfiles:
         right = [
             WorkRecord("W2", "Tensor Powers and faster multiplication!", 2026, "10.1/x")
         ]
-        assert count_since(cluster_works(left), AS_OF_YEAR - 2) == 1
-        assert count_since(cluster_works(right), AS_OF_YEAR - 2) == 1
+        assert count_since(cluster_works(left), CUTOFF) == 1
+        assert count_since(cluster_works(right), CUTOFF) == 1
         merged = cluster_works(left + right)
-        assert count_since(merged, AS_OF_YEAR - 2) == 1
+        assert count_since(merged, CUTOFF) == 1
         assert merged[0].canonical_year == 2026
 
 
@@ -193,7 +190,8 @@ class TestRejectedKeyingSchemes:
     """Guards so a refactor back to either broken scheme fails loudly.
 
     Both of these look reasonable and both were measured to be wrong; without
-    these tests the regression would be invisible in the UI.
+    these tests the regression would be invisible in the UI. They count papers
+    across the whole corpus, where every duplicate group is in play.
     """
 
     def test_doi_first_keying_merges_nothing(self, profile_a):
@@ -201,37 +199,36 @@ class TestRejectedKeyingSchemes:
         keys = {
             doi_norm(r.doi) or f"{title_norm(r.title)}|{r.publication_year}"
             for r in profile_a
-            if (r.publication_year or 0) >= AS_OF_YEAR - 2
         }
-        assert len(keys) == 20, "DOI-first keying must not be reinstated"
+        assert len(keys) == len(profile_a), "DOI-first keying must not be reinstated"
 
     def test_title_plus_exact_year_keying_undercounts_merges(self, profile_a):
         """Version years straddle boundaries, so exact-year keying splits papers."""
         keys = {
             f"{title_norm(r.title)}|{r.publication_year}"
             for r in profile_a
-            if (r.publication_year or 0) >= AS_OF_YEAR - 2
+            if title_norm(r.title)
         }
-        assert len(keys) == 19, "title||year keying must not be reinstated"
+        # 59 title-year keys, plus the one untitled record standing alone.
+        assert len(keys) + 1 == 60, "title||year keying must not be reinstated"
 
     def test_both_differ_from_the_correct_answer(self, profile_a):
-        correct = count_since(cluster_works(profile_a), AS_OF_YEAR - 2)
-        assert correct == 17
+        assert len(cluster_works(profile_a)) == 47
 
 
 class TestYearTolerance:
-    """The chosen constant sits inside a wide stable plateau."""
+    """The chosen constant sits inside a stable plateau.
 
-    @pytest.mark.parametrize("tolerance", [1, 2, 3, 4, 5, 6, 7])
+    Below four years the 2020 preprint and 2024 journal version of the laser
+    method paper split apart, so the plateau starts there.
+    """
+
+    @pytest.mark.parametrize("tolerance", [4, 5, 6, 7])
     def test_counts_are_flat_across_the_plateau(self, profile_a, tolerance):
-        clusters = cluster_works(profile_a, year_tolerance=tolerance)
-        assert count_since(clusters, AS_OF_YEAR - 2) == 17
-        assert count_since(clusters, AS_OF_YEAR - 4) == 28
+        assert len(cluster_works(profile_a, year_tolerance=tolerance)) == 47
 
     def test_exact_year_matching_is_the_failure_mode(self, profile_a):
-        clusters = cluster_works(profile_a, year_tolerance=0)
-        assert count_since(clusters, AS_OF_YEAR - 2) == 19
-        assert count_since(clusters, AS_OF_YEAR - 4) == 33
+        assert len(cluster_works(profile_a, year_tolerance=0)) == 60
 
 
 class TestLastPublicationYear:
