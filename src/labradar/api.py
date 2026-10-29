@@ -35,6 +35,7 @@ from labradar.db.models import (
     FacultyWorkCluster,
     FetchRun,
     OpenAlexAuthor,
+    OpenAlexWork,
     ResearchArea,
 )
 from labradar.db.session import get_db
@@ -150,6 +151,15 @@ class LabActivityOut(BaseModel):
     )
 
 
+class PaperOut(BaseModel):
+    """One deduplicated paper: the published version's title, and a link a
+    reader can open (arXiv when any version has one)."""
+
+    title: str
+    year: int | None = None
+    url: str | None = None
+
+
 class FacultyOut(BaseModel):
     id: int
     person_id: str
@@ -164,6 +174,7 @@ class FacultyOut(BaseModel):
     areas: list[str] = []
     labs: list[LabRef] = []
     activity: ActivityOut | None = None
+    recent_papers: list[PaperOut] = []
 
 
 class FacultyDetailOut(FacultyOut):
@@ -171,7 +182,6 @@ class FacultyDetailOut(FacultyOut):
     phone: str | None = None
     cv_url: str | None = None
     openalex_ids: list[str] = []
-    recent_papers: list[dict[str, Any]] = []
 
 
 class PageOut(BaseModel):
@@ -229,6 +239,54 @@ def _activity_out(row) -> ActivityOut | None:
             row.as_of_date.year - row.last_pub_year if row.last_pub_year else None
         ),
     )
+
+
+# Shown on every card: enough to see what someone works on now.
+CARD_PAPERS = 2
+
+
+def _recent_papers_for(
+    session: Session, faculty_ids: list[int], run_id: int | None, limit: int
+) -> dict[int, list[PaperOut]]:
+    """Each person's newest deduplicated papers from one activity run.
+
+    Ordered by the paper's canonical year, then the published version's date
+    within that year. Untitled records are skipped: there is nothing to show.
+    """
+    if not faculty_ids or run_id is None:
+        return {}
+    rank = func.row_number().over(
+        partition_by=FacultyWorkCluster.faculty_id,
+        order_by=(
+            FacultyWorkCluster.canonical_year.desc().nullslast(),
+            OpenAlexWork.publication_date.desc().nullslast(),
+            FacultyWorkCluster.id,
+        ),
+    )
+    ranked = (
+        select(
+            FacultyWorkCluster.faculty_id,
+            OpenAlexWork.title,
+            FacultyWorkCluster.canonical_year,
+            FacultyWorkCluster.url,
+            rank.label("rank"),
+        )
+        .join(OpenAlexWork, OpenAlexWork.id == FacultyWorkCluster.representative_work_id)
+        .where(
+            FacultyWorkCluster.faculty_id.in_(faculty_ids),
+            FacultyWorkCluster.fetch_run_id == run_id,
+            OpenAlexWork.title.isnot(None),
+        )
+        .subquery()
+    )
+    out: dict[int, list[PaperOut]] = {}
+    for r in session.execute(
+        select(ranked).where(ranked.c.rank <= limit).order_by(ranked.c.faculty_id, ranked.c.rank)
+    ):
+        out.setdefault(r.faculty_id, []).append(
+            PaperOut(title=r.title, year=r.canonical_year, url=r.url)
+        )
+    return out
 
 
 def _labs_for(session: Session, faculty_ids: list[int]) -> dict[int, list[LabRef]]:
@@ -412,6 +470,7 @@ def list_faculty(
     ids = [r.id for r in rows]
     areas = _areas_for(db, ids)
     labs = _labs_for(db, ids)
+    papers = _recent_papers_for(db, ids, run_id, limit=CARD_PAPERS)
     return PageOut(
         total=total,
         page=page,
@@ -431,6 +490,7 @@ def list_faculty(
                 areas=areas.get(r.id, []),
                 labs=labs.get(r.id, []),
                 activity=_activity_out(r),
+                recent_papers=papers.get(r.id, []),
             )
             for r in rows
         ],
@@ -492,22 +552,7 @@ def get_faculty(slug: str, db: Session = Depends(get_db)) -> FacultyDetailOut:
         )
     )
 
-    papers = [
-        {
-            "cluster_key": c.cluster_key,
-            "year": c.canonical_year,
-            "record_count": c.record_count,
-        }
-        for c in db.scalars(
-            select(FacultyWorkCluster)
-            .where(
-                FacultyWorkCluster.faculty_id == row.id,
-                FacultyWorkCluster.fetch_run_id == run_id,
-            )
-            .order_by(FacultyWorkCluster.canonical_year.desc().nullslast())
-            .limit(20)
-        )
-    ]
+    papers = _recent_papers_for(db, [row.id], run_id, limit=20).get(row.id, [])
 
     return FacultyDetailOut(
         id=row.id,

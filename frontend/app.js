@@ -190,6 +190,22 @@ function renderLabs(labs) {
   return `<div class="lab-line"><span class="label">Group</span>${tags.join("")}</div>`;
 }
 
+/* OpenAlex titles sometimes carry markup (<i>, <sup>); show the text only. */
+const plainTitle = (title) => String(title ?? "").replace(/<[^>]*>/g, "");
+
+function renderPapers(papers) {
+  if (!papers || !papers.length) return "";
+  const items = papers.map((paper) => {
+    const title = esc(plainTitle(paper.title));
+    const link = paper.url
+      ? `<a href="${esc(paper.url)}" target="_blank" rel="noopener">${title}</a>`
+      : title;
+    const year = paper.year ? `<span class="year">${paper.year}</span>` : "";
+    return `<li>${link}${year}</li>`;
+  });
+  return `<div class="papers"><span class="label">Recent papers</span><ul>${items.join("")}</ul></div>`;
+}
+
 function renderCard(person) {
   const areas = person.areas.length
     ? `<div class="areas">${person.areas.map((a) => `<span class="area-tag">${esc(a)}</span>`).join("")}</div>`
@@ -218,6 +234,7 @@ function renderCard(person) {
       ${renderLabs(person.labs)}
       ${interests}
       <div class="signals">${renderSignals(person.activity)}</div>
+      ${renderPapers(person.recent_papers)}
     </article>`;
 }
 

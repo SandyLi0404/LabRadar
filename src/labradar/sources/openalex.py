@@ -34,8 +34,13 @@ API_ROOT = "https://api.openalex.org"
 COLUMBIA_ROR = "https://ror.org/00hj8s172"
 
 # Fields requested for works. Asking for only what dedup and display need keeps
-# responses small; primary_location is what identifies a record as a preprint.
-WORK_FIELDS = "id,doi,title,publication_year,type,primary_location"
+# responses small; primary_location is what identifies a record as a preprint,
+# and best_oa_location is where a reader can open the paper -- for CS, usually
+# arXiv. publication_date orders papers within a year.
+WORK_FIELDS = (
+    "id,doi,title,publication_year,publication_date,type,"
+    "primary_location,best_oa_location"
+)
 
 MAX_PER_PAGE = 200
 

@@ -28,6 +28,8 @@ from labradar.dedup import (
     count_raw_since,
     doi_norm,
     last_publication_year,
+    is_supplement,
+    paper_url,
     title_norm,
 )
 
@@ -317,3 +319,120 @@ class TestPlausibleYear:
             ),
         ]
         assert last_publication_year(cluster_works(records)) == 2019
+
+
+class TestPaperLinks:
+    """Each card links its recent papers; arXiv is free to read, a DOI often is not."""
+
+    ARXIV = "https://arxiv.org/abs/2010.05846"
+    DOI = "https://doi.org/10.1137/1.9781611976465.32"
+
+    def raw(self, primary=None, best_oa=None, doi=None):
+        return {
+            "id": "https://openalex.org/W1",
+            "title": "A Refined Laser Method",
+            "publication_year": 2024,
+            "doi": doi,
+            "primary_location": {"landing_page_url": primary} if primary else None,
+            "best_oa_location": {"landing_page_url": best_oa} if best_oa else None,
+        }
+
+    def test_arxiv_beats_the_doi(self):
+        assert paper_url(self.raw(primary="https://epubs.siam.org/x", best_oa=self.ARXIV,
+                                  doi=self.DOI)) == self.ARXIV
+
+    def test_doi_beats_a_publisher_landing_page(self):
+        assert paper_url(self.raw(primary="https://epubs.siam.org/x", doi=self.DOI)) == self.DOI
+
+    def test_any_landing_page_beats_nothing(self):
+        assert paper_url(self.raw(primary="https://example.org/p")) == "https://example.org/p"
+
+    def test_no_location_at_all(self):
+        assert paper_url(self.raw()) is None
+
+    def test_cluster_takes_the_preprints_arxiv_link(self):
+        """The journal version represents the paper; its preprint supplies the link."""
+        records = [
+            WorkRecord("W1", "Faster Matrix Multiplication Via Tensor Powers", 2023,
+                       is_preprint=True, url=self.ARXIV),
+            WorkRecord("W2", "Faster Matrix Multiplication Via Tensor Powers", 2024,
+                       doi=self.DOI, url=self.DOI),
+        ]
+        (cluster,) = cluster_works(records)
+        assert cluster.representative.openalex_id == "W2"
+        assert cluster.url == self.ARXIV
+
+    def test_cluster_without_arxiv_uses_the_representative(self):
+        records = [WorkRecord("W2", "Some Paper With A Long Enough Title", 2024, url=self.DOI)]
+        assert cluster_works(records)[0].url == self.DOI
+
+
+class TestSupplements:
+    """Real titles from a linked genomics profile, 2026."""
+
+    @pytest.mark.parametrize(
+        "title",
+        [
+            "Table S4 from Transcriptomic Plasticity Is a Hallmark of Metastatic Pancreatic Cancer",
+            "Figure S4 from Transcriptomic Plasticity Is a Hallmark of Metastatic Pancreatic Cancer",
+            "Supplementary Figure 2 from Some Paper",
+            "Data S1 from Some Paper",
+            "Movie S3A from Some Paper",
+        ],
+    )
+    def test_supplementary_parts_are_recognised(self, title):
+        assert is_supplement(title)
+
+    @pytest.mark.parametrize(
+        "title",
+        [
+            "Transcriptomic Plasticity Is a Hallmark of Metastatic Pancreatic Cancer",
+            "Table Union Search on Open Data",
+            "Figure It Out: Visual Reasoning from Charts",
+            "Data from Text: Information Extraction at Scale",
+            None,
+        ],
+    )
+    def test_papers_are_not(self, title):
+        assert not is_supplement(title)
+
+    def test_unnumbered_data_record_is_a_supplement_when_not_a_publication(self):
+        title = "Data from Transcriptomic Plasticity Is a Hallmark of Metastatic Pancreatic Cancer"
+        assert is_supplement(title, "other")
+        assert is_supplement(title, "dataset")
+
+    def test_unnumbered_title_on_a_real_paper_is_kept(self):
+        assert not is_supplement("Data from Text: Information Extraction at Scale", "article")
+        assert not is_supplement("Data from Text: Information Extraction at Scale")
+
+
+class TestCompanionRecords:
+    """Real pairs from linked profiles, each counted twice before this rule."""
+
+    @pytest.mark.parametrize(
+        "paper,companion",
+        [
+            ("RollingPol: Single-Shot Polarization Imaging for Underwater Sensing",
+             "Demo: RollingPol: Single-Shot Polarization Imaging for Underwater Sensing"),
+            ("Big Bird: Resilient Privacy Budgeting Across Untrusted Web Domains",
+             "Big Bird: Resilient Privacy Budgeting Across Untrusted Web Domains "
+             "(SOSP 2026 Evaluation Artifact)"),
+            ("Equality Saturation for Quantum Circuit Optimization",
+             "Equality Saturation for Quantum Circuit Optimization (Artifact)"),
+            ("Verifying the Correctness and Security of Security Monitors",
+             "Artifact: Verifying the Correctness and Security of Security Monitors"),
+        ],
+    )
+    def test_a_paper_and_its_companion_are_one_paper(self, paper, companion):
+        records = [WorkRecord("W1", paper, 2026), WorkRecord("W2", companion, 2027)]
+        (cluster,) = cluster_works(records)
+        assert cluster.representative.title == paper
+        assert cluster.canonical_year == 2026
+
+    def test_a_companion_alone_still_counts(self):
+        (cluster,) = cluster_works([WorkRecord("W1", "Demo: Low Latency Networked XR Exergames", 2026)])
+        assert cluster.canonical_year == 2026
+
+    def test_titles_merely_mentioning_evaluation_are_untouched(self):
+        title = "An Evaluation of Learned Index Structures"
+        assert title_norm(title) == "anevaluationoflearnedindexstructures"

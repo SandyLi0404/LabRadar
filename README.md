@@ -192,6 +192,18 @@ guards that fail loudly if either rejected scheme is ever reinstated.
 The interface shows the correction rather than applying it silently: "17 papers
 · from 20 records".
 
+Two more kinds of record are not separate papers:
+
+- **Supplementary parts.** Journals deposit each table and figure as its own
+  record ("Table S4 from …"); one genomics profile had 28 among 42 records in a
+  year. They are dropped at fetch.
+- **Companion records.** A paper's demo, poster or evaluation artifact
+  ("Demo: …", "… (Artifact)") is matched with the paper by ignoring the label,
+  and never represents it.
+
+Each card also lists the person's two most recent papers, linking to arXiv
+when any version of the paper is there, else to the DOI.
+
 ---
 
 ## Architecture
@@ -279,16 +291,19 @@ labradar validate-curation
 count, most recent year and topics, plus a ready-to-paste YAML block. It writes
 nothing: a human pastes the decision into the file so it goes through review.
 
-43 of the 72 directory entries have a confirmed link, including McKeown with
-her rejected fragments. The rest are unmapped and show as *unknown* until
-curated.
+59 of the 61 research professors have a confirmed link, each with a note on
+the evidence (ORCID, affiliation history, topics, recent titles). The other
+two, Adam Block and Zhuo Zhang, stay *unknown* on purpose: the only OpenAlex
+profile holding their papers also holds another person's, so counting it
+would credit them with someone else's work. They are recorded as candidates
+with that reason.
 
 ---
 
 ## Tests
 
 ```bash
-pytest          # 264 tests, no network access
+pytest          # 289 tests, no network access
 ```
 
 The suite runs against captured copies of the real pages and real OpenAlex

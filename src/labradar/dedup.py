@@ -26,9 +26,10 @@ import unicodedata
 from dataclasses import dataclass, field
 from typing import Any, Iterable, Sequence
 
-# Widest version spread observed in the reference corpus was 4 years; windowed
-# counts are flat for tolerances 1-7, so this constant is not load-bearing.
-# Only tolerance 0 (exact-year keying) diverges.
+# Widest version spread observed in the reference corpus was 4 years (a 2020
+# preprint and its 2024 journal version), so cluster counts are flat for
+# tolerances 4-8 and this value sits inside that plateau. Exact-year keying
+# (tolerance 0) is the failure mode.
 YEAR_TOLERANCE = 5
 
 # Below this length a normalized title is too generic to merge on alone
@@ -59,16 +60,60 @@ def plausible_year(year: int | None, *, as_of: int | None = None) -> int | None:
 _NON_ALNUM = re.compile(r"[^a-z0-9]")
 _DOI_PREFIX = re.compile(r"^https?://(dx\.)?doi\.org/")
 
+# Journals deposit each supplementary table and figure as its own record
+# ("Table S4 from Transcriptomic Plasticity Is a Hallmark of ..."). They are
+# parts of a paper, not papers: one genomics profile had 28 of them among 42
+# records in a year. Their titles all differ, so dedup cannot merge them.
+_SUPPLEMENT_PART = (
+    r"^(?:supplementary\s+)?(?:table|figure|fig\.?|data|movie|video|file|appendix|note)"
+)
+# "Table S4 from ..." is unambiguous on its own.
+_NUMBERED_SUPPLEMENT = re.compile(_SUPPLEMENT_PART + r"\s*s?\d+[a-z]?\s+from\s", re.I)
+# "Data from ..." could open a real paper's title, so it counts only on a record
+# OpenAlex itself does not type as a publication.
+_UNNUMBERED_SUPPLEMENT = re.compile(_SUPPLEMENT_PART + r"\s+from\s", re.I)
+NON_PUBLICATION_TYPES = frozenset({"other", "dataset"})
+
+
+def is_supplement(title: str | None, work_type: str | None = None) -> bool:
+    if not title:
+        return False
+    title = title.strip()
+    if _NUMBERED_SUPPLEMENT.match(title):
+        return True
+    return work_type in NON_PUBLICATION_TYPES and bool(_UNNUMBERED_SUPPLEMENT.match(title))
+
+
+# Venues register a paper's demo, poster or evaluation artifact as a record of
+# its own: "Demo: RollingPol: ...", "Big Bird: ... (SOSP 2026 Evaluation
+# Artifact)". Each is the same paper, so the label is ignored when matching.
+_COMPANION_PREFIX = re.compile(
+    r"^\s*(?:demo|poster|artifact|artefact|extended\s+abstract)\s*[:\-–]\s*", re.I
+)
+_COMPANION_SUFFIX = re.compile(
+    r"\s*[(\[][^()\[\]]*\b(?:artifact|artefact|evaluation|demo|poster)\b[^()\[\]]*[)\]]\s*$",
+    re.I,
+)
+
+
+def strip_companion_label(title: str) -> str:
+    return _COMPANION_SUFFIX.sub("", _COMPANION_PREFIX.sub("", title))
+
+
+def is_companion(title: str | None) -> bool:
+    return bool(title) and strip_companion_label(title) != title
+
 
 def title_norm(title: str | None) -> str:
     """Fold a title down to bare lowercase alphanumerics.
 
     Stripping punctuation and spacing absorbs the formatting drift between
-    arXiv, proceedings and journal metadata for the same paper.
+    arXiv, proceedings and journal metadata for the same paper; dropping
+    companion labels merges a paper with its demo or artifact record.
     """
     if not title:
         return ""
-    decomposed = unicodedata.normalize("NFKD", title)
+    decomposed = unicodedata.normalize("NFKD", strip_companion_label(title))
     without_accents = "".join(c for c in decomposed if not unicodedata.combining(c))
     return _NON_ALNUM.sub("", without_accents.lower())
 
@@ -91,6 +136,8 @@ class WorkRecord:
     doi: str | None = None
     work_type: str | None = None
     is_preprint: bool = False
+    publication_date: str | None = None  # ISO date, for ordering within a year
+    url: str | None = None  # where a reader can open it; see paper_url
 
     @classmethod
     def from_api(cls, raw: dict[str, Any]) -> "WorkRecord":
@@ -105,7 +152,29 @@ class WorkRecord:
             doi=raw.get("doi"),
             work_type=work_type,
             is_preprint=work_type == "preprint" or source_type == "repository",
+            publication_date=raw.get("publication_date"),
+            url=paper_url(raw),
         )
+
+
+def is_arxiv(url: str | None) -> bool:
+    return bool(url) and "arxiv.org/" in url
+
+
+def paper_url(raw: dict[str, Any]) -> str | None:
+    """The best page to send a reader to: arXiv, then the DOI, then anything.
+
+    arXiv first because it is free to read and stable; a DOI often lands on a
+    paywall. Either location may carry the arXiv link, depending on which
+    version OpenAlex treats as primary.
+    """
+    landings = [
+        (raw.get(key) or {}).get("landing_page_url")
+        for key in ("primary_location", "best_oa_location")
+    ]
+    arxiv = next((u for u in landings if is_arxiv(u)), None)
+    doi = raw.get("doi")
+    return arxiv or doi or next((u for u in landings if u), None)
 
 
 @dataclass
@@ -125,11 +194,25 @@ class WorkCluster:
         """The published version if there is one, else the newest record.
 
         Sorting preprints last means a journal article represents the cluster
-        even when a preprint shares its canonical year.
+        even when a preprint shares its canonical year. A demo or artifact
+        record never represents a paper that is itself present.
         """
         return max(
             self.records,
-            key=lambda r: (r.publication_year or 0, not r.is_preprint),
+            key=lambda r: (not is_companion(r.title), r.publication_year or 0, not r.is_preprint),
+        )
+
+    @property
+    def url(self) -> str | None:
+        """An arXiv link from any version, else the representative's link.
+
+        The representative is the published version, but its link is often a
+        paywalled DOI; the preprint in the same cluster is the same paper and
+        free to read.
+        """
+        arxiv = next((r.url for r in self.records if is_arxiv(r.url)), None)
+        return arxiv or self.representative.url or next(
+            (r.url for r in self.records if r.url), None
         )
 
 
@@ -232,8 +315,13 @@ def cluster_works(
 
 
 def _canonical_year(records: Sequence[WorkRecord]) -> int | None:
-    """The published year wins over the preprint year, so take the maximum."""
-    years = [r.publication_year for r in records if r.publication_year is not None]
+    """The published year wins over the preprint year, so take the maximum.
+
+    Companion records (a demo, an artifact) are dated by their own venue, which
+    can trail the paper; they set the year only when the paper itself is absent.
+    """
+    papers = [r for r in records if not is_companion(r.title)] or records
+    years = [r.publication_year for r in papers if r.publication_year is not None]
     return max(years) if years else None
 
 

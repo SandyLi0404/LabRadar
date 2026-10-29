@@ -258,6 +258,8 @@ class OpenAlexWork(Base):
     publication_year: Mapped[int | None] = mapped_column(Integer)
     work_type: Mapped[str | None] = mapped_column(String(64))
     is_preprint: Mapped[bool] = mapped_column(Boolean, default=False)
+    publication_date: Mapped[date | None] = mapped_column(Date)
+    url: Mapped[str | None] = mapped_column(Text)
 
     __table_args__ = (
         Index("ix_work_title_norm", "title_norm"),
@@ -306,6 +308,9 @@ class FacultyWorkCluster(Base):
     representative_work_id: Mapped[int | None] = mapped_column(
         ForeignKey("openalex_work.id")
     )
+    # Chosen across the cluster's records, so the arXiv version's link survives
+    # even when the journal version represents the paper.
+    url: Mapped[str | None] = mapped_column(Text)
 
     __table_args__ = (
         UniqueConstraint(

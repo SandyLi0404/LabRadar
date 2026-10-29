@@ -73,6 +73,8 @@ def current_works_for(
             OpenAlexWork.doi,
             OpenAlexWork.work_type,
             OpenAlexWork.is_preprint,
+            OpenAlexWork.publication_date,
+            OpenAlexWork.url,
         )
         .join(OpenAlexAuthorWork, OpenAlexAuthorWork.openalex_work_id == OpenAlexWork.id)
         .join(
@@ -96,6 +98,8 @@ def current_works_for(
             doi=r.doi,
             work_type=r.work_type,
             is_preprint=r.is_preprint,
+            publication_date=r.publication_date.isoformat() if r.publication_date else None,
+            url=r.url,
         )
         for r in rows
     ]
@@ -285,6 +289,7 @@ def run(session: Session, as_of: date | None = None) -> FetchRun:
                             representative_work_id=ids.get(
                                 cluster.representative.openalex_id
                             ),
+                            url=cluster.url,
                         )
                     )
                 stats["clusters_written"] += len(clusters)

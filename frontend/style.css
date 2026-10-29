@@ -58,16 +58,9 @@ body {
 }
 
 .masthead h1 {
-  margin: 0 0 6px;
+  margin: 0;
   font-size: 1.55rem;
   letter-spacing: -0.02em;
-}
-
-.tagline {
-  margin: 0;
-  color: var(--muted);
-  max-width: 62ch;
-  font-size: 0.93rem;
 }
 
 .controls {
@@ -335,6 +328,12 @@ select:focus-visible {
 .lab-tag a:hover { text-decoration: underline; }
 
 .lab-tag.low { border-left-color: var(--warn); }
+
+.papers { display: grid; gap: 4px; font-size: 0.87rem; }
+.papers ul { margin: 0; padding-left: 1.1em; display: grid; gap: 3px; }
+.papers li { overflow-wrap: anywhere; }
+.papers a { color: var(--text); }
+.papers .year { color: var(--muted); font-size: 0.8rem; margin-left: 4px; }
 
 .members {
   color: var(--muted);

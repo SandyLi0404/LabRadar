@@ -12,7 +12,7 @@ through with nothing left to diagnose with.
 from __future__ import annotations
 
 import logging
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -28,7 +28,7 @@ from labradar.db.models import (
     OpenAlexAuthorWork,
     OpenAlexWork,
 )
-from labradar.dedup import WorkRecord, title_norm
+from labradar.dedup import WorkRecord, is_supplement, title_norm
 from labradar.sources.openalex import (
     AuthorProfile,
     BudgetExhausted,
@@ -128,6 +128,13 @@ def upsert_author(session: Session, profile: AuthorProfile) -> OpenAlexAuthor:
     return author
 
 
+def _as_date(value: str | None) -> date | None:
+    try:
+        return date.fromisoformat(value) if value else None
+    except ValueError:
+        return None
+
+
 def upsert_works(
     session: Session,
     author: OpenAlexAuthor,
@@ -164,6 +171,8 @@ def upsert_works(
         work.publication_year = record.publication_year
         work.work_type = record.work_type
         work.is_preprint = record.is_preprint
+        work.publication_date = _as_date(record.publication_date)
+        work.url = record.url
 
     session.flush()
 
@@ -211,7 +220,9 @@ def run(
     )
 
     stats = dict(sync_links(session, curation))
-    stats.update({"authors_fetched": 0, "works_seen": 0, "authors_failed": 0})
+    stats.update(
+        {"authors_fetched": 0, "works_seen": 0, "authors_failed": 0, "supplements_skipped": 0}
+    )
     budget_stopped = False
 
     try:
@@ -230,8 +241,12 @@ def run(
                 stats["authors_failed"] += 1
                 continue
 
+            # Skipped records keep their old last_seen_run, so the staleness
+            # filter stops counting any stored before this rule existed.
+            papers = [r for r in records if not is_supplement(r.title, r.work_type)]
+            stats["supplements_skipped"] += len(records) - len(papers)
             author = upsert_author(session, profile)
-            stats["works_seen"] += upsert_works(session, author, records, fetch_run)
+            stats["works_seen"] += upsert_works(session, author, papers, fetch_run)
             session.add(
                 OpenAlexAuthorSnapshot(
                     openalex_author_id=author.id,
