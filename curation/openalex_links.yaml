@@ -1,0 +1,1526 @@
+faculty:
+  '1000':
+    name: Paul S Blaer
+    links:
+    - openalex_id: A5000307571
+      status: candidate
+      confidence: 0.3
+      note: every candidate is small (best has 11 works); may be an early-career profile
+        or a fragment. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 11
+        last_year: 2011
+        topic_score: 0.188
+        topics:
+        - Robotics and Sensor-Based Localization
+        - 3D Surveying and Cultural Heritage
+        - Robotic Path Planning Algorithms
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '1112':
+    name: Jason Nieh
+    links:
+    - openalex_id: A5055391594
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.20); 202 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 202
+        last_year: 2027
+        topic_score: 0.2
+        topics:
+        - Cloud Computing and Remote Desktop Technologies
+        - Parallel Computing and Optimization Techniques
+        - Cloud Computing and Resource Management
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '13428':
+    name: Bjarne Stroustrup
+    links:
+    - openalex_id: A5109807287
+      status: candidate
+      confidence: 0.5
+      note: topics match the directory's interests (score 0.40); 203 works. Found
+        only by unscoped name search -- OpenAlex does not list them at Columbia, so
+        verify this is the right person. Proposed automatically; confirm or correct
+        by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 203
+        last_year: 2025
+        topic_score: 0.4
+        topics:
+        - Logic, programming, and type systems
+        - Parallel Computing and Optimization Techniques
+        - Distributed and Parallel Computing Systems
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '15146':
+    name: Ansaf Salleb-Aouissi
+    links:
+    - openalex_id: A5012289548
+      is_primary: true
+      confidence: 0.87
+      note: topics match the directory's interests (score 0.13); 55 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 55
+        last_year: 2026
+        topic_score: 0.133
+        topics:
+        - Pregnancy and preeclampsia studies
+        - Data Mining Algorithms and Applications
+        - Gestational Diabetes Research and Management
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '15522':
+    name: Itsik G Pe'er
+    links:
+    - openalex_id: A5008985951
+      status: candidate
+      confidence: 0.35
+      note: subject overlap too weak to confirm (0.08 < 0.12); needs a human. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 240
+        last_year: 2026
+        topic_score: 0.083
+        topics:
+        - Genetic Associations and Epidemiology
+        - Genomics and Phylogenetic Studies
+        - Cancer Genomics and Diagnostics
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '15539':
+    name: Jae Woo Lee
+    links:
+    - openalex_id: A5020121635
+      status: candidate
+      confidence: 0.5
+      note: topics match the directory's interests (score 0.17, 0.08 clear of the
+        runner-up); 79 works. Found only by unscoped name search -- OpenAlex does
+        not list them at Columbia, so verify this is the right person. Proposed automatically;
+        confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 79
+        last_year: 2026
+        topic_score: 0.167
+        topics:
+        - IoT and Edge/Fog Computing
+        - Advanced Multi-Objective Optimization Algorithms
+        - Probabilistic and Robust Engineering Design
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '16':
+    name: Henning G Schulzrinne
+    links:
+    - openalex_id: A5010850094
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.19); 744 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 744
+        last_year: 2025
+        topic_score: 0.188
+        topics:
+        - IPv6, Mobility, Handover, Networks, Security
+        - Mobile Agent-Based Network Management
+        - Network Traffic and Congestion Control
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '161':
+    name: Shree K Nayar
+    links:
+    - openalex_id: A5051975921
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.27); 362 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 362
+        last_year: 2026
+        topic_score: 0.273
+        topics:
+        - Advanced Vision and Imaging
+        - Image Processing Techniques and Applications
+        - Computer Graphics and Visualization Techniques
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+    - openalex_id: A5142724814
+      status: rejected
+      note: Fragment profile (2 works, last 2026) under the same name as the confirmed
+        profile.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 2
+        last_year: 2026
+        topic_score: 0.222
+        topics:
+        - Atmospheric aerosols and clouds
+        - Computer Graphics and Visualization Techniques
+        - Optical Imaging and Spectroscopy Techniques
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '16116':
+    name: Simha Sethumadhavan
+    links:
+    - openalex_id: A5140939514
+      status: candidate
+      confidence: 0.3
+      note: every candidate is small (best has 1 works); may be an early-career profile
+        or a fragment. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 1
+        last_year: 2026
+        topic_score: 0.0
+        topics: []
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '16119':
+    name: Junfeng Yang
+    links:
+    - openalex_id: A5101783316
+      is_primary: true
+      confidence: 0.89
+      note: topics match the directory's interests (score 0.23, 0.06 clear of the
+        runner-up); 120 works. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 120
+        last_year: 2026
+        topic_score: 0.231
+        topics:
+        - Advanced Malware Detection Techniques
+        - Software Testing and Debugging Techniques
+        - Adversarial Robustness in Machine Learning
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '16660':
+    name: Martha A Kim
+    links:
+    - openalex_id: A5086084861
+      is_primary: true
+      confidence: 0.89
+      note: topics match the directory's interests (score 0.14); 49 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 49
+        last_year: 2024
+        topic_score: 0.143
+        topics:
+        - Parallel Computing and Optimization Techniques
+        - Advanced Data Storage Technologies
+        - Cloud Computing and Resource Management
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+    - openalex_id: A5121442957
+      status: rejected
+      note: Fragment profile (1 works, last 2025) under the same name as the confirmed
+        profile.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 1
+        last_year: 2025
+        topic_score: 0.1
+        topics:
+        - Parallel Computing and Optimization Techniques
+        - Low-power high-performance VLSI design
+        - VLSI and FPGA Design Techniques
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+    - openalex_id: A5035552583
+      status: rejected
+      note: Fragment profile (9 works, last 2019) under the same name as the confirmed
+        profile.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 9
+        last_year: 2019
+        topic_score: 0.053
+        topics:
+        - Parallel Computing and Optimization Techniques
+        - Advanced Data Storage Technologies
+        - Low-power high-performance VLSI design
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+    - openalex_id: A5063938452
+      status: rejected
+      note: Fragment profile (2 works, last 2009) under the same name as the confirmed
+        profile.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 2
+        last_year: 2009
+        topic_score: 0.0
+        topics:
+        - Legal case studies and regulations
+        - Diverse Scientific and Economic Studies
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '17137':
+    name: Daniel Bauer
+    links:
+    - openalex_id: A5103144876
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.21, 0.21 clear of the
+        runner-up); 39 works. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 39
+        last_year: 2026
+        topic_score: 0.214
+        topics:
+        - Natural Language Processing Techniques
+        - Topic Modeling
+        - Semantic Web and Ontologies
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '18085':
+    name: Augustin Chaintreau
+    links:
+    - openalex_id: A5026913706
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.21); 136 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 136
+        last_year: 2025
+        topic_score: 0.214
+        topics:
+        - Opportunistic and Delay-Tolerant Networks
+        - Complex Network Analysis Techniques
+        - Opinion Dynamics and Social Influence
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '18086':
+    name: Xi Chen
+    links:
+    - openalex_id: A5100329834
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.50, 0.50 clear of the
+        runner-up); 275 works. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 275
+        last_year: 2026
+        topic_score: 0.5
+        topics:
+        - Complexity and Algorithms in Graphs
+        - Economic theories and models
+        - Advanced Graph Theory Research
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '18510':
+    name: Roxana Geambasu
+    links:
+    - openalex_id: A5054249932
+      is_primary: true
+      confidence: 0.93
+      note: topics match the directory's interests (score 0.17); 59 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 59
+        last_year: 2026
+        topic_score: 0.167
+        topics:
+        - Privacy-Preserving Technologies in Data
+        - Advanced Data Storage Technologies
+        - Ethics and Social Impacts of AI
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '19243':
+    name: Changxi Zheng
+    links:
+    - openalex_id: A5101571936
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.25, 0.25 clear of the
+        runner-up); 122 works. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 122
+        last_year: 2026
+        topic_score: 0.25
+        topics:
+        - Computer Graphics and Visualization Techniques
+        - 3D Shape Modeling and Analysis
+        - Music Technology and Sound Studies
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '195':
+    name: Kenneth A Ross
+    links:
+    - openalex_id: A5009146189
+      status: candidate
+      confidence: 0.35
+      note: no subject overlap with the directory's interests; needs a human. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 187
+        last_year: 2026
+        topic_score: 0.0
+        topics:
+        - Advanced Welding Techniques Analysis
+        - Advanced Topology and Set Theory
+        - High-Temperature Coating Behaviors
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '1955':
+    name: Adam H Cannon
+    links:
+    - openalex_id: A5086610016
+      status: candidate
+      confidence: 0.3
+      note: every candidate is small (best has 11 works); may be an early-career profile
+        or a fragment. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 11
+        last_year: 2026
+        topic_score: 0.083
+        topics:
+        - Teaching and Learning Programming
+        - Biomedical and Engineering Education
+        - Logic, programming, and type systems
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '1967':
+    name: Dan Rubenstein
+    links:
+    - openalex_id: A5052765061
+      is_primary: true
+      confidence: 0.89
+      note: topics match the directory's interests (score 0.14); 178 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 178
+        last_year: 2026
+        topic_score: 0.143
+        topics:
+        - Peer-to-Peer Network Technologies
+        - Caching and Content Delivery
+        - Network Traffic and Congestion Control
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '21253':
+    name: Daniel J Hsu
+    links:
+    - openalex_id: A5061246300
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.33); 217 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 217
+        last_year: 2025
+        topic_score: 0.333
+        topics:
+        - Machine Learning and Algorithms
+        - Statistical Methods and Inference
+        - Sparse and Compressive Sensing Techniques
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '22128':
+    name: Eleni Drinea
+    links:
+    - openalex_id: A5015597870
+      status: candidate
+      confidence: 0.5
+      note: topics match the directory's interests (score 0.15); 15 works. Found only
+        by unscoped name search -- OpenAlex does not list them at Columbia, so verify
+        this is the right person. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 15
+        last_year: 2012
+        topic_score: 0.154
+        topics:
+        - DNA and Biological Computing
+        - Advanced biosensing and bioanalysis techniques
+        - Cellular Automata and Applications
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '2278':
+    name: Vishal Misra
+    links:
+    - openalex_id: A5019484217
+      status: candidate
+      confidence: 0.35
+      note: subject overlap too weak to confirm (0.07 < 0.12); needs a human. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 200
+        last_year: 2026
+        topic_score: 0.071
+        topics:
+        - Network Traffic and Congestion Control
+        - Peer-to-Peer Network Technologies
+        - Network Security and Intrusion Detection
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '22901':
+    name: David Blei
+    links:
+    - openalex_id: A5070920982
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.44); 407 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 407
+        last_year: 2026
+        topic_score: 0.444
+        topics:
+        - Bayesian Methods and Mixture Models
+        - Gaussian Processes and Bayesian Inference
+        - Statistical Methods and Inference
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '2298':
+    name: Stephen A. Edwards
+    links:
+    - openalex_id: A5055354961
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.23); 197 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 197
+        last_year: 2026
+        topic_score: 0.231
+        topics:
+        - Embedded Systems Design Techniques
+        - Parallel Computing and Optimization Techniques
+        - Real-Time Systems Scheduling
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '23170':
+    name: Eugene Wu
+    links:
+    - openalex_id: A5049016095
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.36, 0.11 clear of the
+        runner-up); 241 works. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 241
+        last_year: 2026
+        topic_score: 0.364
+        topics:
+        - Advanced Database Systems and Queries
+        - Data Visualization and Analytics
+        - Data Quality and Management
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '24279':
+    name: Suman Jana
+    links:
+    - openalex_id: A5016425387
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.23); 124 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 124
+        last_year: 2026
+        topic_score: 0.231
+        topics:
+        - Advanced Malware Detection Techniques
+        - Adversarial Robustness in Machine Learning
+        - Software Testing and Debugging Techniques
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '24284':
+    name: Nakul Verma
+    links:
+    - openalex_id: A5019307205
+      status: candidate
+      confidence: 0.5
+      note: topics match the directory's interests (score 0.31); 49 works. Found only
+        by unscoped name search -- OpenAlex does not list them at Columbia, so verify
+        this is the right person. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 49
+        last_year: 2025
+        topic_score: 0.312
+        topics:
+        - Topic Modeling
+        - Explainable Artificial Intelligence (XAI)
+        - Machine Learning and Data Classification
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '24532':
+    name: Alexandr Andoni
+    links:
+    - openalex_id: A5088346829
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.36); 139 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 139
+        last_year: 2026
+        topic_score: 0.357
+        topics:
+        - Complexity and Algorithms in Graphs
+        - Algorithms and Data Compression
+        - Advanced Image and Video Retrieval Techniques
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '25345':
+    name: Baishakhi Ray
+    links:
+    - openalex_id: A5064541855
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.36); 199 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 199
+        last_year: 2026
+        topic_score: 0.364
+        topics:
+        - Software Engineering Research
+        - Software Testing and Debugging Techniques
+        - Advanced Malware Detection Techniques
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '2563':
+    name: Peter N Belhumeur
+    links:
+    - openalex_id: A5002881666
+      status: candidate
+      confidence: 0.5
+      note: topics match the directory's interests (score 0.50); 132 works. Found
+        only by unscoped name search -- OpenAlex does not list them at Columbia, so
+        verify this is the right person. Proposed automatically; confirm or correct
+        by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 132
+        last_year: 2023
+        topic_score: 0.5
+        topics:
+        - Advanced Vision and Imaging
+        - Computer Graphics and Visualization Techniques
+        - Face recognition and analysis
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '2569':
+    name: Clifford Stein
+    links:
+    - openalex_id: A5054641291
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.44, 0.44 clear of the
+        runner-up); 270 works. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 270
+        last_year: 2026
+        topic_score: 0.444
+        topics:
+        - Optimization and Search Problems
+        - Complexity and Algorithms in Graphs
+        - Scheduling and Optimization Algorithms
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '27113':
+    name: Lydia B Chilton
+    links:
+    - openalex_id: A5049173646
+      status: candidate
+      confidence: 0.35
+      note: no subject overlap with the directory's interests; needs a human. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 136
+        last_year: 2026
+        topic_score: 0.0
+        topics:
+        - Topic Modeling
+        - Mobile Crowdsensing and Crowdsourcing
+        - Software Engineering Research
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '2732':
+    name: Julia B. Hirschberg
+    links:
+    - openalex_id: A5045037642
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.50); 448 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 448
+        last_year: 2026
+        topic_score: 0.5
+        topics:
+        - Natural Language Processing Techniques
+        - Speech and dialogue systems
+        - Speech Recognition and Synthesis
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '27956':
+    name: Jeannette M Wing
+    links:
+    - openalex_id: A5109185793
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.38); 220 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 220
+        last_year: 2025
+        topic_score: 0.385
+        topics:
+        - Logic, programming, and type systems
+        - Formal Methods in Verification
+        - Distributed systems and fault tolerance
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '28184':
+    name: Christos H Papadimitriou
+    links:
+    - openalex_id: A5103200572
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.20); 269 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 269
+        last_year: 2025
+        topic_score: 0.2
+        topics:
+        - Game Theory and Applications
+        - Auction Theory and Applications
+        - Game Theory and Voting Systems
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+    - openalex_id: A5136019153
+      status: rejected
+      note: Fragment profile (1 works, last 2026) under the same name as the confirmed
+        profile.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 1
+        last_year: 2026
+        topic_score: 0.143
+        topics:
+        - Neurobiology of Language and Bilingualism
+        - Language and cultural evolution
+        - Computational and Text Analysis Methods
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '28246':
+    name: Carl Vondrick
+    links:
+    - openalex_id: A5103033393
+      is_primary: true
+      confidence: 0.85
+      note: topics match the directory's interests (score 0.12); 112 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 112
+        last_year: 2025
+        topic_score: 0.125
+        topics:
+        - Multimodal Machine Learning Applications
+        - Human Pose and Action Recognition
+        - Advanced Image and Video Retrieval Techniques
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '2826':
+    name: Tal G Malkin
+    links:
+    - openalex_id: A5058081649
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.33); 165 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 165
+        last_year: 2026
+        topic_score: 0.333
+        topics:
+        - Cryptography and Data Security
+        - Complexity and Algorithms in Graphs
+        - Privacy-Preserving Technologies in Data
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '2916':
+    name: Rocco A. Servedio
+    links:
+    - openalex_id: A5014866889
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.30); 344 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 344
+        last_year: 2026
+        topic_score: 0.3
+        topics:
+        - Machine Learning and Algorithms
+        - Complexity and Algorithms in Graphs
+        - Algorithms and Data Compression
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+    - openalex_id: A5110911241
+      status: rejected
+      note: Fragment profile (2 works, last 2003) under the same name as the confirmed
+        profile.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 2
+        last_year: 2003
+        topic_score: 0.375
+        topics:
+        - Algorithms and Data Compression
+        - semigroups and automata theory
+        - Machine Learning and Algorithms
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '29688':
+    name: Ronghui Gu
+    links:
+    - openalex_id: A5000031216
+      status: candidate
+      confidence: 0.35
+      note: subject overlap too weak to confirm (0.07 < 0.12); needs a human. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 46
+        last_year: 2026
+        topic_score: 0.071
+        topics:
+        - Security and Verification in Computing
+        - Distributed systems and fault tolerance
+        - Parallel Computing and Optimization Techniques
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '31101':
+    name: Tony Dear
+    links:
+    - openalex_id: A5067968172
+      status: candidate
+      confidence: 0.35
+      note: subject overlap too weak to confirm (0.08 < 0.12); needs a human. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 32
+        last_year: 2026
+        topic_score: 0.083
+        topics:
+        - Control and Dynamics of Mobile Robots
+        - Robotic Locomotion and Control
+        - Robotic Path Planning Algorithms
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '31190':
+    name: Tim Roughgarden
+    links:
+    - openalex_id: A5022886322
+      is_primary: true
+      confidence: 0.93
+      note: topics match the directory's interests (score 0.17); 407 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 407
+        last_year: 2026
+        topic_score: 0.167
+        topics:
+        - Auction Theory and Applications
+        - Game Theory and Applications
+        - Game Theory and Voting Systems
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '31291':
+    name: David Knowles
+    links:
+    - openalex_id: A5012226169
+      status: candidate
+      confidence: 0.35
+      note: no subject overlap with the directory's interests; needs a human. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 191
+        last_year: 2026
+        topic_score: 0.0
+        topics:
+        - RNA Research and Splicing
+        - Genetic Associations and Epidemiology
+        - Single-cell and spatial transcriptomics
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '31297':
+    name: Brian A Smith
+    links:
+    - openalex_id: A5063454149
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.31, 0.31 clear of the
+        runner-up); 62 works. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 62
+        last_year: 2026
+        topic_score: 0.308
+        topics:
+        - Tactile and Sensory Interactions
+        - Interactive and Immersive Displays
+        - Innovative Human-Technology Interaction
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '31472':
+    name: Elias Bareinboim
+    links:
+    - openalex_id: A5139362642
+      status: candidate
+      confidence: 0.3
+      note: every candidate is small (best has 1 works); may be an early-career profile
+        or a fragment. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 1
+        last_year: 2026
+        topic_score: 0.455
+        topics:
+        - Reinforcement Learning in Robotics
+        - Bayesian Modeling and Causal Inference
+        - Explainable Artificial Intelligence (XAI)
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '32141':
+    name: Andrew Blumberg
+    links:
+    - openalex_id: A5108137720
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.33, 0.15 clear of the
+        runner-up); 121 works. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 121
+        last_year: 2026
+        topic_score: 0.333
+        topics:
+        - Homotopy and Cohomology in Algebraic Topology
+        - Algebraic structures and combinatorial models
+        - Advanced Topics in Algebra
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '32629':
+    name: Zhou Yu
+    links:
+    - openalex_id: A5101815945
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.62, 0.35 clear of the
+        runner-up); 279 works. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 279
+        last_year: 2026
+        topic_score: 0.615
+        topics:
+        - Topic Modeling
+        - Natural Language Processing Techniques
+        - Speech and dialogue systems
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '33023':
+    name: Henry Yuen
+    links:
+    - openalex_id: A5085540097
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.36); 101 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 101
+        last_year: 2026
+        topic_score: 0.364
+        topics:
+        - Quantum Computing Algorithms and Architecture
+        - Quantum Information and Cryptography
+        - Quantum Mechanics and Applications
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '33513':
+    name: Toniann Pitassi
+    links:
+    - openalex_id: A5003318200
+      status: candidate
+      confidence: 0.35
+      note: subject overlap too weak to confirm (0.08 < 0.12); needs a human. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 252
+        last_year: 2026
+        topic_score: 0.083
+        topics:
+        - Complexity and Algorithms in Graphs
+        - Cryptography and Data Security
+        - Logic, Reasoning, and Knowledge
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '34100':
+    name: Josh Alman
+    links:
+    - openalex_id: A5006981411
+      is_primary: true
+      note: 63-work profile; topics match (matrix multiplication, fine-grained complexity).
+        Verified against the API 2026-09-22.
+    - openalex_id: A5005816789
+      status: candidate
+      note: Second Columbia 'Josh Alman' profile, 7 works, shares one title with the
+        primary. Topics look consistent but a human must confirm before it is counted.
+  '34111':
+    name: Richard Zemel
+    links:
+    - openalex_id: A5000111344
+      is_primary: true
+      confidence: 0.87
+      note: topics match the directory's interests (score 0.13); 285 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 285
+        last_year: 2026
+        topic_score: 0.133
+        topics:
+        - Neural Networks and Applications
+        - Domain Adaptation and Few-Shot Learning
+        - Topic Modeling
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '35266':
+    name: Brian S. Borowski
+    links:
+    - openalex_id: A5070582919
+      status: candidate
+      confidence: 0.3
+      note: every candidate is small (best has 8 works); may be an early-career profile
+        or a fragment. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 8
+        last_year: 2011
+        topic_score: 0.133
+        topics:
+        - Underwater Vehicles and Communication Systems
+        - Underwater Acoustics Research
+        - Indoor and Outdoor Localization Technologies
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '35627':
+    name: Xia Zhou
+    links:
+    - openalex_id: A5062205005
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.29); 18 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 18
+        last_year: 2026
+        topic_score: 0.294
+        topics:
+        - Optical Wireless Communication Technologies
+        - Context-Aware Activity Recognition Systems
+        - Energy Harvesting in Wireless Networks
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '37259':
+    name: Kostis Kaffes
+    links:
+    - openalex_id: A5001679943
+      status: candidate
+      confidence: 0.35
+      note: subject overlap too weak to confirm (0.08 < 0.12); needs a human. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 42
+        last_year: 2026
+        topic_score: 0.077
+        topics:
+        - Cloud Computing and Resource Management
+        - Parallel Computing and Optimization Techniques
+        - Distributed and Parallel Computing Systems
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '40320':
+    name: Yunzhu Li
+    links:
+    - openalex_id: A5100340050
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.21, 0.21 clear of the
+        runner-up); 76 works. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 76
+        last_year: 2025
+        topic_score: 0.214
+        topics:
+        - Robot Manipulation and Learning
+        - Tactile and Sensory Interactions
+        - Reinforcement Learning in Robotics
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '40629':
+    name: James Bartusek
+    links:
+    - openalex_id: A5008375381
+      status: candidate
+      confidence: 0.35
+      note: no subject overlap with the directory's interests; needs a human. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 61
+        last_year: 2026
+        topic_score: 0.0
+        topics:
+        - Cryptography and Data Security
+        - Quantum Computing Algorithms and Architecture
+        - Complexity and Algorithms in Graphs
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '41387':
+    name: John Hewitt
+    links:
+    - openalex_id: A5126913307
+      status: candidate
+      confidence: 0.3
+      note: every candidate is small (best has 2 works); may be an early-career profile
+        or a fragment. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 2
+        last_year: 2026
+        topic_score: 0.0
+        topics:
+        - Topic Modeling
+        - Advanced Graph Neural Networks
+        - Multimodal Machine Learning Applications
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '41443':
+    name: Adam Block
+    links:
+    - openalex_id: A5089870943
+      status: candidate
+      confidence: 0.5
+      note: topics match the directory's interests (score 0.18, 0.18 clear of the
+        runner-up); 85 works. Found only by unscoped name search -- OpenAlex does
+        not list them at Columbia, so verify this is the right person. Proposed automatically;
+        confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 85
+        last_year: 10000
+        topic_score: 0.182
+        topics:
+        - Astronomy and Astrophysical Research
+        - Stellar, planetary, and galactic studies
+        - Machine Learning and Algorithms
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '41453':
+    name: Aleksander Holynski
+    links:
+    - openalex_id: A5081027763
+      status: candidate
+      confidence: 0.5
+      note: topics match the directory's interests (score 0.13); 60 works. Found only
+        by unscoped name search -- OpenAlex does not list them at Columbia, so verify
+        this is the right person. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 60
+        last_year: 2026
+        topic_score: 0.133
+        topics:
+        - Advanced Vision and Imaging
+        - Generative Adversarial Networks and Image Synthesis
+        - Computer Graphics and Visualization Techniques
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '41454':
+    name: Chris Murphy
+    links:
+    - openalex_id: A5110663330
+      status: candidate
+      confidence: 0.35
+      note: no subject overlap with the directory's interests; needs a human. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 63
+        last_year: 2026
+        topic_score: 0.0
+        topics:
+        - Underwater Vehicles and Communication Systems
+        - Underwater Acoustics Research
+        - Facilities and Workplace Management
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '41455':
+    name: Silvia Sellán
+    links:
+    - openalex_id: A5041088007
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.25); 30 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 30
+        last_year: 2026
+        topic_score: 0.25
+        topics:
+        - Computer Graphics and Visualization Techniques
+        - 3D Shape Modeling and Analysis
+        - Advanced Numerical Analysis Techniques
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '41461':
+    name: Yining Liu
+    links:
+    - openalex_id: A5135357114
+      status: candidate
+      confidence: 0.3
+      note: every candidate is small (best has 1 works); may be an early-career profile
+        or a fragment. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 1
+        last_year: 2026
+        topic_score: 0.0
+        topics:
+        - Single-cell and spatial transcriptomics
+        - Digital Holography and Microscopy
+        - Cell Image Analysis Techniques
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '42578':
+    name: Zhuo Zhang
+    links:
+    - openalex_id: A5103110440
+      status: candidate
+      confidence: 0.35
+      note: no subject overlap with the directory's interests; needs a human. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 41
+        last_year: 2026
+        topic_score: 0.0
+        topics:
+        - MicroRNA in disease regulation
+        - Ubiquitin and proteasome pathways
+        - Genomics, phytochemicals, and oxidative stress
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '43933':
+    name: Zishen Wan
+    links:
+    - openalex_id: A5076856438
+      is_primary: true
+      confidence: 0.87
+      note: topics match the directory's interests (score 0.13); 140 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 140
+        last_year: 2026
+        topic_score: 0.133
+        topics:
+        - Advanced Memory and Neural Computing
+        - Robotic Path Planning Algorithms
+        - Robotics and Sensor-Based Localization
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '5340':
+    name: Mihalis Yannakakis
+    links:
+    - openalex_id: A5043084405
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.45); 324 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 324
+        last_year: 2026
+        topic_score: 0.455
+        topics:
+        - Formal Methods in Verification
+        - Complexity and Algorithms in Graphs
+        - Advanced Graph Theory Research
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '68':
+    name: Kathleen McKeown
+    links:
+    - openalex_id: A5109565051
+      is_primary: true
+      note: 466-work profile. Twelve other Columbia 'Kathleen McKeown' profiles are
+        single-paper fragments; the sampled ones are rejected below. Verified 2026-09-22.
+    - openalex_id: A5130367824
+      status: rejected
+      note: Single-paper fragment reporting last_year=2026; merging it would wrongly
+        refresh her recency.
+    - openalex_id: A5140047107
+      status: rejected
+      note: Single-paper fragment reporting last_year=2026.
+    - openalex_id: A5138575992
+      status: rejected
+      note: Single-paper fragment reporting last_year=2026.
+    - openalex_id: A5124348272
+      status: rejected
+      note: Single-paper fragment reporting last_year=2026.
+  '7169':
+    name: Vladimir Vapnik
+    links:
+    - openalex_id: A5062753972
+      is_primary: true
+      confidence: 0.91
+      note: topics match the directory's interests (score 0.15); 146 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 146
+        last_year: 2021
+        topic_score: 0.154
+        topics:
+        - Neural Networks and Applications
+        - Face and Expression Recognition
+        - Machine Learning and Algorithms
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '7597':
+    name: Luca Carloni
+    links:
+    - openalex_id: A5009992367
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.25); 308 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 308
+        last_year: 2026
+        topic_score: 0.25
+        topics:
+        - Embedded Systems Design Techniques
+        - Parallel Computing and Optimization Techniques
+        - Interconnection Networks and Systems
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '7645':
+    name: Shih-Fu Chang
+    links:
+    - openalex_id: A5037340457
+      status: candidate
+      confidence: 0.5
+      note: two candidates have similar subject matter (0.25 vs 0.23); needs a human.
+        Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 553
+        last_year: 2024
+        topic_score: 0.25
+        topics:
+        - Advanced Image and Video Retrieval Techniques
+        - Video Analysis and Summarization
+        - Image Retrieval and Classification Techniques
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '79':
+    name: Salvatore J Stolfo
+    links:
+    - openalex_id: A5084213178
+      is_primary: true
+      confidence: 0.95
+      note: topics match the directory's interests (score 0.46); 288 works. Proposed
+        automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 288
+        last_year: 2025
+        topic_score: 0.462
+        topics:
+        - Network Security and Intrusion Detection
+        - Advanced Malware Detection Techniques
+        - Anomaly Detection Techniques and Applications
+        name_matches: true
+        has_orcid: true
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '840':
+    name: Luis Gravano
+    links:
+    - openalex_id: A5080063580
+      status: candidate
+      confidence: 0.5
+      note: topics match the directory's interests (score 0.27); 237 works. Found
+        only by unscoped name search -- OpenAlex does not list them at Columbia, so
+        verify this is the right person. Proposed automatically; confirm or correct
+        by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 237
+        last_year: 2025
+        topic_score: 0.273
+        topics:
+        - Web Data Mining and Analysis
+        - Advanced Database Systems and Queries
+        - Data Management and Algorithms
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '85':
+    name: Gail E Kaiser
+    links:
+    - openalex_id: A5135981030
+      status: candidate
+      confidence: 0.3
+      note: every candidate is small (best has 4 works); may be an early-career profile
+        or a fragment. Proposed automatically; confirm or correct by hand.
+      curated_by: auto-suggester
+      evidence:
+        works_count: 4
+        last_year: 2026
+        topic_score: 0.2
+        topics:
+        - Software Engineering Research
+        - Social Robot Interaction and HRI
+        - Software Testing and Debugging Techniques
+        name_matches: true
+        has_orcid: false
+      curated_at: '2026-09-22T19:58:34.403600+00:00'
+  '91':
+    name: Steven K Feiner
+    links:
+    - openalex_id: A5011020333
+      is_primary: true
+      note: 397-work profile. Verified 2026-09-22.
+    - openalex_id: A5127897748
+      status: rejected
+      note: 6-work fragment of the same name; not confirmed as the same person.

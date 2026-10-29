@@ -1,0 +1,60 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: labradar
+      POSTGRES_PASSWORD: labradar
+      POSTGRES_DB: labradar
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U labradar -d labradar"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Applies migrations, then exits. Both long-running services wait on it so
+  # neither can start against a schema that isn't there yet.
+  migrate:
+    build: .
+    command: alembic upgrade head
+    environment:
+      DATABASE_URL: postgresql+psycopg://labradar:labradar@db:5432/labradar
+    depends_on:
+      db:
+        condition: service_healthy
+
+  api:
+    build: .
+    command: uvicorn labradar.api:app --host 0.0.0.0 --port 8000
+    environment:
+      DATABASE_URL: postgresql+psycopg://labradar:labradar@db:5432/labradar
+      OPENALEX_API_KEY: ${OPENALEX_API_KEY:?register a free key at https://openalex.org/settings/api}
+    ports:
+      - "8000:8000"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import httpx;httpx.get('http://localhost:8000/api/health').raise_for_status()\""]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  scheduler:
+    build: .
+    command: python -m labradar.scheduler
+    environment:
+      DATABASE_URL: postgresql+psycopg://labradar:labradar@db:5432/labradar
+      OPENALEX_API_KEY: ${OPENALEX_API_KEY:?register a free key at https://openalex.org/settings/api}
+      LABRADAR_CRON_DAY_OF_WEEK: ${LABRADAR_CRON_DAY_OF_WEEK:-sun}
+      LABRADAR_CRON_HOUR: ${LABRADAR_CRON_HOUR:-3}
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+volumes:
+  pgdata:

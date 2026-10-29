@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+<head>
+        <title>Theory | Department of Computer Science, Columbia University</title>
+ 	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+	<link rel="pingback" href="https://www.cs.columbia.edu/wp/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="https://www.cs.columbia.edu/wp-content/themes/columbia-cs/assets/js/html5.js"></script>
+	<![endif]-->
+	<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>Theory &#8211; Department of Computer Science, Columbia University</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//cse.google.com' />
+<link rel='dns-prefetch' href='//metlas.ai' />
+<link rel='dns-prefetch' href='//cdn.datatables.net' />
+<link rel='dns-prefetch' href='//www.google.com' />
+<link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="Department of Computer Science, Columbia University &raquo; Feed" href="https://www.cs.columbia.edu/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Department of Computer Science, Columbia University &raquo; Comments Feed" href="https://www.cs.columbia.edu/comments/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.cs.columbia.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.cs.columbia.edu%2Fareas%2Ftheory%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.cs.columbia.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.cs.columbia.edu%2Fareas%2Ftheory%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-color]){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<link rel='stylesheet' id='metaslider-blocks-editor-css-css' href='https://www.cs.columbia.edu/wp-content/plugins/ml-slider/admin/assets/dist/css/editor-block.css?ver=3.111.0' media='all' property='stylesheet' />
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='toc-screen-css' href='https://www.cs.columbia.edu/wp-content/plugins/table-of-contents-plus/assets/screen.min.css?ver=202607.1' media='all' />
+<link rel='stylesheet' id='font-awesome-css' href='//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css?ver=c6680a6b968061b699c8b279e6964e76' media='all' />
+<link rel='stylesheet' id='google-font-css' href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700&#038;ver=a38c064cb3decc14c3d9918a2efdf556' media='all' />
+<link rel='stylesheet' id='columbia_css_custom-css' href='https://www.cs.columbia.edu/wp-content/themes/columbia-cs/assets/css/styles.css?ver=c6680a6b968061b699c8b279e6964e76' media='all' />
+<link rel='stylesheet' id='datatables-css' href='https://cdn.datatables.net/t/bs/dt-1.10.11,r-2.0.2/datatables.min.css?ver=a38c064cb3decc14c3d9918a2efdf556' media='all' />
+<link rel='stylesheet' id='wp-members-css' href='https://www.cs.columbia.edu/wp-content/plugins/wp-members/assets/css/forms/generic-no-float.min.css?ver=3.5.6' media='all' />
+<script id="columbia_google_search_js-js" src="https://cse.google.com/cse.js?cx=73a8d1394b7b8427d&#038;ver=a38c064cb3decc14c3d9918a2efdf556"></script>
+<script id="columbia_metaias_js-js" src="https://metlas.ai/columbia-cs-banner.js?ver=a38c064cb3decc14c3d9918a2efdf556"></script>
+<script id="jquery-core-js" src="https://www.cs.columbia.edu/wp/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+<script id="jquery-migrate-js" src="https://www.cs.columbia.edu/wp/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
+<script id="waypoint-js" src="https://www.cs.columbia.edu/wp-content/themes/columbia-cs/assets/js/waypoint.js?ver=4.0"></script>
+<script id="jquery-waypoint-js" src="https://www.cs.columbia.edu/wp-content/themes/columbia-cs/assets/js/jquery.waypoints.js?ver=4.0"></script>
+<script id="infinite-js" src="https://www.cs.columbia.edu/wp-content/themes/columbia-cs/assets/js/infinite.js?ver=a38c064cb3decc14c3d9918a2efdf556"></script>
+<script id="bootstrap-js" src="https://www.cs.columbia.edu/wp-content/themes/columbia-cs/assets/js/bootstrap.min.js?ver=a38c064cb3decc14c3d9918a2efdf556"></script>
+<script id="carousel-swipe-js" src="https://www.cs.columbia.edu/wp-content/themes/columbia-cs/assets/third-party/bcSwipe/jquery.bcSwipe.min.js?ver=a38c064cb3decc14c3d9918a2efdf556"></script>
+<script id="mustache-js" src="https://www.cs.columbia.edu/wp-content/themes/columbia-cs/assets/third-party/mustache.min.js?ver=a38c064cb3decc14c3d9918a2efdf556"></script>
+<script id="columbia-cs-load-js-extra">
+var wp_data = {"root_uri":"https://www.cs.columbia.edu/wp-content/themes/columbia-cs"};
+//# sourceURL=columbia-cs-load-js-extra
+</script>
+<script id="columbia-cs-load-js" src="https://www.cs.columbia.edu/wp-content/themes/columbia-cs/assets/js/load.js?ver=c6680a6b968061b699c8b279e6964e76"></script>
+<script id="recaptcha-js" src="https://www.google.com/recaptcha/api.js?ver=a38c064cb3decc14c3d9918a2efdf556"></script>
+<script id="validation-js" src="https://www.cs.columbia.edu/wp-content/themes/columbia-cs/assets/js/jquery-validation/dist/jquery.validate.min.js?ver=1.17.0"></script>
+<script id="allure-security-js" src="https://www.cs.columbia.edu/wp-content/themes/columbia-cs/assets/js/allure-security.js?ver=a38c064cb3decc14c3d9918a2efdf556"></script>
+<link rel="https://api.w.org/" href="https://www.cs.columbia.edu/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.cs.columbia.edu/wp/xmlrpc.php?rsd" />
+
+<link rel="canonical" href="https://www.cs.columbia.edu/areas/theory/" />
+<link rel='shortlink' href='https://www.cs.columbia.edu/?p=44' />
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-81573103-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    <style>.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><link rel="icon" href="https://www.cs.columbia.edu/wp-content/uploads/2016/06/cropped-columbia-cs-logo-32x32.gif" sizes="32x32" />
+<link rel="icon" href="https://www.cs.columbia.edu/wp-content/uploads/2016/06/cropped-columbia-cs-logo-192x192.gif" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.cs.columbia.edu/wp-content/uploads/2016/06/cropped-columbia-cs-logo-180x180.gif" />
+<meta name="msapplication-TileImage" content="https://www.cs.columbia.edu/wp-content/uploads/2016/06/cropped-columbia-cs-logo-270x270.gif" />
+</head>
+<body>	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+    <div id='body-wrapper'>
+        <div id='body-class' class="wp-singular areas-template-default single single-areas postid-44 wp-theme-columbia-cs metaslider-plugin">
+        <div id='body-class' class="wp-singular areas-template-default single single-areas postid-44 wp-theme-columbia-cs metaslider-plugin">
+    <header>
+        <div class="container">
+            <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+            <div class="row">
+                <div class="col-md-5">
+                    <a class="main-logo" href="/">
+                        <img src="https://www.cs.columbia.edu/wp-content/themes/columbia-cs/assets/img/cs-at-cu-2025.png">
+                    </a>
+                </div><!-- /col-md-5 -->
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="colum-logos">
+                            <a href="https://www.columbia.edu" id="cu-link">Columbia University in the City of New York</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="colum-logos">
+                            <a href="http://engineering.columbia.edu/">
+                                <img src="https://www.cs.columbia.edu/wp-content/themes/columbia-cs/assets/img/cu-engineering-logo.png" id="cu-eng">
+                            </a>
+                        </div><!-- /colum-logos -->
+                        </div>
+                    <div class="row">
+                            <div class="colum-logos" id="header-search">
+                                <div class="gcse-searchbox-only"></div>
+                            </div>
+                    </div>
+                </div><!-- /col-md-7 -->
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </header>
+ 
+   <div class="top-nav">
+   <div class="container">
+   <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#cs-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+        </div>
+       <div class="collapse navbar-collapse collapse-in" id="cs-navbar-collapse-1">
+       <div class="menu-top-menu-container"><ul id="menu-top-menu" class="nav navbar-nav"><li id="menu-item-5945" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5945"><a href="#">About</a>
+<ul class="sub-menu">
+	<li id="menu-item-16148" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16148"><a href="https://www.cs.columbia.edu/about">About the Department</a></li>
+	<li id="menu-item-6264" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6264"><a href="https://www.cs.columbia.edu/department-lectures/%20">Department Lectures</a></li>
+	<li id="menu-item-8131" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8131"><a href="https://www.cs.columbia.edu/calendar">Events</a></li>
+	<li id="menu-item-25746" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25746"><a href="https://www.cs.columbia.edu/bulletin/newsletters/">Newsletters</a></li>
+	<li id="menu-item-25747" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25747"><a href="https://www.cs.columbia.edu/people/directory/">Directory</a></li>
+</ul>
+</li>
+<li id="menu-item-6104" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-6104"><a href="#">Research</a>
+<ul class="sub-menu">
+	<li id="menu-item-17480" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17480"><a href="https://www.cs.columbia.edu/technical-reports/">Technical Reports</a></li>
+	<li id="menu-item-2213" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2213"><a href="https://www.cs.columbia.edu/category/in-the-news/">Research in the News</a></li>
+	<li id="menu-item-2215" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2215"><a href="https://www.cs.columbia.edu/category/press-mentions/">Press Interviews</a></li>
+	<li id="menu-item-2214" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2214"><a href="https://www.cs.columbia.edu/crf/">Computing Research Facilities</a></li>
+</ul>
+</li>
+<li id="menu-item-5944" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5944"><a href="#">Faculty</a>
+<ul class="sub-menu">
+	<li id="menu-item-5840" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5840"><a href="https://www.cs.columbia.edu/people/faculty/">Faculty by Name</a></li>
+	<li id="menu-item-6717" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6717"><a href="https://www.cs.columbia.edu/people/affiliates/">Affiliates</a></li>
+	<li id="menu-item-5918" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5918"><a href="https://www.cs.columbia.edu/achievements/">Faculty Achievements</a></li>
+	<li id="menu-item-22398" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22398"><a href="https://www.cs.columbia.edu/open-positions/">Open Positions</a></li>
+</ul>
+</li>
+<li id="menu-item-5943" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5943"><a href="#">Academics</a>
+<ul class="sub-menu">
+	<li id="menu-item-1122" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1122"><a href="https://www.cs.columbia.edu/education/undergraduate/">Undergraduate Programs</a></li>
+	<li id="menu-item-5832" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5832"><a href="https://www.cs.columbia.edu/education/ms/">MS Program</a></li>
+	<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="https://www.cs.columbia.edu/education/phd/">PhD Program</a></li>
+	<li id="menu-item-13044" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13044"><a href="https://www.cs.columbia.edu/ms-bridge/">MS Bridge Program</a></li>
+	<li id="menu-item-13230" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13230"><a href="https://compeng.columbia.edu/">Computer Engineering Program</a></li>
+	<li id="menu-item-9592" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9592"><a href="https://www.cs.columbia.edu/education/ms/journalism/">Dual MS in Journalism and Computer Science Program</a></li>
+	<li id="menu-item-1125" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1125"><a href="https://www.cs.columbia.edu/education/courses/">Courses &#038; Registration</a></li>
+	<li id="menu-item-19907" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19907"><a href="https://www.cs.columbia.edu/academic/academic-honesty/">Academic Honesty</a></li>
+</ul>
+</li>
+<li id="menu-item-6106" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-6106"><a href="#">Admissions</a>
+<ul class="sub-menu">
+	<li id="menu-item-25748" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25748"><a href="https://www.cs.columbia.edu/education/admissions8/">Admissions Information</a></li>
+	<li id="menu-item-25749" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25749"><a href="https://www.cs.columbia.edu/education/undergraduate/prospectivefaq/">Prospective Student FAQ</a></li>
+	<li id="menu-item-25750" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25750"><a href="https://www.cs.columbia.edu/cs-affiliated-programs/">Affiliated Programs</a></li>
+</ul>
+</li>
+<li id="menu-item-6105" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-6105"><a href="#">Advising &#038; Student Services</a>
+<ul class="sub-menu">
+	<li id="menu-item-16149" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16149"><a href="https://www.cs.columbia.edu/academic-advising/">Academic Advising</a></li>
+	<li id="menu-item-25751" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25751"><a href="https://www.cs.columbia.edu/career/student-resources/">Careers</a></li>
+	<li id="menu-item-28786" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28786"><a href="https://www.cs.columbia.edu/cpt-faqs/">CPT FAQs</a></li>
+	<li id="menu-item-29862" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29862"><a href="https://www.cs.columbia.edu/cs-course-registration-policy/">CS Course Registration Policy</a></li>
+	<li id="menu-item-25752" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25752"><a href="https://www.cs.columbia.edu/student-awards-2/">Student Awards</a></li>
+	<li id="menu-item-25753" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25753"><a href="https://www.cs.columbia.edu/academic/student-life/">Student Life and Organizations</a></li>
+</ul>
+</li>
+<li id="menu-item-6049" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-6049"><a href="#">Research Areas</a>
+<ul class="sub-menu">
+	<li id="menu-item-6051" class="menu-item menu-item-type-post_type menu-item-object-areas menu-item-6051"><a href="https://www.cs.columbia.edu/areas/machine/">Machine Learning</a></li>
+	<li id="menu-item-6052" class="menu-item menu-item-type-post_type menu-item-object-areas menu-item-6052"><a href="https://www.cs.columbia.edu/areas/vision-robotics/">Vision &amp; Robotics</a></li>
+	<li id="menu-item-6053" class="menu-item menu-item-type-post_type menu-item-object-areas menu-item-6053"><a href="https://www.cs.columbia.edu/areas/networking/">Networking</a></li>
+	<li id="menu-item-6054" class="menu-item menu-item-type-post_type menu-item-object-areas menu-item-6054"><a href="https://www.cs.columbia.edu/areas/compengin/">Computer Engineering</a></li>
+	<li id="menu-item-6055" class="menu-item menu-item-type-post_type menu-item-object-areas menu-item-6055"><a href="https://www.cs.columbia.edu/areas/software/">Software Systems</a></li>
+	<li id="menu-item-6056" class="menu-item menu-item-type-post_type menu-item-object-areas menu-item-6056"><a href="https://www.cs.columbia.edu/areas/compio/">Computational Biology</a></li>
+	<li id="menu-item-6057" class="menu-item menu-item-type-post_type menu-item-object-areas menu-item-6057"><a href="https://www.cs.columbia.edu/areas/security/">Security &amp; Privacy</a></li>
+	<li id="menu-item-6058" class="menu-item menu-item-type-post_type menu-item-object-areas menu-item-6058"><a href="https://www.cs.columbia.edu/areas/speech/">NLP &amp; Speech</a></li>
+	<li id="menu-item-6059" class="menu-item menu-item-type-post_type menu-item-object-areas current-menu-item menu-item-6059"><a href="https://www.cs.columbia.edu/areas/theory/" aria-current="page">Theory</a></li>
+	<li id="menu-item-6060" class="menu-item menu-item-type-post_type menu-item-object-areas menu-item-6060"><a href="https://www.cs.columbia.edu/areas/graphics-ui/">Graphics &amp; User Interfaces</a></li>
+</ul>
+</li>
+</ul></div>            <div class="bot-nav">
+                <ul>
+                    <li class='theory'><a class="middle" href="https://www.cs.columbia.edu/areas/theory/">Theory</a></li>
+                    <li class='ui'><a href="https://www.cs.columbia.edu/areas/graphics-ui/">Graphics & <span class="nl"></span>User Interfaces</a></li>
+                    <li class='nlp'><a href="https://www.cs.columbia.edu/areas/speech/">NLP &<span class="nl"></span>Speech</a></li>
+                    <li class='privacy'><a href="https://www.cs.columbia.edu/areas/security/">Security &<span class="nl"></span>Privacy</a></li>
+                    <li class='compbio'><a href="https://www.cs.columbia.edu/areas/compio/">Computational<span class="nl"></span>Biology</a></li>
+                    <li class='software'><a href="https://www.cs.columbia.edu/areas/software/">Software<span class="nl"></span>Systems</a></li>
+                    <li class='compengin'><a href="https://www.cs.columbia.edu/areas/compengin/">Computer<span class="nl"></span>Engineering</a></li>
+                    <li class='networking'><a class="middle" href="https://www.cs.columbia.edu/areas/networking/">Networking</a></li>
+                    <li class='robotics'><a href="https://www.cs.columbia.edu/areas/vision-robotics/">Vision &<span class="nl"></span>Robotics</a></li>
+                    <li class='machine'><a href="https://www.cs.columbia.edu/areas/machine/">Machine<span class="nl"></span>Learning</a></li>
+                    <li class='ai'>
+                        <a href="https://www.cs.columbia.edu/areas/ai">Artificial<span class="nl"></span>Intelligence</a>
+                    </li>
+
+                </ul>
+            </div>  
+        </div><!-- /container -->
+    </nav>
+  </div><!-- /container -->
+   </div><!-- /top-nav -->
+   <div class="main-content" id="main-content">
+       <div id='body-classes' class="wp-singular areas-template-default single single-areas postid-44 wp-theme-columbia-cs metaslider-plugin"></div>
+	     <div class="container">
+
+                <div class="row">
+                    <div class="col-md-8">
+        
+
+        <article id="post-44" class="area-item post-44 areas type-areas status-publish has-post-thumbnail hentry">
+	<header class="entry-header row">
+            <h1 class="entry-title">Theory</h1>                <div class="entry-header-content col-md-12">
+                
+
+<!-- Wrapper for slides -->
+<div class="area-headline row">
+    <a href="https://www.cs.columbia.edu/2026/understanding-why-quantum-proofs-can-be-more-powerful-than-classical-ones/"class="headline area-card"0="image">        <div class="item area-item col-sm-4" id="slider-30935">
+            <div class="headline-col">
+                <img width="511" height="300" src="https://www.cs.columbia.edu/wp-content/uploads/2026/08/WebsiteImage_2026-John-Bostanci-STOC-Best-Paper.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="John Bostanci" decoding="async" fetchpriority="high" srcset="https://www.cs.columbia.edu/wp-content/uploads/2026/08/WebsiteImage_2026-John-Bostanci-STOC-Best-Paper.png 511w, https://www.cs.columbia.edu/wp-content/uploads/2026/08/WebsiteImage_2026-John-Bostanci-STOC-Best-Paper-300x176.png 300w" sizes="(max-width: 511px) 100vw, 511px" />                <div class="caption">
+                    <strong>
+                        Understanding Why Quantum Proofs Can Be More Powerful Than Classical Ones                    </strong>
+                    <p class="area-headline-abstract">A paper by John Bostanci (PhD ‘26) and his collaborators explores the difference between the power of quantum and classical proofs in a theoretical setting.                     
+                    </p>
+                </div>
+            </div>
+        </div>
+        </a><a href="https://www.cs.columbia.edu/2022/columbia-engineering-professor-leads-new-crypto-research-center-of-a16z/?redirect=ea13f198ab9e1f5b32629e8780a9f81b"class="headline area-card external"0="image"target="_blank"rel="nofollow">        <div class="item area-item col-sm-4" id="slider-21152">
+            <div class="headline-col">
+                <img width="511" height="300" src="https://www.cs.columbia.edu/wp-content/uploads/2022/04/WebsiteImage_2021_TimRoughgarden.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Tim Roughgarden" decoding="async" srcset="https://www.cs.columbia.edu/wp-content/uploads/2022/04/WebsiteImage_2021_TimRoughgarden.jpg 511w, https://www.cs.columbia.edu/wp-content/uploads/2022/04/WebsiteImage_2021_TimRoughgarden-300x176.jpg 300w" sizes="(max-width: 511px) 100vw, 511px" />                <div class="caption">
+                    <strong>
+                        Columbia Engineering Professor Leads New Crypto Research Center of A16z                    </strong>
+                    <p class="area-headline-abstract">While continuing to teach at Columbia Engineering, Tim Roughgarden will serve as head of research at a16z Crypto Research.                    
+                    </p>
+                </div>
+            </div>
+        </div>
+        </a><a href="https://www.cs.columbia.edu/2024/two-columbia-engineering-professors-named-simons-society-senior-fellows/?redirect=6ce42d0d652a8718b4220ed64f13bc12"class="headline area-card external"0="image"target="_blank"rel="nofollow">        <div class="item area-item col-sm-4" id="slider-27310">
+            <div class="headline-col">
+                <img width="511" height="300" src="https://www.cs.columbia.edu/wp-content/uploads/2024/10/WebsiteImage_2024-Senior-Simons-Fellows.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Christos Papadimitriou and Michael Weinstein" decoding="async" srcset="https://www.cs.columbia.edu/wp-content/uploads/2024/10/WebsiteImage_2024-Senior-Simons-Fellows.jpg 511w, https://www.cs.columbia.edu/wp-content/uploads/2024/10/WebsiteImage_2024-Senior-Simons-Fellows-300x176.jpg 300w" sizes="(max-width: 511px) 100vw, 511px" />                <div class="caption">
+                    <strong>
+                        Two Columbia Engineering Professors Named Simons Society Senior Fellows                    </strong>
+                    <p class="area-headline-abstract">Christos Papadimitriou and Michael Weinstein are being recognized for their considerable achievements in their respective fields and their dedication to teaching.                    
+                    </p>
+                </div>
+            </div>
+        </div>
+        </a></div>
+                </div>
+	</header><!-- .entry-header -->
+        <div id="primary" class="content-area row">
+                <main id="main" class="site-main col-md-12" role="main">
+                    <h3>About</h3>
+                    <p>The group does research on the fundamental capabilities and limitations of efficient computation.</p>
+<p>In addition, they use computation as a lens to gain deeper insights into problems from the natural, social, and engineering sciences.</p>
+<p>The group is highly collaborative, both within Columbia and among peer institutions. They hold a weekly Theory Lunch and a bi-weekly Student Seminar. Most graduate students have (at least) two advisors and collaborate with several professors and other students. Some of the faculty are cross-listed with the IEOR department and the Data Science Institute.</p>
+	<!-- /news-item -->
+	<footer class="entry-footer">
+					</footer><!-- .entry-footer -->
+
+                    
+                    <div class="area-faculty-wrap">
+                    <h3>Faculty and Affiliates</h3>    <div class="row">
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="http://joshalman.com" class='faculty-link' data-faculty="2d9266b42a6ee4da3a44d16e897db1f0" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=34100" alt="Josh Alman Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="http://joshalman.com">
+                        Josh Alman                    </a>
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="http://www.mit.edu/~andoni/" class='faculty-link' data-faculty="2fe43ad982759571f44f869e9016da93" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=24532" alt="Alexandr Andoni Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="http://www.mit.edu/~andoni/">
+                        Alexandr Andoni                    </a>
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="" class='faculty-link' data-faculty="22245e780a9e285cf59a2fffbc12d787" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=41443" alt="Adam Block Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="">
+                        Adam Block                    </a>
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="http://www.cs.columbia.edu/~xichen/" class='faculty-link' data-faculty="24e639297f7fc763e0966255e8b9be3d" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=18086" alt="Xi Chen Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="http://www.cs.columbia.edu/~xichen/">
+                        Xi Chen                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="http://datascience.columbia.edu/eleni-drinea" class='faculty-link' data-faculty="eabe1fe6ffa11fff58817c6443345e2e" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=22128" alt="Eleni Drinea Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="http://datascience.columbia.edu/eleni-drinea">
+                        Eleni Drinea                    </a>
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="https://www.cs.columbia.edu/~djhsu/" class='faculty-link' data-faculty="1b3b89c36e160c69a01e282bf1af9318" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=21253" alt="Daniel Hsu Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="https://www.cs.columbia.edu/~djhsu/">
+                        Daniel Hsu                    </a>
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="http://www.cs.columbia.edu/~tal" class='faculty-link' data-faculty="ba57ae4d2a911d7b0fe42bc18a5bd406" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=2826" alt="Tal Malkin Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="http://www.cs.columbia.edu/~tal">
+                        Tal Malkin                    </a>
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="https://en.wikipedia.org/wiki/Christos_Papadimitriou" class='faculty-link' data-faculty="0e5b35dd62649ab5d69bfba0fe0f323f" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=28184" alt="Christos Papadimitriou Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="https://en.wikipedia.org/wiki/Christos_Papadimitriou">
+                        Christos Papadimitriou                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="https://www.cs.columbia.edu/~toni/" class='faculty-link' data-faculty="b97c7aa81420bac7ea490cf7bb1cc722" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=33513" alt="Toniann Pitassi Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="https://www.cs.columbia.edu/~toni/">
+                        Toniann Pitassi                    </a>
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="http://timroughgarden.org" class='faculty-link' data-faculty="a47c3de1dd10aca6987360259e16bf65" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=31190" alt="Tim Roughgarden Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="http://timroughgarden.org">
+                        Tim Roughgarden                    </a>
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="http://www.cs.columbia.edu/~rocco" class='faculty-link' data-faculty="e76943bef8604b1b81f38546f7850c23" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=2916" alt="Rocco Servedio Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="http://www.cs.columbia.edu/~rocco">
+                        Rocco Servedio                    </a>
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="http://www.columbia.edu/~cs2035/" class='faculty-link' data-faculty="77c53fbbe6f60ce84c6972513aad5511" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=2569" alt="Clifford Stein Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="http://www.columbia.edu/~cs2035/">
+                        Clifford Stein                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="http://www.cs.columbia.edu/~verma/" class='faculty-link' data-faculty="daa6687962a7a299a05c04c4e795e194" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=24284" alt="Nakul Verma Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="http://www.cs.columbia.edu/~verma/">
+                        Nakul Verma                    </a>
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="http://www.cs.columbia.edu/~mihalis" class='faculty-link' data-faculty="9ed60d7ef35d7e6a004241788aa14218" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=5340" alt="Mihalis Yannakakis Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="http://www.cs.columbia.edu/~mihalis">
+                        Mihalis Yannakakis                    </a>
+                </div>
+            </div>
+        </div>
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="http://www.henryyuen.net" class='faculty-link' data-faculty="32d5e912d8b2b9080761ed46123ef6a4" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=33023" alt="Henry Yuen Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="http://www.henryyuen.net">
+                        Henry Yuen                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+            <div class="row">
+            <div class="col-sm-3 col-xs-6">
+            <div class="faculty-bio">
+                <div class="faculty-pic">
+                    <a target="_blank" href="https://www.eysalee.com/" class='faculty-link' data-faculty="e283edd7a14027bd8cc62ab3050d23bc" data-toggle='modal'><img src="https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=42173" alt="Eysa Lee Biography"></a>
+                </div>
+                <div class="faculty-description">
+                    <a target="_blank" href="https://www.eysalee.com/">
+                        Eysa Lee                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+                            </div>
+                    
+                    <div class="area-labs-wrap">
+                    <div class="row">
+<h3>Research Labs</h3>        <div class="col-sm-4 col-xs-6">
+            <div class="lab-box">
+                <a href="https://theory.cs.columbia.edu">
+                    <img src="https://www.cs.columbia.edu/wp-content/uploads/2016/06/theory-of-computing-lab.jpg">Theory of Computing Group                </a>
+            </div>
+        </div>
+    </div>
+                    </div>
+                    
+                                    </main><!-- .site-main -->
+        </div><!-- /content-area -->
+        </article><!-- #post-## -->
+                </div><!-- /col-md-8 -->
+                    <div class="col-md-4">
+
+    <!-- SIDEBAR CONTENT -->
+            <div class="sidebar-item redborder bold"
+            >
+            <p>Find open faculty positions <a href="https://www.cs.columbia.edu/open-positions/">here</a>.</p>
+        </div>
+                <div class="sidebar-item no-smoothState">
+        <h3>Computer Science at Columbia University</h3>
+        <script type="text/javascript" async>jQuery.get("//www.cs.columbia.edu/wp-json/wp/v2/posts?categories=863&meta=news_source&per_page=5", function(data) {if (!(data instanceof Object)) { data = JSON.parse(data); }var template = "<div class=\"col-xs-12\">\nThe computer science department advances the role of computing in our lives\nthrough research and prepares the next generation of computer scientists\nwith its academic programs.\n<div>\nFind out more about the department <a href=\"\/about\">here<\/a>.<\/div>\n<\/div>";var output = Mustache.render(template, data);jQuery("#9141395100").html(output);})</script>
+
+                <div class="row" id="9141395100"></div>        
+        </div>
+                <div class="sidebar-item upcoming-events no-smoothState">       
+               <!-- EVENTS -->
+
+               <h3>Upcoming Events</h3>
+
+                               <div class="single-event">
+                    <a class="event-item" data-news="2249" href="#event2249" data-toggle="modal">
+                        <div class="row">
+                           <div class="col-xs-3">
+                                   <div class="date">
+                                           <span class="month">
+                                   Sep                                           </span><!-- /month -->	
+                                           <span class="day">
+                                   25                                           </span><!-- /day -->
+
+
+                                   </div><!-- /date -->
+                           </div><!-- //col-xs-3 -->
+                           <div class="col-md-9">
+                               <h4 class="event-title">Google Panel: Applying to the Right Role</h4>
+                               <p class="small"></p>
+                               <p class='time'>Friday 10:00 am</p>
+                               <p class='location'>Schermerhorn Building, 3rd Floor, Student Learning Center</p>
+                               <p class='abstract small'></p>
+
+                           </div><!-- //col-xs-9 -->
+                        </div><!-- /row -->
+                    </a><!-- /event-item -->
+               </div>
+                              <div class="single-event">
+                    <a class="event-item" data-news="2252" href="#event2252" data-toggle="modal">
+                        <div class="row">
+                           <div class="col-xs-3">
+                                   <div class="date">
+                                           <span class="month">
+                                   Sep                                           </span><!-- /month -->	
+                                           <span class="day">
+                                   28                                           </span><!-- /day -->
+
+
+                                   </div><!-- /date -->
+                           </div><!-- //col-xs-3 -->
+                           <div class="col-md-9">
+                               <h4 class="event-title">TWG AI Info Session</h4>
+                               <p class="small"></p>
+                               <p class='time'>Monday 5:00 pm</p>
+                               <p class='location'>Mudd Building, CS Lounge (CSB 452)</p>
+                               <p class='abstract small'></p>
+
+                           </div><!-- //col-xs-9 -->
+                        </div><!-- /row -->
+                    </a><!-- /event-item -->
+               </div>
+                              <div class="single-event">
+                    <a class="event-item" data-news="2243" href="#event2243" data-toggle="modal">
+                        <div class="row">
+                           <div class="col-xs-3">
+                                   <div class="date">
+                                           <span class="month">
+                                   Oct                                           </span><!-- /month -->	
+                                           <span class="day">
+                                   01                                           </span><!-- /day -->
+
+
+                                   </div><!-- /date -->
+                           </div><!-- //col-xs-3 -->
+                           <div class="col-md-9">
+                               <h4 class="event-title">Graduate Engineering Career Fair</h4>
+                               <p class="small"></p>
+                               <p class='time'>Thursday 11:00 am</p>
+                               <p class='location'></p>
+                               <p class='abstract small'></p>
+
+                           </div><!-- //col-xs-9 -->
+                        </div><!-- /row -->
+                    </a><!-- /event-item -->
+               </div>
+                              <div class="single-event">
+                    <a class="event-item" data-news="2246" href="#event2246" data-toggle="modal">
+                        <div class="row">
+                           <div class="col-xs-3">
+                                   <div class="date">
+                                           <span class="month">
+                                   Oct                                           </span><!-- /month -->	
+                                           <span class="day">
+                                   02                                           </span><!-- /day -->
+
+
+                                   </div><!-- /date -->
+                           </div><!-- //col-xs-3 -->
+                           <div class="col-md-9">
+                               <h4 class="event-title">Dandy Informational Session</h4>
+                               <p class="small"></p>
+                               <p class='time'>Friday 10:00 am</p>
+                               <p class='location'>Schermerhorn Building, 3rd Floor, Student Learning Center</p>
+                               <p class='abstract small'></p>
+
+                           </div><!-- //col-xs-9 -->
+                        </div><!-- /row -->
+                    </a><!-- /event-item -->
+               </div>
+               
+               <a class="btn sdbr-btn" href="https://www.cs.columbia.edu/calendar/">View All >></a>
+               <div class="clearfix"></div>
+
+       </div><!-- /sidebar-item -->
+                <div class="sidebar-item no-smoothState">
+        <h3>In the News</h3>
+        <script type="text/javascript" async>jQuery.get("//www.cs.columbia.edu/wp-json/wp/v2/posts?categories=6&meta=news_source&per_page=5", function(data) {if (!(data instanceof Object)) { data = JSON.parse(data); }var template = "{{#.}}\r\n<article id=\"post-{{id}}\" class=\"hentry sidebar-item\">\r\n<div class=\"col-xs-5\">\r\n{{#thumbnail}}<a href=\"{{link}}\"><img src=\"{{thumbnail}}\" class=\"noborder\" \/><\/a>{{\/thumbnail}}\r\n{{^thumbnail}}{{#meta.news_source}}<a href=\"{{link}}\"><img src=\"{{meta.news_source}}\" class=\"noborder\"><\/a>{{\/meta.news_source}}{{\/thumbnail}}\r\n<\/div>\r\n<div class=\"col-xs-7\">\r\n<h4 class=\"entry-title\"><a href=\"{{link}}\">{{{title.rendered}}}<\/a>\r\n{{#mentioned}}<span class=\"small author\">({{mentioned}})<\/span>{{\/mentioned}}\r\n<\/h4><\/div>\r\n<\/article>{{\/.}}";var output = Mustache.render(template, data);jQuery("#9141395101").html(output);})</script>
+
+                <div class="row" id="9141395101"></div>        
+        </div>
+                <div class="sidebar-item no-smoothState">
+        <h3>Press Mentions</h3>
+        <script type="text/javascript" async>jQuery.get("//www.cs.columbia.edu/wp-json/wp/v2/posts?categories=7&meta=news_source&per_page=5", function(data) {if (!(data instanceof Object)) { data = JSON.parse(data); }var template = "{{#.}}\r\n<article id=\"post-{{id}}\" class=\"hentry sidebar-item\">\r\n<div class=\"col-xs-5\">\r\n{{#thumbnail}}<a href=\"{{link}}\"><img src=\"{{thumbnail}}\" class=\"noborder\" \/><\/a>{{\/thumbnail}}\r\n{{^thumbnail}}{{#meta.news_source}}<a href=\"{{link}}\"><img src=\"{{meta.news_source}}\" class=\"noborder\"><\/a>{{\/meta.news_source}}{{\/thumbnail}}\r\n<\/div>\r\n<div class=\"col-xs-7\">\r\n<h4 class=\"entry-title\"><a href=\"{{link}}\">{{{title.rendered}}}<\/a>\r\n{{#mentioned}}<span class=\"small author\">({{mentioned}})<\/span>{{\/mentioned}}\r\n<\/h4><\/div>\r\n<\/article>{{\/.}}";var output = Mustache.render(template, data);jQuery("#9141395102").html(output);})</script>
+
+                <div class="row" id="9141395102"></div>        
+        </div>
+            </div><!-- /col-md-4 -->
+<!-- /sidebar -->
+             </div>
+	</div><!-- .site-content -->
+
+        <div class="push"></div>
+        </div><!-- .main-content -->
+	<footer id="colophon" role="contentinfo" class="footer has-bottom">
+                        <div class="footer-top">
+		<div class="site-info container">
+                    <div class="row">
+                                                                                   <div id="footer-1" class="footer-area widget-area col-md-4" role="complementary">
+                                <li id="nav_menu-3" class="widget widget_nav_menu"><div class="menu-apply-container"><ul id="menu-apply" class="menu"><li id="menu-item-25738" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25738"><a href="https://www.columbia.edu/">Columbia University in the City of New York</a></li>
+<li id="menu-item-25739" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25739"><a href="https://www.engineering.columbia.edu/">School of Engineering and Applied Science</a></li>
+<li id="menu-item-25740" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25740"><a href="https://undergrad.admissions.columbia.edu/learn/academiclife/engineering">SEAS Undergraduate Admissions</a></li>
+<li id="menu-item-25741" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25741"><a href="https://apply.engineering.columbia.edu/apply/">SEAS M.S./Ph.D. Application</a></li>
+<li id="menu-item-25742" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25742"><a href="https://datascience.columbia.edu/">Data Science Institute</a></li>
+</ul></div></li>
+<li id="media_image-2" class="widget widget_media_image"><a href="https://www.columbia.edu"><img width="300" height="60" src="https://www.cs.columbia.edu/wp-content/uploads/2020/10/Logo_CU_White_300.png" class="image wp-image-16207  attachment-full size-full" alt="" style="max-width: 100%; height: auto;" decoding="async" loading="lazy" /></a></li>
+                                </div><!-- #left footer -->
+                                                                                                                <div id="footer-2" class="footer-area widget-area col-md-4" role="complementary">
+                                <li id="nav_menu-4" class="widget widget_nav_menu"><div class="menu-quick-links-container"><ul id="menu-quick-links" class="menu"><li id="menu-item-16316" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16316"><a href="https://www.cs.columbia.edu/academic-advising/">CS Advising</a></li>
+<li id="menu-item-1021" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1021"><a href="https://mice.cs.columbia.edu">MICE</a></li>
+<li id="menu-item-1018" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1018"><a href="http://www.cs.columbia.edu/crf">CRF</a></li>
+<li id="menu-item-25743" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25743"><a href="https://www.cs.columbia.edu/resources-for-faculty-and-staff">Resources for Faculty and Staff</a></li>
+<li id="menu-item-3554" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3554"><a href="https://www.cs.columbia.edu/resources/copyright/">Copyright FAQ</a></li>
+</ul></div></li>
+                                </div><!-- #left footer -->
+                                                                                                                <div id="footer-3" class="footer-area widget-area col-md-4" role="complementary">
+                                <li id="block-3" class="widget widget_block"><address>
+<strong>Computer Science Department</strong><br />
+500 West 120 Street, Room 450<br />
+MC0401<br />
+New York, New York 10027<br />
+Main Office: +1-212-853-8400
+</address>
+<a href="https://www.cs.columbia.edu/resources/directions/">Directions</a><br /><br />
+<a href="https://www.cs.columbia.edu/wp-content/uploads/2022/07/morningsidemap_2015aug-7.pdf">Map</a><br /><br />
+<a href="/people/directory/">Directory</a></li>
+                                </div><!-- #left footer -->
+                                                                                                </div><!-- .row -->
+		</div><!-- .site-info -->
+            </div><!-- .footer-top -->            <div class="footer-bot">
+                <ul>
+                    <li class="alignleft"><a href="http://columbia.edu/help/copyright.html">&copy; Columbia</a></li>
+                    <li class="alignright"><a href="mailto:webmaster@cs.columbia.edu">Webmaster</a></li>
+                    <li class="alignright"><a href="https://www.cs.columbia.edu/privacy-policy/">Privacy Policy</a></li>
+                </ul>
+                
+                
+                
+            </div><!-- .footer-bot -->
+	</footer><!-- .site-footer -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp/wp-*.php","/wp/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/columbia-cs/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="toc-front-js-extra">
+var tocplus = {"visibility_show":"show","visibility_hide":"hide","toggle_style":"brackets","width":"Auto"};
+//# sourceURL=toc-front-js-extra
+</script>
+<script id="toc-front-js" src="https://www.cs.columbia.edu/wp-content/plugins/table-of-contents-plus/assets/front.min.js?ver=202607.1"></script>
+<script id="underscore-js" src="https://www.cs.columbia.edu/wp/wp-includes/js/underscore.min.js?ver=1.13.8"></script>
+<script id="backbone-js" src="https://www.cs.columbia.edu/wp/wp-includes/js/backbone.min.js?ver=1.6.1"></script>
+<script id="wp-api-request-js-extra">
+var wpApiSettings = {"root":"https://www.cs.columbia.edu/wp-json/","nonce":"3bf204f403","versionString":"wp/v2/"};
+//# sourceURL=wp-api-request-js-extra
+</script>
+<script id="wp-api-request-js" src="https://www.cs.columbia.edu/wp/wp-includes/js/api-request.min.js?ver=a38c064cb3decc14c3d9918a2efdf556"></script>
+<script id="wp-api-js-extra">
+var wpApiSettings = {"root":"https://www.cs.columbia.edu/wp-json/","nonce":"3bf204f403","versionString":"wp/v2/"};
+//# sourceURL=wp-api-js-extra
+</script>
+<script id="wp-api-js" src="https://www.cs.columbia.edu/wp/wp-includes/js/wp-api.min.js?ver=a38c064cb3decc14c3d9918a2efdf556"></script>
+<script id="datatables-js" src="https://cdn.datatables.net/t/bs/dt-1.10.11,r-2.0.2/datatables.min.js?ver=1.10.11"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://www.cs.columbia.edu/wp/wp-includes/js/wp-emoji-release.min.js?ver=a38c064cb3decc14c3d9918a2efdf556"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=https://www.cs.columbia.edu/wp/wp-includes/js/wp-emoji-loader.min.js
+</script>
+ 
+    </div><!-- .body-class -->
+</div><!-- .body-wrapper -->
+
+<!-- Modal -->
+<div id="Boyce-statement-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h2>Dean Boyce's statement on amicus brief filed by President Bollinger</h2></div>
+            <div class="modal-body">
+                <p>President Bollinger announced that Columbia University along with many other academic institutions (sixteen, including all Ivy League universities) filed an <a href="http://news.columbia.edu/sites/default/files/Darweesh%20university%20amicus%20brief%202%2013%2017%20FINAL.pdf" data-saferedirecturl="https://www.google.com/url?hl=en&amp;q=http://news.columbia.edu/sites/default/files/Darweesh%2520university%2520amicus%2520brief%25202%252013%252017%2520FINAL.pdf&amp;source=gmail&amp;ust=1487940688684000&amp;usg=AFQjCNGDp02Dc-_sOPGOVcC_VPO9luEMBQ">amicus brief</a> in the U.S. District Court for the Eastern District of New York challenging the Executive Order regarding immigrants from seven designated countries and refugees. Among other things, the brief asserts that “safety and security concerns can be addressed in a manner that is consistent with the values America has always stood for, including the free flow of ideas and people across borders and the welcoming of immigrants to our universities.”<strong><br />
+</strong></p>
+<p>This recent action provides a moment for us to collectively reflect on our community within Columbia Engineering and the importance of our commitment to maintaining an open and welcoming community for all students, faculty, researchers and administrative staff. As a School of Engineering and Applied Science, we are fortunate to attract students and faculty from diverse backgrounds, from across the country, and from around the world. It is a great benefit to be able to gather engineers and scientists of so many different perspectives and talents &#8211; all with a commitment to learning, a focus on pushing the frontiers of knowledge and discovery, and with a passion for translating our work to impact humanity.</p>
+<p>I am proud of our community, and wish to take this opportunity to reinforce our collective commitment to maintaining an open and collegial environment. We are fortunate to have the privilege to learn from one another, and to study, work, and live together in such a dynamic and vibrant place as Columbia.</p>
+<p>Sincerely,</p>
+<p>&nbsp;</p>
+<p>Mary C. Boyce<br />
+Dean of Engineering<br />
+Morris A. and Alma Schapiro Professor</p>
+            </div>
+            <div class="modal-footer">
+                            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Events Modal -->
+<div id="events-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h2>{{title}}</h2></div>
+            <div class="modal-body">
+                <div class="date">
+                    <span class="month">{{month}} {{#doyear}}{{year}}{{/doyear}}</span>
+                    <span class="day">{{day}}</span>
+                </div>
+                <div class="time">{{start}} - {{end}}</div>
+                {{#location}}<div class="location"><strong>Location:</strong> {{location}}</div>{{/location}}
+                {{#speaker}}<div class="speaker"><strong>Speaker:</strong> {{{speaker}}}{{#organization}}, {{organization}}{{/organization}}</div>{{/speaker}}
+                {{#series}}<div class="series"><strong>Series:</strong> {{series}}</div>{{/series}}
+                <div class="abstract">{{#nlToBr}}{{{abstract}}}{{/nlToBr}}</div>
+                {{#speaker}}{{#biography}}
+                <h3>Bio</h3>
+                <div class="bio">{{{biography}}}</div>{{/biography}}{{/speaker}}
+            </div>
+            <div class="modal-footer">
+                <a target="_blank" class="add-to-calendar" href="http://www.google.com/calendar/event?action=TEMPLATE&dates={{rawstartdate}}T{{rawstarttime}}00Z%2F{{rawenddate}}T{{rawendtime}}00Z&text={{title}}&location={{location}}&details={{#unhtmlize}}{{{abstract}}}{{/unhtmlize}}">
+                    <img alt="Add Event to GMail" src="https://www.cs.columbia.edu/wp-content/themes/columbia-cs/assets/img/gmail_icon.png"> Add to GMail
+                </a>
+                <button class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Faculty Bio Modal -->
+<div id="faculty-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>{{title}} {{fullname}}</h2>
+            
+                <div class="links-section">
+
+                    {{#wwwLink}}{{personal_uri}}{{/wwwLink}} {{#cvLink}}{{cv_uri}}{{/cvLink}} {{#scholarLink}}{{scholar_uri}}{{/scholarLink}}
+                </div>
+            </div>
+            <div class="modal-body">
+                <img id="faculty-modal-photo" data-src="{{photo_src}}">
+                <div id="faculty-modal-info">
+                    <div class="longtitle bold">{{longtitle}}</div>
+                    <div class="interests"><span class="bold">Interests:</span> {{interests}}</div>
+                    <div class="office">{{#addRoom}}{{room}}{{/addRoom}}</div>
+                    <div class="phone">{{#addPhone}}{{phone}}{{/addPhone}}</div>
+                </div>
+                <div class="bio">{{{bio2}}}</div>
+                
+                {{#showCourses}}
+                <div class="courses-section">
+                    <h3>Courses This Semester</h3>
+                    <ul class="list">{{#courses}}
+                        <li class="coursename">
+                            <a href="/education/courses/course/{{dept}}{{prefix}}{{course_num}}-{{section}}/{{sessionID}}">
+                                {{title}} ({{dept}} {{prefix}}{{course_num}}-{{section}})
+                            </a>
+                        </li>
+                    {{/courses}}</ul>
+                </div>
+                {{/showCourses}}
+                
+                
+                
+                <div class="blogs-section">
+                    {{#showBlogs}}{{{blog_posts}}}{{/showBlogs}}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>         
+           
+</body>
+</html>
+
