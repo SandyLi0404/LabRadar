@@ -8,6 +8,7 @@ would vanish from the site with no error anywhere.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -76,10 +77,21 @@ class TestSiteLayout:
     def test_assets_sit_where_the_page_references_them(self, site):
         out, _ = site
         html = (out / "index.html").read_text(encoding="utf-8")
+        build = re.search(r'data-build="([0-9a-f]{12})"', html).group(1)
         for asset in ("static/app.js", "static/style.css"):
-            assert f'"{asset}"' in html
+            assert f'"{asset}?v={build}"' in html
             assert (out / asset).is_file()
         assert not (out / "static" / "index.html").exists()
+
+    def test_the_build_id_changes_with_the_data(self, fake_api, tmp_path, monkeypatch):
+        """A new deploy must not let a browser reuse last week's cached files."""
+        build = lambda out: re.search(  # noqa: E731
+            r'data-build="(\w+)"', (out / "index.html").read_text(encoding="utf-8")
+        ).group(1)
+        export.write_site(None, tmp_path / "a", REPO_FRONTEND)
+        monkeypatch.setattr(export.api, "list_labs", lambda **kw: [FakeModel(name="B Lab")])
+        export.write_site(None, tmp_path / "b", REPO_FRONTEND)
+        assert build(tmp_path / "a") != build(tmp_path / "b")
 
     def test_replaces_a_previous_export(self, fake_api, tmp_path):
         out = tmp_path / "site"

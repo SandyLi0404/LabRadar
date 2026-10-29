@@ -17,6 +17,7 @@ Layout written to the output directory::
 
 from __future__ import annotations
 
+import hashlib
 import json
 import shutil
 from pathlib import Path
@@ -75,17 +76,21 @@ def all_areas(session: Session) -> list[dict]:
     return _dump(api.list_areas(db=session))
 
 
+ASSETS = ("static/app.js", "static/style.css")
+
+
 def write_site(session: Session, out: Path, frontend: Path) -> dict[str, int]:
-    """Write the whole site into ``out``, replacing what was there."""
+    """Write the whole site into ``out``, replacing what was there.
+
+    Pages lets browsers cache every file for ten minutes, each on its own
+    clock, so after a deploy a browser could pair the new page with last
+    week's script or data -- and render a card the old code cannot fill in.
+    Every asset and data URL therefore carries a build hash, so a page only
+    ever loads the files it was built with.
+    """
     if out.exists():
         shutil.rmtree(out)
     shutil.copytree(frontend, out / "static")
-
-    page = (frontend / "index.html").read_text(encoding="utf-8")
-    marked = page.replace('<html lang="en">', '<html lang="en" data-source="static">', 1)
-    if marked == page:
-        raise RuntimeError("index.html has no <html lang=\"en\"> tag to mark as static")
-    (out / "index.html").write_text(marked, encoding="utf-8")
     (out / "static" / "index.html").unlink()
 
     data = {
@@ -98,4 +103,22 @@ def write_site(session: Session, out: Path, frontend: Path) -> dict[str, int]:
         (out / "data" / f"{name}.json").write_text(
             json.dumps(rows, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
         )
+
+    build = hashlib.sha256()
+    for path in sorted(out.rglob("*")):
+        if path.is_file():
+            build.update(path.read_bytes())
+    build_id = build.hexdigest()[:12]
+
+    page = (frontend / "index.html").read_text(encoding="utf-8")
+    marked = page.replace(
+        '<html lang="en">', f'<html lang="en" data-source="static" data-build="{build_id}">', 1
+    )
+    if marked == page:
+        raise RuntimeError("index.html has no <html lang=\"en\"> tag to mark as static")
+    for asset in ASSETS:
+        if f'"{asset}"' not in marked:
+            raise RuntimeError(f"index.html no longer references {asset}")
+        marked = marked.replace(f'"{asset}"', f'"{asset}?v={build_id}"')
+    (out / "index.html").write_text(marked, encoding="utf-8")
     return {name: len(rows) for name, rows in data.items()}

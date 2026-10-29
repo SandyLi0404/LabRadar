@@ -43,10 +43,13 @@ function esc(value) {
  * loads one snapshot of every record and applies the API's filter rules here.
  * The export marks the page with data-source="static". */
 const STATIC = document.documentElement.dataset.source === "static";
+// Set by the export, so a cached page only ever reads the data it was built with.
+const BUILD = document.documentElement.dataset.build;
 
 const snapshots = {};
 function snapshot(name) {
-  snapshots[name] ??= getJSON(`data/${name}.json`).catch((error) => {
+  const version = BUILD ? `?v=${BUILD}` : "";
+  snapshots[name] ??= getJSON(`data/${name}.json${version}`).catch((error) => {
     delete snapshots[name];
     throw error;
   });
