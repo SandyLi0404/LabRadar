@@ -23,7 +23,7 @@ import re
 from dataclasses import dataclass
 from urllib.parse import urljoin, urlparse
 
-from selectolax.parser import HTMLParser, Node
+from selectolax.lexbor import LexborHTMLParser as HTMLParser, LexborNode as Node
 
 # "Lab" and "Group" indicate something a researcher runs. "Center" and
 # "Institute" more often name a building or a funding body, so they are

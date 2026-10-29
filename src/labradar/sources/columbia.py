@@ -21,7 +21,7 @@ import re
 from dataclasses import dataclass, field
 from urllib.parse import urljoin
 
-from selectolax.parser import HTMLParser, Node
+from selectolax.lexbor import LexborHTMLParser as HTMLParser, LexborNode as Node
 
 BASE_URL = "https://www.cs.columbia.edu"
 FACULTY_URL = f"{BASE_URL}/people/faculty/"
