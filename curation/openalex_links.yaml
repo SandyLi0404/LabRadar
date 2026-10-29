@@ -43,13 +43,10 @@ faculty:
     name: Bjarne Stroustrup
     links:
     - openalex_id: A5109807287
-      status: candidate
-      confidence: 0.5
-      note: topics match the directory's interests (score 0.40); 203 works. Found
-        only by unscoped name search -- OpenAlex does not list them at Columbia, so
-        verify this is the right person. Proposed automatically; confirm or correct
-        by hand.
-      curated_by: auto-suggester
+      is_primary: true
+      confidence: 0.95
+      note: C++ and generic programming; Columbia 2015-20, Texas A&M, AT&T.
+      curated_by: manual-review
       evidence:
         works_count: 203
         last_year: 2025
@@ -60,7 +57,7 @@ faculty:
         - Distributed and Parallel Computing Systems
         name_matches: true
         has_orcid: false
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '15146':
     name: Ansaf Salleb-Aouissi
     links:
@@ -85,11 +82,11 @@ faculty:
     name: Itsik G Pe'er
     links:
     - openalex_id: A5008985951
-      status: candidate
-      confidence: 0.35
-      note: subject overlap too weak to confirm (0.08 < 0.12); needs a human. Proposed
-        automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      is_primary: true
+      confidence: 0.95
+      note: ORCID; statistical genomics, Broad Institute. Supplementary figure/table
+        records are filtered at fetch.
+      curated_by: manual-review
       evidence:
         works_count: 240
         last_year: 2026
@@ -100,7 +97,7 @@ faculty:
         - Cancer Genomics and Diagnostics
         name_matches: true
         has_orcid: true
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '15539':
     name: Jae Woo Lee
     links:
@@ -182,12 +179,17 @@ faculty:
   '16116':
     name: Simha Sethumadhavan
     links:
+    - openalex_id: A5030436580
+      is_primary: true
+      confidence: 0.95
+      note: ORCID; hardware security and architecture; Columbia 2008-, UT Austin PhD.
+      curated_by: manual-review
+      curated_at: '2026-10-29T00:00:00+00:00'
     - openalex_id: A5140939514
-      status: candidate
+      status: rejected
       confidence: 0.3
-      note: every candidate is small (best has 1 works); may be an early-career profile
-        or a fragment. Proposed automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      note: OpenAlex now resolves this to A5030436580.
+      curated_by: manual-review
       evidence:
         works_count: 1
         last_year: 2026
@@ -195,7 +197,7 @@ faculty:
         topics: []
         name_matches: true
         has_orcid: false
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '16119':
     name: Junfeng Yang
     links:
@@ -386,12 +388,19 @@ faculty:
   '195':
     name: Kenneth A Ross
     links:
+    - openalex_id: A5021663937
+      is_primary: true
+      confidence: 0.95
+      note: ORCID; database query processing, SIMD and cache-conscious engines; IBM
+        Watson collaborations.
+      curated_by: manual-review
+      curated_at: '2026-10-29T00:00:00+00:00'
     - openalex_id: A5009146189
-      status: candidate
+      status: rejected
       confidence: 0.35
-      note: no subject overlap with the directory's interests; needs a human. Proposed
-        automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      note: Merges a harmonic analyst and a welding engineer at PNNL - not the database
+        researcher.
+      curated_by: manual-review
       evidence:
         works_count: 187
         last_year: 2026
@@ -402,7 +411,7 @@ faculty:
         - High-Temperature Coating Behaviors
         name_matches: true
         has_orcid: true
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '1955':
     name: Adam H Cannon
     links:
@@ -488,11 +497,10 @@ faculty:
     name: Vishal Misra
     links:
     - openalex_id: A5019484217
-      status: candidate
-      confidence: 0.35
-      note: subject overlap too weak to confirm (0.07 < 0.12); needs a human. Proposed
-        automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      is_primary: true
+      confidence: 0.95
+      note: ORCID; networking and congestion control; Columbia 2001-.
+      curated_by: manual-review
       evidence:
         works_count: 200
         last_year: 2026
@@ -503,7 +511,12 @@ faculty:
         - Network Security and Intrusion Detection
         name_matches: true
         has_orcid: true
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
+    - openalex_id: A5121649930
+      confidence: 0.95
+      note: 'Columbia split (2025-26): his recent LLM work (Bayesian wind tunnels).'
+      curated_by: manual-review
+      curated_at: '2026-10-29T00:00:00+00:00'
   '22901':
     name: David Blei
     links:
@@ -649,13 +662,11 @@ faculty:
     name: Peter N Belhumeur
     links:
     - openalex_id: A5002881666
-      status: candidate
-      confidence: 0.5
-      note: topics match the directory's interests (score 0.50); 132 works. Found
-        only by unscoped name search -- OpenAlex does not list them at Columbia, so
-        verify this is the right person. Proposed automatically; confirm or correct
-        by hand.
-      curated_by: auto-suggester
+      is_primary: true
+      confidence: 0.95
+      note: Computer vision and face recognition; Harvard 1996-2003. Most recent paper
+        2023.
+      curated_by: manual-review
       evidence:
         works_count: 132
         last_year: 2023
@@ -666,7 +677,7 @@ faculty:
         - Face recognition and analysis
         name_matches: true
         has_orcid: false
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '2569':
     name: Clifford Stein
     links:
@@ -691,11 +702,10 @@ faculty:
     name: Lydia B Chilton
     links:
     - openalex_id: A5049173646
-      status: candidate
-      confidence: 0.35
-      note: no subject overlap with the directory's interests; needs a human. Proposed
-        automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      is_primary: true
+      confidence: 0.95
+      note: ORCID; HCI, crowdsourcing, human-AI interaction; MIT and UW.
+      curated_by: manual-review
       evidence:
         works_count: 136
         last_year: 2026
@@ -706,7 +716,7 @@ faculty:
         - Software Engineering Research
         name_matches: true
         has_orcid: true
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '2732':
     name: Julia B. Hirschberg
     links:
@@ -863,11 +873,10 @@ faculty:
     name: Ronghui Gu
     links:
     - openalex_id: A5000031216
-      status: candidate
-      confidence: 0.35
-      note: subject overlap too weak to confirm (0.07 < 0.12); needs a human. Proposed
-        automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      is_primary: true
+      confidence: 0.95
+      note: ORCID; formal verification; Yale PhD, Columbia 2018-.
+      curated_by: manual-review
       evidence:
         works_count: 46
         last_year: 2026
@@ -878,7 +887,7 @@ faculty:
         - Parallel Computing and Optimization Techniques
         name_matches: true
         has_orcid: true
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '31101':
     name: Tony Dear
     links:
@@ -923,11 +932,11 @@ faculty:
     name: David Knowles
     links:
     - openalex_id: A5012226169
-      status: candidate
-      confidence: 0.35
-      note: no subject overlap with the directory's interests; needs a human. Proposed
-        automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      is_primary: true
+      confidence: 0.95
+      note: ORCID; ML for genomics, RNA splicing (LeafCutter2) - matches directory
+        interests.
+      curated_by: manual-review
       evidence:
         works_count: 191
         last_year: 2026
@@ -938,7 +947,7 @@ faculty:
         - Single-cell and spatial transcriptomics
         name_matches: true
         has_orcid: true
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '31297':
     name: Brian A Smith
     links:
@@ -962,12 +971,17 @@ faculty:
   '31472':
     name: Elias Bareinboim
     links:
+    - openalex_id: A5039620960
+      is_primary: true
+      confidence: 0.95
+      note: Causal inference and causal RL; UCLA, Purdue. 138 works.
+      curated_by: manual-review
+      curated_at: '2026-10-29T00:00:00+00:00'
     - openalex_id: A5139362642
-      status: candidate
+      status: rejected
       confidence: 0.3
-      note: every candidate is small (best has 1 works); may be an early-career profile
-        or a fragment. Proposed automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      note: OpenAlex now resolves this to A5039620960; linking both adds nothing.
+      curated_by: manual-review
       evidence:
         works_count: 1
         last_year: 2026
@@ -978,7 +992,7 @@ faculty:
         - Explainable Artificial Intelligence (XAI)
         name_matches: true
         has_orcid: false
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '32141':
     name: Andrew Blumberg
     links:
@@ -1043,11 +1057,10 @@ faculty:
     name: Toniann Pitassi
     links:
     - openalex_id: A5003318200
-      status: candidate
-      confidence: 0.35
-      note: subject overlap too weak to confirm (0.08 < 0.12); needs a human. Proposed
-        automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      is_primary: true
+      confidence: 0.95
+      note: ORCID; complexity theory and proof complexity; Toronto. 287 works.
+      curated_by: manual-review
       evidence:
         works_count: 252
         last_year: 2026
@@ -1058,7 +1071,7 @@ faculty:
         - Logic, Reasoning, and Knowledge
         name_matches: true
         has_orcid: true
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '34100':
     name: Josh Alman
     links:
@@ -1134,11 +1147,10 @@ faculty:
     name: Kostis Kaffes
     links:
     - openalex_id: A5001679943
-      status: candidate
-      confidence: 0.35
-      note: subject overlap too weak to confirm (0.08 < 0.12); needs a human. Proposed
-        automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      is_primary: true
+      confidence: 0.95
+      note: ORCID; cloud and systems for agents; Stanford PhD, Columbia 2023-.
+      curated_by: manual-review
       evidence:
         works_count: 42
         last_year: 2026
@@ -1149,7 +1161,7 @@ faculty:
         - Distributed and Parallel Computing Systems
         name_matches: true
         has_orcid: true
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '40320':
     name: Yunzhu Li
     links:
@@ -1174,11 +1186,10 @@ faculty:
     name: James Bartusek
     links:
     - openalex_id: A5008375381
-      status: candidate
-      confidence: 0.35
-      note: no subject overlap with the directory's interests; needs a human. Proposed
-        automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      is_primary: true
+      confidence: 0.95
+      note: ORCID; quantum cryptography; Berkeley PhD, Columbia 2025-.
+      curated_by: manual-review
       evidence:
         works_count: 61
         last_year: 2026
@@ -1189,16 +1200,21 @@ faculty:
         - Complexity and Algorithms in Graphs
         name_matches: true
         has_orcid: true
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '41387':
     name: John Hewitt
     links:
+    - openalex_id: A5075075495
+      is_primary: true
+      confidence: 0.95
+      note: ORCID; NLP and interpretability; Stanford 2019-24, Columbia 2026.
+      curated_by: manual-review
+      curated_at: '2026-10-29T00:00:00+00:00'
     - openalex_id: A5126913307
-      status: candidate
+      status: rejected
       confidence: 0.3
-      note: every candidate is small (best has 2 works); may be an early-career profile
-        or a fragment. Proposed automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      note: Empty profile (0 works).
+      curated_by: manual-review
       evidence:
         works_count: 2
         last_year: 2026
@@ -1209,18 +1225,17 @@ faculty:
         - Multimodal Machine Learning Applications
         name_matches: true
         has_orcid: false
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '41443':
     name: Adam Block
     links:
     - openalex_id: A5089870943
       status: candidate
       confidence: 0.5
-      note: topics match the directory's interests (score 0.18, 0.18 clear of the
-        runner-up); 85 works. Found only by unscoped name search -- OpenAlex does
-        not list them at Columbia, so verify this is the right person. Proposed automatically;
-        confirm or correct by hand.
-      curated_by: auto-suggester
+      note: Holds his learning-theory papers but is merged with an astronomer of the
+        same name (astrophysics topics, a year-10000 record). Not counted until OpenAlex
+        splits it.
+      curated_by: manual-review
       evidence:
         works_count: 85
         last_year: 10000
@@ -1231,17 +1246,16 @@ faculty:
         - Machine Learning and Algorithms
         name_matches: true
         has_orcid: true
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '41453':
     name: Aleksander Holynski
     links:
     - openalex_id: A5081027763
-      status: candidate
-      confidence: 0.5
-      note: topics match the directory's interests (score 0.13); 60 works. Found only
-        by unscoped name search -- OpenAlex does not list them at Columbia, so verify
-        this is the right person. Proposed automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      is_primary: true
+      confidence: 0.95
+      note: ORCID; UW 2018-23 and Google; 3D vision and image generation (Bolt3D,
+        MegaSaM).
+      curated_by: manual-review
       evidence:
         works_count: 60
         last_year: 2026
@@ -1252,7 +1266,7 @@ faculty:
         - Computer Graphics and Visualization Techniques
         name_matches: true
         has_orcid: true
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '41454':
     name: Chris Murphy
     links:
@@ -1316,12 +1330,18 @@ faculty:
   '42578':
     name: Zhuo Zhang
     links:
-    - openalex_id: A5103110440
+    - openalex_id: A5100429710
       status: candidate
+      note: Holds his software-security papers but also gas-sensor chemistry and manufacturing
+        papers by other people named Zhuo Zhang. Not counted until OpenAlex splits
+        it.
+      curated_by: manual-review
+      curated_at: '2026-10-29T00:00:00+00:00'
+    - openalex_id: A5103110440
+      status: rejected
       confidence: 0.35
-      note: no subject overlap with the directory's interests; needs a human. Proposed
-        automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      note: A 2005 oncology paper; a different person.
+      curated_by: manual-review
       evidence:
         works_count: 41
         last_year: 2026
@@ -1332,7 +1352,7 @@ faculty:
         - Genomics, phytochemicals, and oxidative stress
         name_matches: true
         has_orcid: true
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '43933':
     name: Zishen Wan
     links:
@@ -1437,11 +1457,10 @@ faculty:
     name: Shih-Fu Chang
     links:
     - openalex_id: A5037340457
-      status: candidate
-      confidence: 0.5
-      note: two candidates have similar subject matter (0.25 vs 0.23); needs a human.
-        Proposed automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      is_primary: true
+      confidence: 0.95
+      note: ORCID; multimedia retrieval and video understanding. 629 works.
+      curated_by: manual-review
       evidence:
         works_count: 553
         last_year: 2024
@@ -1452,7 +1471,12 @@ faculty:
         - Image Retrieval and Classification Techniques
         name_matches: true
         has_orcid: true
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
+    - openalex_id: A5108217852
+      confidence: 0.95
+      note: Columbia-affiliated split (1996-2025), same multimedia topics.
+      curated_by: manual-review
+      curated_at: '2026-10-29T00:00:00+00:00'
   '79':
     name: Salvatore J Stolfo
     links:
@@ -1477,13 +1501,10 @@ faculty:
     name: Luis Gravano
     links:
     - openalex_id: A5080063580
-      status: candidate
-      confidence: 0.5
-      note: topics match the directory's interests (score 0.27); 237 works. Found
-        only by unscoped name search -- OpenAlex does not list them at Columbia, so
-        verify this is the right person. Proposed automatically; confirm or correct
-        by hand.
-      curated_by: auto-suggester
+      is_primary: true
+      confidence: 0.95
+      note: Databases, IR and web search; Columbia 1998-, Stanford PhD.
+      curated_by: manual-review
       evidence:
         works_count: 237
         last_year: 2025
@@ -1494,16 +1515,21 @@ faculty:
         - Data Management and Algorithms
         name_matches: true
         has_orcid: false
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '85':
     name: Gail E Kaiser
     links:
+    - openalex_id: A5090171418
+      is_primary: true
+      confidence: 0.95
+      note: ORCID; software engineering, testing, program repair. 416 works.
+      curated_by: manual-review
+      curated_at: '2026-10-29T00:00:00+00:00'
     - openalex_id: A5135981030
-      status: candidate
-      confidence: 0.3
-      note: every candidate is small (best has 4 works); may be an early-career profile
-        or a fragment. Proposed automatically; confirm or correct by hand.
-      curated_by: auto-suggester
+      confidence: 0.95
+      note: Columbia-only split of the same researcher (2021-26), same software-engineering
+        topics.
+      curated_by: manual-review
       evidence:
         works_count: 4
         last_year: 2026
@@ -1514,7 +1540,7 @@ faculty:
         - Software Testing and Debugging Techniques
         name_matches: true
         has_orcid: false
-      curated_at: '2026-09-22T19:58:34.403600+00:00'
+      curated_at: '2026-10-29T00:00:00+00:00'
   '91':
     name: Steven K Feiner
     links:
