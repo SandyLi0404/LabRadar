@@ -4,36 +4,34 @@
 [hidden] { display: none !important; }
 
 :root {
-  color-scheme: light dark;
+  /* Light macaron: a cream base, pastel fills, and plum ink dark enough to
+     read on every one of them. */
+  color-scheme: light;
 
-  --bg: #f7f7f5;
+  --bg: #fdf8f3;
   --surface: #ffffff;
-  --surface-2: #f0efec;
-  --border: #dcdad4;
-  --text: #1b1a17;
-  --muted: #6b6862;
-  --accent: #2f5d84;
-  --accent-soft: #e5edf4;
+  --surface-2: #fdf1ec;
+  --border: #f1dcd4;
+  --text: #4a3b4f;
+  --muted: #8a7a86;
+  --accent: #b84d70;        /* raspberry: links, focus rings */
+  --accent-fill: #f8c4d2;   /* rose macaron: selected tab */
+  --accent-ink: #5e2840;
+  --lab: #c8b6ee;           /* lavender: lab markers */
   --warn: #8a5a1e;
-  --warn-soft: #f6eddf;
-  --radius: 10px;
+  --warn-soft: #fdeccd;
+  --radius: 14px;
   --maxw: 1080px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #16171a;
-    --surface: #1e2024;
-    --surface-2: #26292e;
-    --border: #34383e;
-    --text: #e8e6e2;
-    --muted: #9b978f;
-    --accent: #8ab4dd;
-    --accent-soft: #23303d;
-    --warn: #d9a441;
-    --warn-soft: #342c1b;
-  }
-}
+/* One macaron per research area, chosen in app.js from the area's name so an
+   area keeps its color on the chips and on every card. */
+.mac-0 { --tone: #fadbe3; --ink: #8a3a55; } /* rose */
+.mac-1 { --tone: #d9f0d4; --ink: #3d6b3a; } /* pistachio */
+.mac-2 { --tone: #e6ddf7; --ink: #5b4a8a; } /* lavender */
+.mac-3 { --tone: #fbf0c4; --ink: #74601c; } /* lemon */
+.mac-4 { --tone: #d8ecf7; --ink: #2f5f7a; } /* sky */
+.mac-5 { --tone: #fde2cf; --ink: #8a4f2a; } /* peach */
 
 * { box-sizing: border-box; }
 
@@ -51,16 +49,27 @@ body {
 }
 
 .masthead {
-  background: var(--surface);
+  background: linear-gradient(180deg, #fde8ee 0%, var(--bg) 100%);
   border-bottom: 1px solid var(--border);
-  padding-block: 28px 22px;
+  padding-block: 34px 26px;
   margin-bottom: 24px;
+  text-align: center;
 }
 
 .masthead h1 {
   margin: 0;
-  font-size: 1.55rem;
-  letter-spacing: -0.02em;
+  font-family: "Fredoka", ui-rounded, "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: 2.6rem;
+  letter-spacing: 0.01em;
+  color: var(--accent-ink);
+}
+
+.scope {
+  margin: 8px auto 0;
+  max-width: 60ch;
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
 .controls {
@@ -109,9 +118,9 @@ select:focus-visible {
 .chips { display: flex; flex-wrap: wrap; gap: 7px; }
 
 .chip {
-  border: 1px solid var(--border);
-  background: var(--surface-2);
-  color: var(--text);
+  border: 1px solid transparent;
+  background: var(--tone, var(--surface-2));
+  color: var(--ink, var(--text));
   border-radius: 999px;
   padding: 5px 12px;
   font-size: 0.85rem;
@@ -119,16 +128,12 @@ select:focus-visible {
   font-family: inherit;
 }
 
-.chip:hover { border-color: var(--accent); }
+.chip:hover { border-color: var(--ink, var(--accent)); }
 
 .chip[aria-pressed="true"] {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-}
-
-@media (prefers-color-scheme: dark) {
-  .chip[aria-pressed="true"] { color: #15181c; }
+  border-color: var(--ink, var(--accent));
+  box-shadow: inset 0 0 0 1px var(--ink, var(--accent));
+  font-weight: 600;
 }
 
 .chip .n { opacity: 0.65; margin-left: 5px; font-variant-numeric: tabular-nums; }
@@ -143,8 +148,6 @@ select:focus-visible {
   cursor: pointer;
   max-width: 46ch;
 }
-
-.check em { color: var(--muted); font-style: normal; }
 
 .statusbar {
   display: flex;
@@ -225,8 +228,8 @@ select:focus-visible {
 
 .area-tag {
   font-size: 0.77rem;
-  background: var(--accent-soft);
-  color: var(--accent);
+  background: var(--tone, var(--surface-2));
+  color: var(--ink, var(--text));
   border-radius: 999px;
   padding: 2px 9px;
 }
@@ -273,13 +276,6 @@ select:focus-visible {
 
 .pager button:disabled { opacity: 0.45; cursor: default; }
 
-.footnote {
-  color: var(--muted);
-  font-size: 0.82rem;
-  margin: 30px auto 40px;
-  max-width: 76ch;
-}
-
 
 .viewswitch {
   display: flex;
@@ -298,14 +294,10 @@ select:focus-visible {
 }
 
 .tab[aria-selected="true"] {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
+  background: var(--accent-fill);
+  border-color: var(--accent-fill);
+  color: var(--accent-ink);
   font-weight: 600;
-}
-
-@media (prefers-color-scheme: dark) {
-  .tab[aria-selected="true"] { color: #15181c; }
 }
 
 .lab-line {
@@ -319,7 +311,7 @@ select:focus-visible {
 .lab-tag {
   background: var(--surface-2);
   border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--lab);
   border-radius: 6px;
   padding: 2px 9px;
 }
@@ -332,7 +324,7 @@ select:focus-visible {
 .papers { display: grid; gap: 4px; font-size: 0.87rem; }
 .papers ul { margin: 0; padding-left: 1.1em; display: grid; gap: 3px; }
 .papers li { overflow-wrap: anywhere; }
-.papers a { color: var(--text); }
+.papers a { color: var(--accent); }
 .papers .year { color: var(--muted); font-size: 0.8rem; margin-left: 4px; }
 
 .members {

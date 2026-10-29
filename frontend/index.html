@@ -4,12 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>LabRadar — Columbia CS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&display=swap">
 <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 <header class="masthead">
   <div class="wrap">
     <h1>LabRadar</h1>
+    <p class="scope">
+      Only research professors are listed. Lecturers and teaching professors are
+      excluded, following the department directory's own titles.
+    </p>
   </div>
 </header>
 
@@ -43,8 +50,7 @@
     <div class="row toggles">
       <label class="check">
         <input type="checkbox" id="includeInactive">
-        <span>Show professors with no recent papers
-          <em>(hidden by default; nobody is deleted)</em></span>
+        <span>Show professors with no recent papers</span>
       </label>
       <label class="check">
         <input type="checkbox" id="includeNoWebsite">
@@ -71,24 +77,6 @@
     <button type="button" id="next">Next →</button>
   </nav>
 </main>
-
-<footer class="wrap footnote">
-  <p>
-    Only research professors are listed. Lecturers and teaching professors are
-    excluded, following the department directory's own titles.
-  </p>
-  <p>
-    Research groups are read from faculty members' own pages, so a professor
-    with no group shown may simply not name one. A group's figures are the
-    combined, deduplicated record of its members.
-  </p>
-  <p>
-    Publication counts come from OpenAlex and are deduplicated at paper level:
-    preprint, conference and journal versions of one paper count once. Each card
-    shows the date the data was observed. Someone with no linked publication
-    record is shown as <strong>unknown</strong>, never as inactive.
-  </p>
-</footer>
 
 <script src="static/app.js"></script>
 </body>

@@ -209,9 +209,20 @@ function renderPapers(papers) {
   return `<div class="papers"><span class="label">Recent papers</span><ul>${items.join("")}</ul></div>`;
 }
 
+/* A stable macaron color per research area (see .mac-* in style.css). */
+const MACARONS = 6;
+function macaron(areaName) {
+  let hash = 0;
+  // Multiplier picked so the eleven current areas spread evenly over the six colors.
+  for (const c of String(areaName)) hash = (hash * 87 + c.codePointAt(0)) >>> 0;
+  return `mac-${hash % MACARONS}`;
+}
+
 function renderCard(person) {
   const areas = person.areas.length
-    ? `<div class="areas">${person.areas.map((a) => `<span class="area-tag">${esc(a)}</span>`).join("")}</div>`
+    ? `<div class="areas">${person.areas
+        .map((a) => `<span class="area-tag ${macaron(a)}">${esc(a)}</span>`)
+        .join("")}</div>`
     : "";
 
   const interests = person.interests_raw
@@ -336,7 +347,7 @@ async function loadAreas() {
     const areas = STATIC ? await snapshot("areas") : await getJSON("/api/areas");
     el("areas").innerHTML = areas
       .map(
-        (a) => `<button type="button" class="chip" data-slug="${esc(a.slug)}"
+        (a) => `<button type="button" class="chip ${macaron(a.name)}" data-slug="${esc(a.slug)}"
                   aria-pressed="false">${esc(a.name)}<span class="n">${a.faculty_count}</span></button>`
       )
       .join("");
