@@ -85,3 +85,12 @@ class TestServing:
         assert {urljoin("/", r) for r in refs} == {"/static/style.css", "/static/app.js"}
         for ref in refs:
             assert client.get(urljoin("/", ref)).status_code == 200
+
+
+class TestViewSwitching:
+    def test_hidden_wins_over_display_rules(self):
+        """The tabs and pager toggle `hidden`, which `.results { display: grid }`
+        silently overrode: the professor list stayed on screen above the
+        research groups. A global rule must keep `hidden` authoritative."""
+        css = (REPO_FRONTEND / "style.css").read_text(encoding="utf-8")
+        assert re.search(r"\[hidden\]\s*\{\s*display:\s*none\s*!important", css)

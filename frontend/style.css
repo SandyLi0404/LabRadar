@@ -1,3 +1,8 @@
+/* The view switch and the pager toggle the `hidden` attribute, and rules like
+ * `.results { display: grid }` would otherwise override it -- which left the
+ * professor list showing above the research groups. */
+[hidden] { display: none !important; }
+
 :root {
   color-scheme: light dark;
 
