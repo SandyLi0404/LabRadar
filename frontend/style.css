@@ -15,17 +15,17 @@
   --text: #3a3633;
   --muted: #75706a;
   --accent: #6b5b4d;        /* warm brown: links, focus rings */
-  --accent-fill: #e8e2d8;   /* sand: selected tab */
   --accent-ink: #3a3633;
   --lab: #c8b6ee;           /* lavender: lab markers */
   --warn: #8a5a1e;
   --warn-soft: #fdeccd;
   --radius: 14px;
-  --maxw: 1080px;
+  --maxw: 1240px;
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
 }
 
 /* One macaron per research area, chosen in app.js from the area's name so an
-   area keeps its color on the chips and on every card. */
+   area keeps its color on the filter list and on every card. */
 .mac-0 { --tone: #fadbe3; --ink: #8a3a55; } /* rose */
 .mac-1 { --tone: #d9f0d4; --ink: #3d6b3a; } /* pistachio */
 .mac-2 { --tone: #e6ddf7; --ink: #5b4a8a; } /* lavender */
@@ -39,29 +39,38 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font: 15px/1.55 "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .wrap {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding-inline: 20px;
+  padding-inline: 24px;
 }
 
+/* Masthead: centered title and scope note, with the two views as its tabs. */
 .masthead {
-  background: linear-gradient(180deg, var(--surface-2) 0%, var(--bg) 100%);
+  background: var(--surface-2);
   border-bottom: 1px solid var(--border);
-  padding-block: 34px 26px;
-  margin-bottom: 24px;
+  padding-top: 34px;
   text-align: center;
 }
 
 .masthead h1 {
   margin: 0;
-  font-family: "Fredoka", ui-rounded, "Segoe UI", sans-serif;
+  font-family: var(--display);
   font-weight: 600;
-  font-size: 2.6rem;
-  letter-spacing: 0.01em;
+  font-size: 2.8rem;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
   color: var(--accent-ink);
   display: inline-flex;
   align-items: center;
@@ -75,36 +84,66 @@ body {
 }
 
 .scope {
-  margin: 8px auto 0;
+  margin: 10px auto 0;
   max-width: 60ch;
   color: var(--muted);
   font-size: 0.92rem;
 }
 
-.controls {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
-  display: grid;
-  gap: 16px;
+.viewswitch {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 20px;
 }
 
-.row {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  align-items: flex-end;
+.tab {
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: none;
+  color: var(--muted);
+  padding: 8px 2px 10px;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
 }
+
+.tab:hover { color: var(--text); }
+
+.tab[aria-selected="true"] {
+  border-bottom-color: var(--accent-ink);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+/* Page layout: filters in a sticky left column, results beside them. */
+.layout {
+  display: grid;
+  grid-template-columns: 264px minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+  padding-block: 28px 40px;
+}
+
+.sidebar {
+  position: sticky;
+  top: 16px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  display: grid;
+  gap: 20px;
+  padding: 2px;
+}
+
+.filter-group { display: grid; gap: 20px; }
 
 .field { display: grid; gap: 6px; min-width: 0; }
-.grow { flex: 1 1 260px; }
 
 .label {
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
   color: var(--muted);
 }
 
@@ -113,41 +152,54 @@ input[type="search"], select {
   padding: 9px 11px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: var(--bg);
+  background: var(--surface);
   color: var(--text);
   font: inherit;
 }
 
-input[type="search"]:focus-visible,
-select:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-.chips { display: flex; flex-wrap: wrap; gap: 7px; }
+/* In the sidebar the areas read as a list, each with its macaron as a dot. */
+.chips { display: grid; gap: 1px; }
 
 .chip {
-  border: 1px solid transparent;
-  background: var(--tone, var(--surface-2));
-  color: var(--ink, var(--text));
-  border-radius: 999px;
-  padding: 5px 12px;
-  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  border: none;
+  background: none;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 5px 9px;
+  font: inherit;
+  font-size: 0.9rem;
+  text-align: left;
   cursor: pointer;
-  font-family: inherit;
 }
 
-.chip:hover { border-color: var(--ink, var(--accent)); }
+.chip::before {
+  content: "";
+  flex: none;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--tone);
+  border: 1px solid var(--ink);
+}
+
+.chip:hover { background: var(--surface-2); }
 
 .chip[aria-pressed="true"] {
-  border-color: var(--ink, var(--accent));
-  box-shadow: inset 0 0 0 1px var(--ink, var(--accent));
+  background: var(--tone);
+  color: var(--ink);
   font-weight: 600;
 }
 
-.chip .n { opacity: 0.65; margin-left: 5px; font-variant-numeric: tabular-nums; }
-
-.toggles { gap: 20px; }
+.chip .n {
+  margin-left: auto;
+  opacity: 0.65;
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+}
 
 .check {
   display: flex;
@@ -155,39 +207,47 @@ select:focus-visible {
   gap: 8px;
   font-size: 0.87rem;
   cursor: pointer;
-  max-width: 46ch;
 }
 
-.statusbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin: 18px 2px 12px;
-  flex-wrap: wrap;
-}
-
-.count { color: var(--muted); font-size: 0.9rem; }
+.check input { margin: 3px 0 0; accent-color: var(--accent); }
 
 .linkish {
+  justify-self: start;
   background: none;
   border: none;
   color: var(--accent);
   cursor: pointer;
   font: inherit;
+  font-size: 0.87rem;
   padding: 0;
   text-decoration: underline;
 }
 
-.results { display: grid; gap: 12px; }
+.count {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Results: a two-column grid where the cards in a row share one height. */
+.results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.results > .empty,
+.results > .error { grid-column: 1 / -1; }
 
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 15px 17px;
-  display: grid;
-  gap: 9px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
 }
 
 .card.departed { opacity: 0.72; border-style: dashed; }
@@ -196,44 +256,64 @@ select:focus-visible {
   display: flex;
   justify-content: space-between;
   gap: 14px;
-  align-items: baseline;
-  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
-.name { margin: 0; font-size: 1.06rem; }
+.who { min-width: 0; }
+
+.name {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.22rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+}
+
 .name a { color: inherit; text-decoration: none; }
 .name a:hover { text-decoration: underline; }
 
-.role { color: var(--muted); font-size: 0.87rem; }
-
-.signals {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  align-items: center;
+.role {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.84rem;
 }
 
-.sig {
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: 7px;
-  padding: 3px 9px;
-  font-size: 0.82rem;
+/* The one number a card exists to show. */
+.stat {
+  flex: none;
+  width: 116px;
+  text-align: right;
+  font-size: 0.74rem;
+  line-height: 1.25;
+  color: var(--muted);
+}
+
+.stat strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 1.9rem;
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--accent-ink);
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
 }
 
-.sig strong { font-weight: 700; }
+.stat.quiet strong { color: var(--muted); }
+.stat.unknown, .stat.unknown strong { color: var(--warn); }
 
-.sig.unknown {
-  background: var(--warn-soft);
-  border-color: var(--warn);
-  color: var(--warn);
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  color: var(--muted);
+  font-size: 0.8rem;
 }
 
-.asof { color: var(--muted); font-size: 0.78rem; }
+.meta .missing { color: var(--warn); }
 
-.areas { display: flex; flex-wrap: wrap; gap: 6px; }
+.areas { display: flex; flex-wrap: wrap; gap: 5px; }
 
 .area-tag {
   font-size: 0.77rem;
@@ -246,12 +326,12 @@ select:focus-visible {
 .interests { margin: 0; color: var(--muted); font-size: 0.87rem; }
 
 .flag {
+  align-self: flex-start;
   font-size: 0.78rem;
   color: var(--warn);
   background: var(--warn-soft);
   border-radius: 6px;
   padding: 2px 8px;
-  display: inline-block;
 }
 
 .empty, .error {
@@ -270,7 +350,7 @@ select:focus-visible {
   gap: 12px;
   justify-content: center;
   align-items: center;
-  margin: 22px 0;
+  margin: 22px 0 0;
 }
 
 .pager button {
@@ -284,30 +364,6 @@ select:focus-visible {
 }
 
 .pager button:disabled { opacity: 0.45; cursor: default; }
-
-
-.viewswitch {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 14px;
-}
-
-.tab {
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--muted);
-  border-radius: 8px;
-  padding: 7px 15px;
-  font: inherit;
-  cursor: pointer;
-}
-
-.tab[aria-selected="true"] {
-  background: var(--accent-fill);
-  border-color: var(--accent-fill);
-  color: var(--accent-ink);
-  font-weight: 600;
-}
 
 .lab-line {
   display: flex;
@@ -323,6 +379,7 @@ select:focus-visible {
   border-left: 3px solid var(--lab);
   border-radius: 6px;
   padding: 2px 9px;
+  overflow-wrap: anywhere;
 }
 
 .lab-tag a { color: inherit; text-decoration: none; }
@@ -330,32 +387,53 @@ select:focus-visible {
 
 .lab-tag.low { border-left-color: var(--warn); }
 
-.papers { display: grid; gap: 4px; font-size: 0.87rem; }
-.papers ul { margin: 0; padding-left: 1.1em; display: grid; gap: 3px; }
-.papers li { overflow-wrap: anywhere; }
+/* Pushed to the bottom, so the papers line up across a row of cards. */
+.papers {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  display: grid;
+  gap: 5px;
+  font-size: 0.87rem;
+}
+
+.papers ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 5px; }
+.papers li { overflow-wrap: anywhere; line-height: 1.4; }
 .papers a { color: var(--accent); }
-.papers .year { color: var(--muted); font-size: 0.8rem; margin-left: 4px; }
+.papers .year { color: var(--muted); font-size: 0.8rem; margin-left: 5px; }
 
 .members {
   color: var(--muted);
-  font-size: 0.85rem;
-}
-
-/* A professor who published nothing last year is dimmed, not flagged: it is an
-   observation about one year, not a judgement about the group. */
-.sig.quiet {
-  background: var(--bg);
-  color: var(--muted);
-  border-style: dashed;
+  font-size: 0.87rem;
 }
 
 .nosite {
-  font-size: 0.78rem;
+  font-family: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.74rem;
   font-weight: 400;
   color: var(--muted);
   border: 1px dashed var(--border);
   border-radius: 6px;
   padding: 1px 7px;
-  margin-left: 6px;
   white-space: nowrap;
+}
+
+/* Below this the sidebar sits above the results and the cards take the full
+   width; the areas go back to wrapped pills so they don't push the list down. */
+@media (max-width: 1000px) {
+  .results { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .wrap { padding-inline: 16px; }
+  .masthead { padding-top: 26px; }
+  .masthead h1 { font-size: 2.2rem; }
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 20px; padding-block: 18px 28px; }
+  .sidebar { position: static; max-height: none; overflow: visible; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { width: auto; background: var(--tone); color: var(--ink); border-radius: 999px; padding: 4px 11px; font-size: 0.84rem; }
+  .chip::before { display: none; }
+  .chip:hover { background: var(--tone); }
+  .chip .n { margin-left: 2px; }
+  .chip[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--ink); }
 }

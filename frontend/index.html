@@ -8,7 +8,7 @@
 <link rel="apple-touch-icon" href="static/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
@@ -19,18 +19,17 @@
       Only research professors are listed. Lecturers and teaching professors are
       excluded, following the department directory's own titles.
     </p>
+    <div class="viewswitch" role="tablist" aria-label="View">
+      <button type="button" id="viewPeople" class="tab" role="tab" aria-selected="true">Professors</button>
+      <button type="button" id="viewLabs" class="tab" role="tab" aria-selected="false">Research groups</button>
+    </div>
   </div>
 </header>
 
-<main class="wrap">
-  <div class="viewswitch" role="tablist" aria-label="View">
-    <button type="button" id="viewPeople" class="tab" role="tab" aria-selected="true">Professors</button>
-    <button type="button" id="viewLabs" class="tab" role="tab" aria-selected="false">Research groups</button>
-  </div>
-
-  <section class="controls" aria-label="Filters">
-    <div class="row">
-      <label class="field grow">
+<div class="wrap layout">
+  <aside class="sidebar" aria-label="Filters">
+    <div class="people-only filter-group">
+      <label class="field">
         <span class="label">Search</span>
         <input type="search" id="q" placeholder="name, interest, or area…" autocomplete="off">
       </label>
@@ -42,43 +41,44 @@
           <option value="last_pub_year">Most recent publication</option>
         </select>
       </label>
+      <div class="field">
+        <span class="label">Research area</span>
+        <div id="areas" class="chips" role="group" aria-label="Research areas"></div>
+      </div>
     </div>
 
     <div class="field">
-      <span class="label">Research area</span>
-      <div id="areas" class="chips" role="group" aria-label="Research areas"></div>
-    </div>
-
-    <div class="row toggles">
+      <span class="label">Also show</span>
       <label class="check">
         <input type="checkbox" id="includeInactive">
-        <span>Show professors with no recent papers</span>
+        <span id="inactiveLabel">Professors with no recent papers</span>
       </label>
-      <label class="check">
+      <label class="check people-only">
         <input type="checkbox" id="includeNoWebsite">
-        <span>Show professors with no website yet</span>
+        <span>Professors with no website</span>
       </label>
-      <label class="check">
+      <label class="check people-only">
         <input type="checkbox" id="includeDeparted">
-        <span>Show people no longer in the directory</span>
+        <span>People no longer in the directory</span>
       </label>
     </div>
-  </section>
 
-  <div class="statusbar">
-    <span id="count" class="count">Loading…</span>
     <button type="button" id="reset" class="linkish">Reset filters</button>
-  </div>
+  </aside>
 
-  <section id="results" class="results" aria-live="polite"></section>
-  <section id="labResults" class="results" aria-live="polite" hidden></section>
+  <main class="content">
+    <p id="count" class="count">Loading…</p>
 
-  <nav class="pager" id="pager" hidden>
-    <button type="button" id="prev">← Previous</button>
-    <span id="pageInfo"></span>
-    <button type="button" id="next">Next →</button>
-  </nav>
-</main>
+    <section id="results" class="results" aria-live="polite"></section>
+    <section id="labResults" class="results" aria-live="polite" hidden></section>
+
+    <nav class="pager" id="pager" hidden>
+      <button type="button" id="prev">← Previous</button>
+      <span id="pageInfo"></span>
+      <button type="button" id="next">Next →</button>
+    </nav>
+  </main>
+</div>
 
 <script src="static/app.js"></script>
 </body>

@@ -134,48 +134,41 @@ function buildQuery() {
   return params.toString();
 }
 
-function papers(n) {
-  return `${n} ${n === 1 ? "paper" : "papers"}`;
+/* The window label is rendered from `since_year` in the same payload as the
+ * count, so the two cannot disagree -- an earlier version hardcoded "last year"
+ * against a figure that actually spanned two. */
+function renderStat(activity, unknownNote) {
+  if (!activity || activity.is_unmapped) {
+    return `<div class="stat unknown"><strong>?</strong>${unknownNote}</div>`;
+  }
+  const n = activity.works_since;
+  return `
+    <div class="stat${n > 0 ? "" : " quiet"}">
+      <strong>${n}</strong>${n === 1 ? "paper" : "papers"} since ${activity.since_year}
+    </div>`;
 }
 
-/* Signals carry their as-of date, so a stale figure can never be mistaken for
- * a current one. The window label is rendered from `since_year` in the same
- * payload as the count, so the two cannot disagree -- an earlier version
- * hardcoded "last year" against a figure that actually spanned two. */
-function renderSignals(activity) {
-  if (!activity) {
-    return `<span class="sig unknown">No activity data yet</span>`;
-  }
-  if (activity.is_unmapped) {
-    return `
-      <span class="sig unknown" title="Nobody has linked a publication record for this person yet.">
-        Publication record not yet linked — <strong>unknown</strong>
-      </span>`;
-  }
-
-  const bits = [];
-  bits.push(
-    activity.works_since > 0
-      ? `<span class="sig">Published <strong>${papers(activity.works_since)}</strong> since ${activity.since_year}</span>`
-      : `<span class="sig quiet">No papers since ${activity.since_year}</span>`
-  );
-  bits.push(
+/* The figures carry their as-of date, so a stale one can never be mistaken for
+ * a current one. */
+function renderMeta(activity) {
+  if (!activity || activity.is_unmapped) return "";
+  const bits = [
     activity.last_pub_year
-      ? `<span class="sig">Most recent <strong>${activity.last_pub_year}</strong></span>`
-      : `<span class="sig unknown">No dated publications found</span>`
-  );
+      ? `<span>Most recent ${activity.last_pub_year}</span>`
+      : `<span class="missing">No dated publications found</span>`,
+  ];
 
   // Show the deduplication rather than silently applying it.
   const raw = activity.raw_records_since;
   if (raw != null && raw > activity.works_since) {
     bits.push(
-      `<span class="sig" title="OpenAlex lists preprint, conference and journal versions separately. LabRadar counts each paper once.">
+      `<span title="OpenAlex lists preprint, conference and journal versions separately. LabRadar counts each paper once.">
          from ${raw} records
        </span>`
     );
   }
-  bits.push(`<span class="asof">as of ${esc(activity.as_of_date)}</span>`);
-  return bits.join("");
+  bits.push(`<span>as of ${esc(activity.as_of_date)}</span>`);
+  return `<div class="meta">${bits.join("")}</div>`;
 }
 
 /* A group is read off someone's personal page, so it is shown as an
@@ -240,14 +233,17 @@ function renderCard(person) {
   return `
     <article class="card${person.is_current ? "" : " departed"}">
       <div class="card-head">
-        <h2 class="name">${home}</h2>
-        <span class="role">${esc(person.title ?? "")}</span>
+        <div class="who">
+          <h2 class="name">${home}</h2>
+          <span class="role">${esc(person.title ?? "")}</span>
+        </div>
+        ${renderStat(person.activity, person.activity ? "publication record not linked" : "no activity data yet")}
       </div>
       ${departed}
       ${areas}
       ${renderLabs(person.labs)}
       ${interests}
-      <div class="signals">${renderSignals(person.activity)}</div>
+      ${renderMeta(person.activity)}
       ${renderPapers(person.recent_papers)}
     </article>`;
 }
@@ -255,7 +251,8 @@ function renderCard(person) {
 function describeFilters(total) {
   const parts = [`${total} ${total === 1 ? "professor" : "professors"}`];
   if (!state.includeInactive) parts.push("with recent publications");
-  if (state.area) parts.push(`in ${state.area}`);
+  const area = el("areas").querySelector('[aria-pressed="true"]');
+  if (area) parts.push(`in ${area.firstChild.textContent}`);
   if (state.q) parts.push(`matching “${state.q}”`);
   return parts.join(" · ");
 }
@@ -287,21 +284,6 @@ async function load() {
   }
 }
 
-function renderLabSignals(activity) {
-  if (!activity || activity.is_unmapped) {
-    return `<span class="sig unknown">No member has a linked publication record yet</span>`;
-  }
-  return [
-    activity.works_since > 0
-      ? `<span class="sig">Published <strong>${papers(activity.works_since)}</strong> since ${activity.since_year}</span>`
-      : `<span class="sig quiet">No papers since ${activity.since_year}</span>`,
-    activity.last_pub_year
-      ? `<span class="sig">Most recent <strong>${activity.last_pub_year}</strong></span>`
-      : `<span class="sig unknown">No dated publications</span>`,
-    `<span class="asof">as of ${esc(activity.as_of_date)}</span>`,
-  ].join("");
-}
-
 function renderLabCard(lab) {
   const act = lab.activity;
   const name = lab.url
@@ -316,9 +298,12 @@ function renderLabCard(lab) {
     : "";
   return `
     <article class="card">
-      <div class="card-head"><h2 class="name">${name}</h2></div>
+      <div class="card-head">
+        <div class="who"><h2 class="name">${name}</h2></div>
+        ${renderStat(act, "no member has a linked record")}
+      </div>
       ${members}
-      <div class="signals">${renderLabSignals(act)}</div>
+      ${renderMeta(act)}
     </article>`;
 }
 
@@ -363,6 +348,12 @@ function setView(view) {
   el("results").hidden = view !== "people";
   el("labResults").hidden = view !== "labs";
   el("pager").hidden = view !== "people";
+  // Groups have no search, sort or area, so only offer the filter that applies.
+  for (const node of document.querySelectorAll(".people-only")) {
+    node.hidden = view !== "people";
+  }
+  el("inactiveLabel").textContent =
+    view === "people" ? "Professors with no recent papers" : "Groups with no recent papers";
   refresh();
 }
 
