@@ -98,6 +98,11 @@ faculty:
         name_matches: true
         has_orcid: true
       curated_at: '2026-10-29T00:00:00+00:00'
+    - openalex_id: A5104089850
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
   '15539':
     name: Jae Woo Lee
     links:
@@ -385,6 +390,16 @@ faculty:
         name_matches: true
         has_orcid: true
       curated_at: '2026-09-22T19:58:34.403600+00:00'
+    - openalex_id: A5134156368
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
+    - openalex_id: A5141286824
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
   '195':
     name: Kenneth A Ross
     links:
@@ -472,6 +487,11 @@ faculty:
         name_matches: true
         has_orcid: true
       curated_at: '2026-09-22T19:58:34.403600+00:00'
+    - openalex_id: A5112301037
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
   '22128':
     name: Eleni Drinea
     links:
@@ -597,6 +617,16 @@ faculty:
         name_matches: true
         has_orcid: true
       curated_at: '2026-09-22T19:58:34.403600+00:00'
+    - openalex_id: A5128409194
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
+    - openalex_id: A5158032612
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
   '24284':
     name: Nakul Verma
     links:
@@ -658,6 +688,11 @@ faculty:
         name_matches: true
         has_orcid: true
       curated_at: '2026-09-22T19:58:34.403600+00:00'
+    - openalex_id: A5158211690
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
   '2563':
     name: Peter N Belhumeur
     links:
@@ -698,6 +733,12 @@ faculty:
         name_matches: true
         has_orcid: true
       curated_at: '2026-09-22T19:58:34.403600+00:00'
+    - openalex_id: A5139646003
+      status: rejected
+      note: 36 of 38 recent works are chapters of the French edition of CLRS; linking
+        it would inflate the count.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
   '27113':
     name: Lydia B Chilton
     links:
@@ -717,6 +758,16 @@ faculty:
         name_matches: true
         has_orcid: true
       curated_at: '2026-10-29T00:00:00+00:00'
+    - openalex_id: A5093931956
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
+    - openalex_id: A5133572394
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
   '2732':
     name: Julia B. Hirschberg
     links:
@@ -793,6 +844,11 @@ faculty:
         name_matches: true
         has_orcid: false
       curated_at: '2026-09-22T19:58:34.403600+00:00'
+    - openalex_id: A5104056982
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
   '28246':
     name: Carl Vondrick
     links:
@@ -993,6 +1049,11 @@ faculty:
         name_matches: true
         has_orcid: false
       curated_at: '2026-10-29T00:00:00+00:00'
+    - openalex_id: A5127830597
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
   '32141':
     name: Andrew Blumberg
     links:
@@ -1103,6 +1164,11 @@ faculty:
         name_matches: true
         has_orcid: true
       curated_at: '2026-09-22T19:58:34.403600+00:00'
+    - openalex_id: A5127198759
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
   '35266':
     name: Brian S. Borowski
     links:
@@ -1182,6 +1248,11 @@ faculty:
         name_matches: true
         has_orcid: true
       curated_at: '2026-09-22T19:58:34.403600+00:00'
+    - openalex_id: A5135434129
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
   '40629':
     name: James Bartusek
     links:
@@ -1307,6 +1378,11 @@ faculty:
         name_matches: true
         has_orcid: true
       curated_at: '2026-09-22T19:58:34.403600+00:00'
+    - openalex_id: A5107124391
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
   '41461':
     name: Yining Liu
     links:
@@ -1413,6 +1489,11 @@ faculty:
     - openalex_id: A5124348272
       status: rejected
       note: Single-paper fragment reporting last_year=2026.
+    - openalex_id: A5124916575
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
   '7169':
     name: Vladimir Vapnik
     links:
@@ -1548,5 +1629,11 @@ faculty:
       is_primary: true
       note: 397-work profile. Verified 2026-09-22.
     - openalex_id: A5127897748
-      status: rejected
-      note: 6-work fragment of the same name; not confirmed as the same person.
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page.
+      curated_by: manual-review
+    - openalex_id: A5152979129
+      note: Split profile of the same person; recent papers checked against their
+        Scholar page, Columbia affiliation or co-authors.
+      curated_by: manual-review
+      curated_at: '2026-10-30T00:00:00+00:00'
