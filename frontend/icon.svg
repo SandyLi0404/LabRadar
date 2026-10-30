@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- LabRadar mark: a lion at the center of a radar screen, Columbia blue on
+       navy. The sweep has just picked up a group (the white blip). -->
+  <rect width="64" height="64" rx="16" fill="#0c2340"/>
+  <path d="M32.00 32.00 L32.00 8.00 A24 24 0 0 1 53.19 20.73 Z" fill="#b9d9eb" fill-opacity="0.22"/>
+  <circle cx="32" cy="32" r="24" fill="none" stroke="#b9d9eb" stroke-width="2.6"/>
+  <line x1="45.69" y1="24.72" x2="53.19" y2="20.73" stroke="#b9d9eb" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="42.00" cy="14.68" r="3" fill="#ffffff"/>
+  <path d="M32.00 17.50 L34.51 21.81 L38.74 19.16 L38.96 24.14 L43.93 23.76 L41.82 28.28 L46.39 30.25 L42.42 33.27 L45.56 37.14 L40.64 37.96 L41.62 42.85 L36.88 41.30 L35.47 46.08 L32.00 42.50 L28.53 46.08 L27.12 41.30 L22.38 42.85 L23.36 37.96 L18.44 37.14 L21.58 33.27 L17.61 30.25 L22.18 28.28 L20.07 23.76 L25.04 24.14 L25.26 19.16 L29.49 21.81 Z" fill="#b9d9eb" stroke="#b9d9eb" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="26.4" cy="26.6" r="2.6" fill="#f4ead2"/>
+  <circle cx="37.6" cy="26.6" r="2.6" fill="#f4ead2"/>
+  <circle cx="32" cy="32.8" r="7.6" fill="#f4ead2"/>
+  <circle cx="29.2" cy="31.6" r="1.1" fill="#0c2340"/>
+  <circle cx="34.8" cy="31.6" r="1.1" fill="#0c2340"/>
+  <path d="M30.2 34.4 L33.8 34.4 L32 36.2 Z" fill="#0c2340" stroke="#0c2340" stroke-width="0.7" stroke-linejoin="round"/>
+  <path d="M32 36.2 Q30.8 37.8 29.4 37.2 M32 36.2 Q33.2 37.8 34.6 37.2" fill="none" stroke="#0c2340" stroke-width="0.8" stroke-linecap="round"/>
+</svg>

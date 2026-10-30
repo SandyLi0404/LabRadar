@@ -4,19 +4,19 @@
 [hidden] { display: none !important; }
 
 :root {
-  /* Light macaron: a cream base, pastel fills, and plum ink dark enough to
-     read on every one of them. */
+  /* A neutral oat base and warm charcoal ink; the macaron colors are saved for
+     the research areas, so they are the only color on the page. */
   color-scheme: light;
 
-  --bg: #fdf8f3;
+  --bg: #faf8f5;
   --surface: #ffffff;
-  --surface-2: #fdf1ec;
-  --border: #f1dcd4;
-  --text: #4a3b4f;
-  --muted: #8a7a86;
-  --accent: #b84d70;        /* raspberry: links, focus rings */
-  --accent-fill: #f8c4d2;   /* rose macaron: selected tab */
-  --accent-ink: #5e2840;
+  --surface-2: #f4f1ec;
+  --border: #e6e1d9;
+  --text: #3a3633;
+  --muted: #75706a;
+  --accent: #6b5b4d;        /* warm brown: links, focus rings */
+  --accent-fill: #e8e2d8;   /* sand: selected tab */
+  --accent-ink: #3a3633;
   --lab: #c8b6ee;           /* lavender: lab markers */
   --warn: #8a5a1e;
   --warn-soft: #fdeccd;
@@ -49,7 +49,7 @@ body {
 }
 
 .masthead {
-  background: linear-gradient(180deg, #fde8ee 0%, var(--bg) 100%);
+  background: linear-gradient(180deg, var(--surface-2) 0%, var(--bg) 100%);
   border-bottom: 1px solid var(--border);
   padding-block: 34px 26px;
   margin-bottom: 24px;
@@ -63,6 +63,15 @@ body {
   font-size: 2.6rem;
   letter-spacing: 0.01em;
   color: var(--accent-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.masthead .logo {
+  width: 44px;
+  height: 44px;
+  flex: none;
 }
 
 .scope {
