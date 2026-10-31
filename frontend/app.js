@@ -233,6 +233,7 @@ function renderCard(person) {
         <div class="who">
           <h2 class="name">${home}</h2>
           <span class="role">${esc(person.title ?? "")}</span>
+          ${person.email ? `<a class="email" href="mailto:${esc(person.email)}">${esc(person.email)}</a>` : ""}
           ${departed}
         </div>
         ${renderTally(person.activity)}

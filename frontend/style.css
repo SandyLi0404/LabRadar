@@ -4,19 +4,19 @@
 [hidden] { display: none !important; }
 
 :root {
-  /* Oat paper with white blocks and solid borders, like a card catalog. Macaron
-     tints appear only on research area names. */
+  /* Neutral grey paper with white blocks and solid borders. Macaron tints appear
+     only on research area names. */
   color-scheme: light;
 
-  --bg: #f3efe7;
+  --bg: #f6f6f5;
   --block: #ffffff;
-  --band: #e9e2d4;
-  --line: #b9b1a3;
-  --line-soft: #e0d9cc;
-  --text: #2b2826;
-  --muted: #655f57;
-  --accent: #7a4a24;
-  --warn: #8a5a1e;
+  --tab-off: #ebebea;
+  --line: #c6c6c4;
+  --line-soft: #e4e4e2;
+  --text: #232323;
+  --muted: #5e5e5c;
+  --accent: #232323;
+  --warn: #b0442a;
   --maxw: 1120px;
 }
 
@@ -101,7 +101,7 @@ select:focus-visible {
   margin-bottom: -1px;
   border: 1px solid var(--line);
   border-radius: 4px 4px 0 0;
-  background: var(--band);
+  background: var(--tab-off);
   color: var(--muted);
   padding: 7px 16px;
   font: inherit;
@@ -249,7 +249,6 @@ input[type="search"], select {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid var(--line);
-  background: var(--band);
 }
 
 .who {
@@ -275,6 +274,12 @@ input[type="search"], select {
   font-size: 0.88rem;
 }
 
+.email {
+  display: block;
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
 .flag {
   display: block;
   margin-top: 2px;
@@ -282,7 +287,7 @@ input[type="search"], select {
   color: var(--warn);
 }
 
-/* The paper count gets its own cell in the band, at reading size. */
+/* The paper count gets its own cell in the header, at reading size. */
 .tally {
   display: flex;
   flex: none;
@@ -338,7 +343,7 @@ input[type="search"], select {
   margin-top: auto;
   padding: 10px 14px 11px;
   border-top: 1px solid var(--line-soft);
-  background: #faf8f4;
+  background: #fafafa;
   font-size: 0.88rem;
 }
 
