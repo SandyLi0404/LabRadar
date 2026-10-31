@@ -138,24 +138,32 @@ function buildQuery() {
  * a current one. The window label is rendered from `since_year` in the same
  * payload as the count, so the two cannot disagree -- an earlier version
  * hardcoded "last year" against a figure that actually spanned two. */
-function renderActivity(activity, unknownNote) {
+function renderTally(activity) {
   if (!activity || activity.is_unmapped) {
-    return `<p class="activity"><span class="missing">Unknown: ${unknownNote}</span></p>`;
+    return `<div class="tally unknown"><strong>Unknown</strong></div>`;
   }
   const n = activity.works_since;
-  const count = `<strong>${n} ${n === 1 ? "paper" : "papers"}</strong> since ${activity.since_year}`;
+  return `<div class="tally">
+      <strong>${n} ${n === 1 ? "paper" : "papers"}</strong>
+      <span>since ${activity.since_year}</span>
+    </div>`;
+}
+
+function renderMeta(activity, unknownNote) {
+  if (!activity || activity.is_unmapped) {
+    return `<p class="meta"><span class="missing">${unknownNote}</span></p>`;
+  }
   const last = activity.last_pub_year
-    ? `most recent ${activity.last_pub_year}`
-    : `<span class="missing">no dated publications found</span>`;
+    ? `Most recent ${activity.last_pub_year}`
+    : `<span class="missing">No dated publications found</span>`;
 
   // Show the deduplication rather than silently applying it.
   const raw = activity.raw_records_since;
   const records =
-    raw != null && raw > n
-      ? `, <span title="OpenAlex lists preprint, conference and journal versions separately. LabRadar counts each paper once.">from ${raw} records</span>`
+    raw != null && raw > activity.works_since
+      ? ` · <span title="OpenAlex lists preprint, conference and journal versions separately. LabRadar counts each paper once.">from ${raw} records</span>`
       : "";
-  return `<p class="activity">${count}, ${last}${records}
-    <span class="asof">(as of ${esc(activity.as_of_date)})</span></p>`;
+  return `<p class="meta">${last}${records} · as of ${esc(activity.as_of_date)}</p>`;
 }
 
 /* A group is read off someone's personal page, so it is shown as an
@@ -186,7 +194,7 @@ function renderPapers(papers) {
     const year = paper.year ? `<span class="year">${paper.year}</span>` : "";
     return `<li>${link}${year}</li>`;
   });
-  return `<ul class="papers">${items.join("")}</ul>`;
+  return `<p class="papers-label">Recent papers</p><ul class="papers">${items.join("")}</ul>`;
 }
 
 /* A stable macaron color per research area (see .mac-* in style.css). */
@@ -217,19 +225,22 @@ function renderCard(person) {
     ? `<a href="${esc(person.homepage_url)}" target="_blank" rel="noopener">${esc(person.full_name)}</a>`
     : `${esc(person.full_name)} <span class="nosite">no website listed</span>`;
 
+  const details = areas + renderLabs(person.labs) + interests;
+
   return `
     <article class="entry${person.is_current ? "" : " departed"}">
-      <div class="who">
-        <h2 class="name">${home}</h2>
-        <span class="role">${esc(person.title ?? "")}</span>
-        ${departed}
-        ${areas}
-        ${renderLabs(person.labs)}
-        ${interests}
-      </div>
-      <div class="work">
-        ${renderActivity(person.activity, person.activity ? "publication record not linked yet" : "no activity data yet")}
+      <header class="entry-head">
+        <div class="who">
+          <h2 class="name">${home}</h2>
+          <span class="role">${esc(person.title ?? "")}</span>
+          ${departed}
+        </div>
+        ${renderTally(person.activity)}
+      </header>
+      ${details ? `<div class="entry-body">${details}</div>` : ""}
+      <div class="entry-foot">
         ${renderPapers(person.recent_papers)}
+        ${renderMeta(person.activity, person.activity ? "Publication record not linked yet" : "No activity data yet")}
       </div>
     </article>`;
 }
@@ -284,11 +295,12 @@ function renderLabCard(lab) {
     : "";
   return `
     <article class="entry">
-      <div class="who">
-        <h2 class="name">${name}</h2>
-        ${members}
-      </div>
-      <div class="work">${renderActivity(act, "no member has a linked publication record yet")}</div>
+      <header class="entry-head">
+        <div class="who"><h2 class="name">${name}</h2></div>
+        ${renderTally(act)}
+      </header>
+      ${members ? `<div class="entry-body">${members}</div>` : ""}
+      <div class="entry-foot">${renderMeta(act, "No member has a linked publication record yet")}</div>
     </article>`;
 }
 
