@@ -206,6 +206,28 @@ function macaron(areaName) {
   return `mac-${hash % MACARONS}`;
 }
 
+/* The department's own directory photo. Viewers' browsers load it from Columbia;
+ * LabRadar stores no copy, so a photo removed there disappears here too. */
+function renderPhoto(person) {
+  const src = `https://www.cs.columbia.edu/mice/persons/getPhoto.php?personID=${encodeURIComponent(person.person_id)}`;
+  return `<img class="photo" src="${src}" alt="" width="104" height="130" loading="lazy" referrerpolicy="no-referrer">`;
+}
+
+/* Names only, with the page they came from. An absent list means this site found
+ * none it could trust, not that the professor has no students. */
+function renderStudents(list) {
+  if (!list) {
+    return `<aside class="students"><p class="students-label">PhD students</p>
+      <p class="students-none">No current list found on their page</p></aside>`;
+  }
+  const names = list.names.map((name) => `<li>${esc(name)}</li>`).join("");
+  return `<aside class="students">
+      <p class="students-label">${esc(list.label)}</p>
+      <ul>${names}</ul>
+      <p class="students-source"><a href="${esc(list.source_url)}" target="_blank" rel="noopener">Source</a>, checked ${esc(list.checked)}</p>
+    </aside>`;
+}
+
 function renderCard(person) {
   const areas = person.areas.length
     ? `<div class="areas">${person.areas
@@ -228,21 +250,24 @@ function renderCard(person) {
   const details = areas + renderLabs(person.labs) + interests;
 
   return `
-    <article class="entry${person.is_current ? "" : " departed"}">
-      <header class="entry-head">
-        <div class="who">
-          <h2 class="name">${home}</h2>
-          <span class="role">${esc(person.title ?? "")}</span>
-          ${person.email ? `<a class="email" href="mailto:${esc(person.email)}">${esc(person.email)}</a>` : ""}
-          ${departed}
+    <article class="entry person${person.is_current ? "" : " departed"}">
+      ${renderPhoto(person)}
+      <div class="entry-main">
+        <header class="entry-head">
+          <div class="who">
+            <h2 class="name">${home}</h2>
+            <span class="role">${esc(person.title ?? "")}</span>
+            ${departed}
+          </div>
+          ${renderTally(person.activity)}
+        </header>
+        ${details ? `<div class="entry-body">${details}</div>` : ""}
+        <div class="entry-foot">
+          ${renderPapers(person.recent_papers)}
+          ${renderMeta(person.activity, person.activity ? "Publication record not linked yet" : "No activity data yet")}
         </div>
-        ${renderTally(person.activity)}
-      </header>
-      ${details ? `<div class="entry-body">${details}</div>` : ""}
-      <div class="entry-foot">
-        ${renderPapers(person.recent_papers)}
-        ${renderMeta(person.activity, person.activity ? "Publication record not linked yet" : "No activity data yet")}
       </div>
+      ${renderStudents(person.students)}
     </article>`;
 }
 
@@ -361,6 +386,11 @@ function refresh() {
 
 function wire() {
   const reload = () => { state.page = 1; refresh(); };
+
+  // Load errors do not bubble, so listen while they travel down to the image.
+  results.addEventListener("error", (e) => {
+    if (e.target.classList?.contains("photo")) e.target.hidden = true;
+  }, true);
 
   el("q").addEventListener("input", debounce((e) => {
     state.q = e.target.value.trim();

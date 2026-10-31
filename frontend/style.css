@@ -4,19 +4,19 @@
 [hidden] { display: none !important; }
 
 :root {
-  /* Neutral grey paper with white blocks and solid borders. Macaron tints appear
-     only on research area names. */
+  /* Baby blue page with white blocks and solid borders. Macaron tints appear only
+     on research area names. */
   color-scheme: light;
 
-  --bg: #f6f6f5;
+  --bg: #cfe8f8;
   --block: #ffffff;
-  --tab-off: #ebebea;
-  --line: #c6c6c4;
-  --line-soft: #e4e4e2;
-  --text: #232323;
-  --muted: #5e5e5c;
-  --accent: #232323;
-  --warn: #b0442a;
+  --tab-off: #e6f3fb;
+  --line: #a9c6d9;
+  --line-soft: #dce8ef;
+  --text: #1f2a33;
+  --muted: #4a5660;
+  --accent: #1f2a33;
+  --warn: #a83c20;
   --maxw: 1120px;
 }
 
@@ -225,12 +225,61 @@ input[type="search"], select {
   font-size: 0.9rem;
 }
 
-/* Blocks sit in pairs and stretch to match, with the papers held at the bottom
-   so they line up across a row. */
+/* Professors take the full width, with photo and students either side of their
+   work. Groups have less to show, so they sit in pairs. */
 .results {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 14px;
+}
+
+#labResults { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.entry.person {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.photo {
+  flex: none;
+  width: 120px;
+  height: auto;
+  min-height: 150px;
+  max-height: 190px;
+  margin: 14px 0 14px 14px;
+  border: 1px solid var(--line);
+  object-fit: cover;
+  object-position: top;
+  background: var(--tab-off);
+}
+
+.entry-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.students {
+  flex: none;
+  width: 230px;
+  padding: 10px 14px;
+  border-left: 1px solid var(--line);
+  background: #f1f8fd;
+  font-size: 0.88rem;
+}
+
+.students-label { margin: 0 0 4px; font-weight: 600; }
+
+.students ul { margin: 0; padding: 0; list-style: none; }
+.students li { margin-top: 2px; line-height: 1.35; }
+
+.students-none { margin: 0; color: var(--muted); }
+
+.students-source {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
 }
 
 .entry {
@@ -272,12 +321,6 @@ input[type="search"], select {
   display: block;
   color: var(--muted);
   font-size: 0.88rem;
-}
-
-.email {
-  display: block;
-  font-size: 0.85rem;
-  overflow-wrap: anywhere;
 }
 
 .flag {
@@ -406,6 +449,13 @@ input[type="search"], select {
 @media (max-width: 820px) {
   .wrap { padding-inline: 16px; }
   .masthead h1 { font-size: 2.2rem; }
-  .results { grid-template-columns: minmax(0, 1fr); }
+  #labResults { grid-template-columns: minmax(0, 1fr); }
+  .entry.person { flex-direction: column; }
+  .photo { width: 96px; min-height: 0; margin: 14px 0 0 14px; }
+  .students {
+    width: auto;
+    border-top: 1px solid var(--line);
+    border-left: none;
+  }
   .field { flex-wrap: wrap; }
 }

@@ -19,6 +19,7 @@ from pydantic import BaseModel, Field
 from sqlalchemy import Integer, String, func, select, text
 from sqlalchemy.orm import Session
 
+from labradar import students
 from labradar.activity import since_year as activity_since_year
 from labradar.config import get_settings
 from labradar.db.models import (
@@ -160,6 +161,25 @@ class PaperOut(BaseModel):
     url: str | None = None
 
 
+class StudentsOut(BaseModel):
+    label: str
+    names: list[str]
+    source_url: str
+    checked: str
+
+
+def _students_out(person_id: str) -> StudentsOut | None:
+    entry = students.cached().get(person_id)
+    if entry is None:
+        return None
+    return StudentsOut(
+        label=entry.label,
+        names=list(entry.names),
+        source_url=entry.source_url,
+        checked=entry.checked,
+    )
+
+
 class FacultyOut(BaseModel):
     id: int
     person_id: str
@@ -175,6 +195,7 @@ class FacultyOut(BaseModel):
     labs: list[LabRef] = []
     activity: ActivityOut | None = None
     recent_papers: list[PaperOut] = []
+    students: StudentsOut | None = None
 
 
 class FacultyDetailOut(FacultyOut):
@@ -491,6 +512,7 @@ def list_faculty(
                 labs=labs.get(r.id, []),
                 activity=_activity_out(r),
                 recent_papers=papers.get(r.id, []),
+                students=_students_out(r.person_id),
             )
             for r in rows
         ],
@@ -573,6 +595,7 @@ def get_faculty(slug: str, db: Session = Depends(get_db)) -> FacultyDetailOut:
         activity=_activity_out(row),
         openalex_ids=openalex_ids,
         recent_papers=papers,
+        students=_students_out(row.person_id),
     )
 
 

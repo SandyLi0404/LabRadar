@@ -1,0 +1,104 @@
+# Current PhD students, keyed by department person ID.
+#
+# Copied by hand from each professor's or lab's own public page, because those
+# pages mix current students with alumni, postdocs and undergraduates, and many
+# have not been updated in years. Only pages that mark who is current are used.
+# Names only: no student emails.
+#
+# label is shown when the page does not separate PhD students from other members.
+
+checked: 2026-10-30
+professors:
+  "32141":
+    name: Andrew Blumberg
+    source: https://ajblumberg.github.io/people/
+    students: [Noah Bergam, Valerio Galante, Sang min Ko, Carlos Alvarado]
+  "25345":
+    name: Baishakhi Ray
+    source: https://www.rayb.info/personnel
+    students: [Yangruibo Ding, Vikram Nitin, Alex Mathai, Ira Ceka, Jinjun Peng]
+  "28246":
+    name: Carl Vondrick
+    source: http://www.cs.columbia.edu/~vondrick/
+    label: Lab members
+    students: [Arjun Mani, Junbang Liang, Lennart Schulze, Sreehari Rammohan, Sruthi Sudhakar]
+  "2569":
+    name: Clifford Stein
+    source: http://www.columbia.edu/~cs2035/students.html
+    students: [Jingwei Li, Neel Karia, Shyamal Patel, Gabriel Chung]
+  "21253":
+    name: Daniel J Hsu
+    source: https://www.cs.columbia.edu/~djhsu/
+    students: [James Wang, Jingwen Liu, Marten Garicano, Noah Bergam]
+  "22901":
+    name: David Blei
+    source: http://www.cs.columbia.edu/~blei/lab.html
+    label: PhD students & postdocs
+    students: [Nicolas Beltran-Velez, Sweta Karlekar, Hector Rodriguez-Deniz, Sebastian Salazar, Sohrab Salehi, Matthew Shen, Yuli Slavutsky, Bohan Wu]
+  "31291":
+    name: David Knowles
+    source: https://daklab.github.io/
+    students: [Sei Chang, Dan Meyer, Arghamitra Talukder]
+  "31472":
+    name: Elias Bareinboim
+    source: https://causalai.net/
+    label: PhD students & postdocs
+    students: [Alina Chandra, Adiba Ejaz, Shreyas Havaldar, Inwoo Hwang, Kasra Jalaldoust, Hyun Chai Jeong, Kai-Zhan Lee, Mingxuan Li, Aurghya Maiti, Yushu Pan, Arvind Raghavan, Terry Tong, Erica Wang, Jeffrey Wu, Kevin Xia, Hongshuo Yang]
+  "33023":
+    name: Henry Yuen
+    source: http://www.henryyuen.net
+    students: [Leo Orshansky, Saachi Mutreja, Natalie Parham]
+  "15522":
+    name: Itsik G Pe'er
+    source: http://www.cs.columbia.edu/~itsik
+    students: [Arghamitra Talukder, Rashid Al Abri, Jacob Blindencach]
+  "27956":
+    name: Jeannette M Wing
+    source: https://www.cs.columbia.edu/~wing/
+    students: [Filipp Shelobolin]
+  "34100":
+    name: Josh Alman
+    source: http://joshalman.com
+    students: [Hantao Yu, Sayak Chakrabarti, Yizhi Huang, Baitian Li]
+  "16119":
+    name: Junfeng Yang
+    source: http://www.cs.columbia.edu/~junfeng/people.html
+    students: [Andreas Kellas, Raphael Jedidiah Sofaer, Yun-Yun Tsai, Harry Haoda Wang, Alex Mathai, Jinjun Peng, Hailie Mitchell, Hideaki Takahashi, Jihwan Kim, Chenxi Huang, Weiliang Zhao]
+  "7597":
+    name: Luca Carloni
+    source: https://sld.cs.columbia.edu/people.html
+    label: Graduate students
+    students: [Elli Alvanaki, William Baisi, Kevin Lee, Michael Lippe, Eugenio Muscinelli, Gabriele Tombesi, Pei-Huan Tsai, Je Yang]
+  "27113":
+    name: Lydia B Chilton
+    source: https://www.cs.columbia.edu/~chilton
+    students: [Vivian Liu, Sitong Wang, Tao Long, Yulun Du, Xuanming Zhang, Jenny Ma, Karthik Sreedhar, Riya Sahni, Reya Vir]
+  "34111":
+    name: Richard Zemel
+    source: https://www.cs.columbia.edu/~zemel/
+    label: PhD students & postdocs
+    students: [Amogh Inamdar, Arjun Mani, Ben Eyre, Conlan Olson, Siddhartha Datta, Sruthi Sudhakar, Todd Morrill, Tom Zollo]
+  "2298":
+    name: Stephen A. Edwards
+    source: http://www.cs.columbia.edu/~sedwards
+    students: [Max Levatich]
+  "2826":
+    name: Tal G Malkin
+    source: http://www.cs.columbia.edu/~tal
+    students: [Tianqi Yang, Yizhi Huang, Leo Orshansky]
+  "31190":
+    name: Tim Roughgarden
+    source: http://timroughgarden.org/students.html
+    students: [Naveen Durvasula, Jason Milionis]
+  "2278":
+    name: Vishal Misra
+    source: http://www.cs.columbia.edu/~misra/students.html
+    students: [Andrew Tang, Cyrus Illick, Kahlil Dozier, Loqman Salamatian, Saeyoung Rho]
+  "40320":
+    name: Yunzhu Li
+    source: https://yunzhuli.github.io/
+    students: [Binghao Huang, Hanxiao Jiang, Shivansh Patel, Rhythm Syed, Yixuan Wang, Zach Witzel, Kaifeng Zhang]
+  "32629":
+    name: Zhou Yu
+    source: http://www.cs.columbia.edu/~zhouyu/
+    students: [Matthew Toles, Zachary Horvitz, Siyan Li, Xuanming Zhang, Xiao Yu, Yunan Lu, Jinhui Liu, Ryan Shea, Weiliang Zhao, Reya Vir]
